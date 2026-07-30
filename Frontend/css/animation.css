@@ -1,0 +1,175 @@
+/* ============================================================
+   ANIMATION.CSS - SMP Al Islam Krian
+   Animasi dan efek visual
+   ============================================================ */
+
+/* ---------- AOS CUSTOM ---------- */
+[data-aos="flip-left"] {
+    transform: perspective(1000px) rotateY(-10deg);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+[data-aos="flip-left"].aos-animate {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+[data-aos="flip-right"] {
+    transform: perspective(1000px) rotateY(10deg);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+[data-aos="flip-right"].aos-animate {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+[data-aos="flip-up"] {
+    transform: perspective(1000px) rotateX(-10deg);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+[data-aos="flip-up"].aos-animate {
+    transform: perspective(1000px) rotateX(0deg);
+}
+
+/* ---------- GLOW HOVER ---------- */
+.glow-hover {
+    transition: all 0.4s ease;
+}
+.glow-hover:hover {
+    box-shadow: 0 0 30px rgba(13, 110, 253, 0.3);
+    transform: translateY(-4px);
+}
+
+/* ---------- CARD ANIMATION ---------- */
+.card-animate {
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.card-animate:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(13, 110, 253, 0.15);
+}
+
+/* ---------- SMOOTH SCROLL (by browser) ---------- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- PARALLAX HERO (fallback) ---------- */
+.hero-section {
+    background-attachment: fixed;
+}
+@media (max-width: 768px) {
+    .hero-section {
+        background-attachment: scroll;
+    }
+}
+
+/* ---------- LAZY LOAD IMAGE FADE ---------- */
+img.lazy {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+img.lazy.loaded {
+    opacity: 1;
+}
+
+/* ---------- MOUSE HOVER EFFECT ---------- */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- PURE CSS ANIMATIONS ---------- */
+.pulse {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, var(--bg) 25%, rgba(255,255,255,0.4) 50%, var(--bg) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 0.8s ease forwards;
+}
+@keyframes slideInLeft {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 0.8s ease forwards;
+}
+@keyframes slideInRight {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: zoomIn 0.8s ease forwards;
+}
+@keyframes zoomIn {
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- RIPPLE BUTTON (JS enhanced) ---------- */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---------- SCROLL PROGRESS BAR (JS enhanced) ---------- */
+#scroll-progress-bar {
+    transition: width 0.1s linear;
+}
+
+/* ---------- COUNTER (JS enhanced) ---------- */
+.counter {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- DARK MODE TRANSITION ---------- */
+body,
+.navbar,
+.navbar *,
+.card,
+.berita-card,
+.program-card,
+.fasilitas-card,
+.guru-card,
+.testimoni-card,
+.accordion-item,
+.list-group-item,
+.footer,
+.footer * {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}

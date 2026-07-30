@@ -1,0 +1,391 @@
+@media (max-width: 1199px) {
+    .hero-content .display-2 {
+        font-size: 3.5rem;
+    }
+    .stat-card h3 {
+        font-size: 2.8rem;
+    }
+    .fasilitas-card img {
+        height: 180px;
+    }
+    .galeri-item img {
+        height: 180px;
+    }
+}
+
+/* ---------- TABLET (768px - 1023px) ---------- */
+@media (max-width: 1023px) {
+    .navbar .brand-text {
+        font-size: 0.9rem;
+    }
+    .hero-content .display-2 {
+        font-size: 3rem;
+    }
+    .hero-buttons .btn {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+    .quick-card {
+        padding: 20px 15px;
+    }
+    .quick-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+    .stat-card h3 {
+        font-size: 2.4rem;
+    }
+    .statistics {
+        padding: 60px 0;
+    }
+    .sambutan-foto img {
+        max-width: 280px;
+    }
+    .vision-card,
+    .mission-card {
+        padding: 24px !important;
+    }
+    .program-card {
+        padding: 20px !important;
+    }
+    .program-icon {
+        font-size: 2.2rem;
+    }
+    .fasilitas-card img {
+        height: 160px;
+    }
+    .galeri-item img {
+        height: 160px;
+    }
+    .berita-card img {
+        height: 160px;
+    }
+    .timeline {
+        padding-left: 20px;
+    }
+    .timeline-item {
+        padding-left: 16px;
+    }
+    .timeline-item::before {
+        left: -20px;
+        width: 12px;
+        height: 12px;
+    }
+    .guru-card img {
+        width: 100px;
+        height: 100px;
+    }
+    .footer {
+        padding: 40px 0;
+    }
+}
+
+/* ---------- MOBILE (576px - 767px) ---------- */
+@media (max-width: 767px) {
+    body {
+        padding-top: 66px;
+    }
+    .navbar {
+        padding: 8px 0;
+    }
+    .navbar .brand-text {
+        font-size: 0.85rem;
+    }
+    .navbar .brand-text span {
+        display: inline;
+    }
+    .hero-content .display-2 {
+        font-size: 2.2rem;
+    }
+    .hero-content .lead {
+        font-size: 1rem;
+    }
+    .hero-buttons .btn {
+        padding: 10px 22px;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    .hero-buttons .btn-lg {
+        font-size: 0.9rem;
+    }
+    .wave-divider svg {
+        height: 40px;
+    }
+    .running-text {
+        padding: 6px 0;
+        font-size: 0.8rem;
+        bottom: 15px;
+    }
+    .running-text-content span {
+        margin: 0 12px;
+    }
+    .quick-menu {
+        margin-top: -20px;
+    }
+    .quick-card {
+        padding: 16px 12px;
+    }
+    .quick-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    .quick-card h5 {
+        font-size: 0.95rem;
+    }
+    .quick-card p {
+        font-size: 0.75rem;
+    }
+    .stat-card h3 {
+        font-size: 2rem;
+    }
+    .stat-card p {
+        font-size: 0.9rem;
+    }
+    .statistics {
+        padding: 40px 0;
+    }
+    .sambutan-foto img {
+        max-width: 200px;
+    }
+    .sambutan-text p {
+        font-size: 0.95rem;
+    }
+    .display-5 {
+        font-size: 1.8rem;
+    }
+    .vision-card,
+    .mission-card {
+        padding: 20px !important;
+    }
+    .program-card {
+        padding: 16px !important;
+    }
+    .program-icon {
+        font-size: 1.8rem;
+    }
+    .program-card h5 {
+        font-size: 1rem;
+    }
+    .program-card p {
+        font-size: 0.85rem;
+    }
+    .fasilitas-card img {
+        height: 140px;
+    }
+    .fasilitas-overlay {
+        padding: 15px;
+    }
+    .fasilitas-overlay h5 {
+        font-size: 0.95rem;
+    }
+    .fasilitas-overlay p {
+        font-size: 0.8rem;
+    }
+    .galeri-item img {
+        height: 140px;
+    }
+    .berita-card img {
+        height: 140px;
+    }
+    .berita-body {
+        padding: 16px;
+    }
+    .berita-body h5 {
+        font-size: 1rem;
+    }
+    .timeline {
+        padding-left: 16px;
+    }
+    .timeline-item {
+        padding-left: 12px;
+        margin-bottom: 20px;
+    }
+    .timeline-item::before {
+        left: -16px;
+        width: 10px;
+        height: 10px;
+    }
+    .timeline-content {
+        padding: 14px 18px;
+    }
+    .timeline-content h5 {
+        font-size: 0.95rem;
+    }
+    .guru-card {
+        padding: 20px 15px;
+    }
+    .guru-card img {
+        width: 80px;
+        height: 80px;
+    }
+    .guru-card h5 {
+        font-size: 0.95rem;
+    }
+    .testimoni-card {
+        padding: 20px !important;
+    }
+    .accordion-button {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+    }
+    .accordion-body {
+        padding: 14px 18px;
+        font-size: 0.9rem;
+    }
+    .ppdb-info {
+        padding: 20px !important;
+    }
+    .ppdb-info ul li {
+        font-size: 0.9rem;
+    }
+    .kontak-item {
+        padding: 16px;
+    }
+    .footer {
+        padding: 30px 0;
+        text-align: center;
+    }
+    .footer .social-icons {
+        justify-content: center;
+    }
+    .floating-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+        bottom: 20px;
+        right: 20px;
+    }
+    .back-to-top {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        bottom: 80px;
+        right: 20px;
+    }
+}
+
+/* ---------- MOBILE KECIL (320px - 575px) ---------- */
+@media (max-width: 575px) {
+    .hero-content .display-2 {
+        font-size: 1.8rem;
+    }
+    .hero-content .badge {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+    }
+    .hero-buttons .btn {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+    }
+    .quick-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+    .quick-card h5 {
+        font-size: 0.85rem;
+    }
+    .stat-card h3 {
+        font-size: 1.6rem;
+    }
+    .stat-card p {
+        font-size: 0.8rem;
+    }
+    .display-5 {
+        font-size: 1.5rem;
+    }
+    .program-card {
+        padding: 14px !important;
+    }
+    .program-icon {
+        font-size: 1.5rem;
+    }
+    .fasilitas-card img {
+        height: 120px;
+    }
+    .galeri-item img {
+        height: 120px;
+    }
+    .berita-card img {
+        height: 120px;
+    }
+    .guru-card img {
+        width: 70px;
+        height: 70px;
+    }
+    .timeline-content {
+        padding: 12px 14px;
+    }
+    .timeline-content h5 {
+        font-size: 0.85rem;
+    }
+    .list-group-item {
+        padding: 12px 14px !important;
+        font-size: 0.9rem;
+    }
+    .floating-whatsapp {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+        bottom: 16px;
+        right: 16px;
+    }
+    .back-to-top {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        bottom: 70px;
+        right: 16px;
+    }
+}
+
+/* ---------- TABLET LANDSCAPE (1024px ke atas) ---------- */
+@media (min-width: 1024px) and (max-height: 800px) {
+    .hero-content .display-2 {
+        font-size: 3.2rem;
+    }
+    .hero-content .lead {
+        font-size: 1rem;
+    }
+    .hero-buttons .btn {
+        padding: 12px 28px;
+    }
+}
+
+/* ---------- DARK MODE RESPONSIVE ---------- */
+@media (prefers-color-scheme: dark) {
+    /* Fallback untuk browser dengan preferensi dark */
+}
+
+/* ---------- PRINT ---------- */
+@media print {
+    .navbar,
+    .hero-section,
+    .quick-menu,
+    .statistics,
+    .footer,
+    .floating-whatsapp,
+    .back-to-top,
+    #scroll-progress-bar,
+    #loading-screen {
+        display: none !important;
+    }
+    body {
+        padding-top: 0 !important;
+        background: white !important;
+        color: black !important;
+    }
+    .container {
+        max-width: 100% !important;
+    }
+    .card,
+    .berita-card,
+    .program-card,
+    .fasilitas-card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+}

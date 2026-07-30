@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sambutan Kepala Sekolah SMP Al Islam Krian - Pesan inspiratif dari pemimpin sekolah" />
+    <title>Sambutan Kepala Sekolah - SMP Al Islam Krian</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/logo/logo-smp-al-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/180/3031/3031515.png" />
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    
+    <!-- Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+    <link href="../../css/animation.css" rel="stylesheet" />
+    
+    <style>
+        /* ===== HALAMAN SAMBUTAN - TAMBAHAN CSS ===== */
+        
+        /* Page Header */
+        .page-header-sambutan {
+            background: linear-gradient(135deg, var(--primary) 0%, #0b5c2a 50%, var(--secondary) 100%);
+            padding: 130px 0 70px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header-sambutan .breadcrumb {
+            background: transparent;
+            padding: 0;
+        }
+        
+        .page-header-sambutan .breadcrumb-item a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .page-header-sambutan .breadcrumb-item a:hover {
+            color: var(--white);
+        }
+        
+        .page-header-sambutan .breadcrumb-item.active {
+            color: var(--white);
+        }
+        
+        .page-header-sambutan .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Hero Sambutan */
+        .sambutan-hero {
+            position: relative;
+            padding: 60px 0 40px;
+        }
+        
+        .sambutan-hero .sambutan-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 20px;
+        }
+        
+        /* Profil Kepala Sekolah */
+        .profil-kepsek {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-hover);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .profil-kepsek .foto-kepsek {
+            width: 100%;
+            max-width: 280px;
+            border-radius: var(--radius);
+            border: 6px solid var(--white);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .profil-kepsek .kepsek-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+        
+        .profil-kepsek .kepsek-title {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .profil-kepsek .kepsek-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-soft);
+            padding: 20px 25px;
+            background: var(--soft-bg);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 15px 0;
+        }
+        
+        .profil-kepsek .kepsek-quote i {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .profil-kepsek .kepsek-bio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .profil-kepsek .kepsek-bio .bio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: var(--bg);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-soft);
+        }
+        
+        .profil-kepsek .kepsek-bio .bio-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Isi Sambutan */
+        .sambutan-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 45px 50px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .sambutan-content .sambutan-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .sambutan-content .sambutan-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            border-radius: 4px;
+        }
+        
+        .sambutan-content p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        .sambutan-content .sambutan-salam {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .sambutan-content .sambutan-tanda-tangan {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border);
+            text-align: right;
+        }
+        
+        .sambutan-content .sambutan-tanda-tangan img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .sambutan-content .sambutan-tanda-tangan .ttd-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        
+        .sambutan-content .sambutan-tanda-tangan .ttd-title {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+        }
+        
+        /* Visi Misi Singkat */
+        .visi-misi-singkat {
+            background: var(--soft-bg);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        .visi-misi-singkat h4 {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+        
+        .visi-misi-singkat .visi-box {
+            background: var(--white);
+            padding: 20px 25px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .visi-misi-singkat .visi-box h6 {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .visi-misi-singkat .visi-box p {
+            margin-bottom: 0;
+            color: var(--text-soft);
+        }
+        
+        /* Timeline Kepsek */
+        .kepsek-timeline {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 35px 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .kepsek-timeline h5 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .kepsek-timeline .timeline-item {
+            display: flex;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .kepsek-timeline .timeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .kepsek-timeline .timeline-item .timeline-year {
+            font-weight: 800;
+            color: var(--primary);
+            min-width: 70px;
+            font-size: 1.1rem;
+        }
+        
+        .kepsek-timeline .timeline-item .timeline-desc {
+            color: var(--text-soft);
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .profil-kepsek {
+                padding: 30px;
+            }
+            .sambutan-content {
+                padding: 30px 25px;
+            }
+            .sambutan-content p {
+                font-size: 1rem;
+            }
+            .profil-kepsek .foto-kepsek {
+                max-width: 200px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .page-header-sambutan {
+                padding: 110px 0 40px;
+            }
+            .sambutan-content {
+                padding: 25px 20px;
+            }
+            .profil-kepsek {
+                padding: 20px;
+            }
+            .profil-kepsek .kepsek-name {
+                font-size: 1.4rem;
+            }
+            .sambutan-content .sambutan-title {
+                font-size: 1.4rem;
+            }
+            .visi-misi-singkat {
+                padding: 25px;
+            }
+            .kepsek-timeline {
+                padding: 25px 20px;
+            }
+            .profil-kepsek .kepsek-bio {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div id="loading-screen">
+        <div class="loader-wrapper">
+            <div class="loader-ring"></div>
+            <div class="loader-text">SMP Al Islam Krian</div>
+        </div>
+    </div>
+
+    <div id="scroll-progress-bar"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo/logo-smp-al-islam.png" alt="Logo SMP Al Islam Krian" height="50" class="me-2" />
+                <span class="brand-text">SMP Al Islam <span>Krian</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Beranda</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownProfil" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfil">
+                            <li><a class="dropdown-item" href="profile.html#sejarah">Sejarah</a></li>
+                            <li><a class="dropdown-item" href="profile.html#visi-misi">Visi &amp; Misi</a></li>
+                            <li><a class="dropdown-item active" href="sambutan.html">Sambutan Kepsek</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#akademik">Akademik</a></li>
+                    <li class="nav-item"><a class="nav-link" href="guru.php">Guru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#prestasi">Prestasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#berita">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#galeri">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#ppdb">PPDB</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#kontak">Kontak</a></li>
+                </ul>
+                <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== PAGE HEADER ==================== -->
+    <section class="page-header-sambutan">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+                            <li class="breadcrumb-item"><a href="profile.html">Profil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sambutan Kepsek</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-3 fw-bold mb-3">Sambutan <span style="color: var(--gold);">Kepala Sekolah</span></h1>
+                    <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">
+                        Pesan inspiratif dari pemimpin kami untuk seluruh keluarga besar SMP Al Islam Krian
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center d-none d-lg-block" data-aos="fade-left">
+                    <i class="bi bi-megaphone-fill" style="font-size: 6rem; opacity: 0.25; color: var(--white);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SAMBUTAN HERO ==================== -->
+    <section class="sambutan-hero">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="sambutan-badge">
+                    <i class="bi bi-chat-quote me-2"></i> Kata Sambutan
+                </span>
+                <p style="font-size: 1.2rem; color: var(--text-soft); max-width: 700px; margin: 0 auto;">
+                    "Membangun generasi cerdas, berakhlak mulia, dan berdaya saing global"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROFIL KEPALA SEKOLAH ==================== -->
+    <section class="py-3">
+        <div class="container">
+            <div class="profil-kepsek" data-aos="fade-up">
+                <div class="row align-items-center g-4">
+                    <div class="col-md-4 text-center">
+                        <img src="../../../assets/guru/kepala-sekolah.png" alt="Kepala Sekolah" class="foto-kepsek" />
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="kepsek-name">Dyah Rakhmayanti, S.T., M.Pd.</h2>
+                        <div class="kepsek-title">Kepala Sekolah SMP Al Islam Krian</div>
+                        
+                        <div class="kepsek-quote">
+                            <i class="bi bi-quote"></i>
+                            "Pendidikan adalah seni membentuk manusia yang beriman, berilmu, dan berakhlak mulia. 
+                            Mari kita bersama-sama wujudkan generasi emas yang siap menghadapi tantangan global 
+                            dengan tetap berpegang teguh pada nilai-nilai Islam."
+                        </div>
+                        
+                        <div class="kepsek-bio">
+                            <div class="bio-item">
+                                <i class="bi bi-mortarboard"></i>
+                                <span>S2 Pendidikan - Universitas Negeri Surabaya</span>
+                            </div>
+                            <div class="bio-item">
+                                <i class="bi bi-clock-history"></i>
+                                <span>Bergabung sejak 2010</span>
+                            </div>
+                            <div class="bio-item">
+                                <i class="bi bi-award"></i>
+                                <span>Guru Berprestasi 2018</span>
+                            </div>
+                            <div class="bio-item">
+                                <i class="bi bi-book"></i>
+                                <span>Bidang Studi: PKN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ISI SAMBUTAN ==================== -->
+    <section class="py-3">
+        <div class="container">
+            <div class="sambutan-content" data-aos="fade-up">
+                <h2 class="sambutan-title">Sambutan Kepala Sekolah</h2>
+                
+                <p class="sambutan-salam">Assalamu'alaikum warahmatullahi wabarakatuh,</p>
+                
+                <p>Puji syukur kita panjatkan ke hadirat Allah SWT yang telah melimpahkan rahmat dan hidayah-Nya sehingga kita dapat berkegiatan di SMP Al Islam Krian dengan penuh semangat dan dedikasi. Shalawat serta salam semoga senantiasa tercurah kepada junjungan kita Nabi Muhammad SAW, yang telah membawa kita dari zaman kegelapan menuju zaman yang terang benderang.</p>
+                
+                <p>Sebagai lembaga pendidikan Islam, kami berkomitmen untuk memberikan pendidikan terbaik yang memadukan ilmu pengetahuan umum dan agama, membentuk generasi yang cerdas secara intelektual, matang secara emosional, dan kuat secara spiritual. Kami percaya bahwa pendidikan adalah investasi jangka panjang yang akan menentukan masa depan bangsa.</p>
+                
+                <p>Di SMP Al Islam Krian, kami tidak hanya mengajarkan siswa untuk menjadi pintar secara akademis, tetapi juga membentuk karakter mereka dengan nilai-nilai Islam dan kebangsaan. Kami ingin mencetak generasi yang tidak hanya cerdas, tetapi juga berakhlak mulia, memiliki jiwa kepemimpinan, dan siap bersaing di kancah global.</p>
+                
+                <p>Kami mengundang seluruh orang tua dan masyarakat untuk bersama-sama mendukung proses pendidikan anak-anak kita, karena keberhasilan pendidikan adalah tanggung jawab kita bersama. Mari kita jalin kerja sama yang erat antara sekolah, orang tua, dan masyarakat untuk menciptakan lingkungan belajar yang kondusif dan menyenangkan bagi anak-anak kita.</p>
+                
+                <p>Terakhir, saya mengucapkan terima kasih kepada seluruh guru, staff, orang tua, dan siswa yang telah berkontribusi dalam memajukan SMP Al Islam Krian. Semoga apa yang kita lakukan mendapatkan ridho dari Allah SWT dan membawa manfaat bagi masyarakat luas.</p>
+                
+                <p>Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUOTE PENUTUP ==================== -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8 text-center">
+                    <i class="bi bi-chat-quote" style="font-size: 3rem; color: var(--primary); opacity: 0.3;"></i>
+                    <blockquote class="blockquote fs-4 fst-italic mt-3">
+                        "Guru terbaik bukanlah mereka yang mengajarkan segalanya, tapi mereka yang menginspirasi muridnya untuk belajar dan berkembang."
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2">
+                        Dyah Rakhmayanti, S.T., M.Pd. <cite title="Source Title">Kepala Sekolah SMP Al Islam Krian</cite>
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">SMP Al Islam Krian</h5>
+                    <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya saing global.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Informasi Sekolah</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="profile.html#sejarah">Sejarah Sekolah</a></li>
+                        <li><a href="profile.html#visi-misi">Visi &amp; Misi</a></li>
+                        <li><a href="sambutan.html">Sambutan Kepsek</a></li>
+                        <li><a href="index.html#fasilitas">Fasilitas</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Layanan &amp; Publikasi</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html#ppdb">Pendaftaran PPDB</a></li>
+                        <li><a href="index.html#agenda">Kalender Akademik</a></li>
+                        <li><a href="index.html#berita">Arsip Berita</a></li>
+                        <li><a href="index.html#galeri">Dokumentasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
+                    <p><i class="bi bi-telephone me-2"></i> (031) 1234567</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@smpalislankrian.sch.id</p>
+                    <div class="live-clock mt-2">
+                        <i class="bi bi-clock me-1"></i> <span id="clock">00:00:00</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4" />
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 SMP Al Islam Krian. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP ==================== -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- ==================== BACK TO TOP ==================== -->
+    <button id="backToTop" class="btn btn-primary back-to-top" aria-label="Back to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/counter.js"></script>
+
+    <script>
+        // ===== AOS INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-out-cubic'
+            });
+        });
+    </script>
+
+</body>
+</html>
