@@ -1096,18 +1096,312 @@ body {
     background: var(--white);
 }
 
-/* ---------- PPDB ---------- */
-.ppdb-info {
+/* ============================================================
+   PPDB - STYLE KHUSUS
+   ============================================================ */
+
+/* ---- TIMELINE PPDB ---- */
+.timeline-ppdb {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline-ppdb::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary), var(--gold));
+    border-radius: 4px;
+}
+
+.timeline-item-ppdb {
+    position: relative;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+
+.timeline-item-ppdb::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 3px var(--primary);
+}
+
+.timeline-icon {
+    display: none;
+}
+
+.timeline-content-ppdb {
+    background: var(--white);
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.timeline-content-ppdb:hover {
+    transform: translateX(6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.timeline-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.timeline-date {
+    font-size: 0.75rem;
+    color: var(--text-soft);
+    font-weight: 600;
+}
+
+.timeline-content-ppdb h6 {
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+    font-size: 0.95rem;
+}
+
+.timeline-content-ppdb p {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-bottom: 0;
+}
+
+/* ---- PERSYARATAN ---- */
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.requirement-item:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.requirement-item i {
+    color: var(--primary);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.requirement-item span {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+/* ---- INFO CARD ---- */
+.ppdb-info-card {
+    background: var(--white);
     border-radius: var(--radius);
-    border-left: 5px solid var(--primary);
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+    border: 1px solid rgba(0,0,0,0.04);
 }
 
-.ppdb-info ul li {
-    padding: 6px 0;
+.ppdb-info-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 20px 24px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.ppdb-info ul li i {
-    color: var(--primary) !important;
+.ppdb-info-header i {
+    font-size: 1.6rem;
+}
+
+.ppdb-info-header h4 {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.ppdb-info-body {
+    padding: 24px;
+}
+
+.info-section {
+    margin-bottom: 24px;
+}
+
+.info-section h6 {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.info-section h6 i {
+    color: var(--primary);
+    margin-right: 8px;
+}
+
+/* ---- JALUR ---- */
+.jalur-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.jalur-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: var(--bg);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.jalur-item:hover {
+    background: var(--soft-bg);
+}
+
+.jalur-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.jalur-item strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.jalur-item small {
+    font-size: 0.75rem;
+    color: var(--text-soft);
+}
+
+/* ---- BIAYA ---- */
+.biaya-box {
+    background: var(--soft-bg);
+    padding: 14px 18px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary);
+}
+
+.biaya-amount {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+}
+
+.biaya-label {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+}
+
+/* ---- BUTTON WA ---- */
+.btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: #25D366;
+    color: var(--white);
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-wa:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+    color: var(--white);
+}
+
+/* ---- CTA ---- */
+.ppdb-cta {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- PPDB RESPONSIVE ---------- */
+@media (max-width: 767px) {
+    .timeline-ppdb {
+        padding-left: 30px;
+    }
+    .timeline-item-ppdb {
+        padding-left: 10px;
+    }
+    .timeline-item-ppdb::before {
+        left: -25px;
+        width: 10px;
+        height: 10px;
+    }
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .jalur-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .ppdb-info-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 575px) {
+    .timeline-content-ppdb {
+        padding: 12px 14px;
+    }
+    .timeline-content-ppdb h6 {
+        font-size: 0.85rem;
+    }
+    .requirement-item {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    .biaya-amount {
+        font-size: 1.1rem;
+    }
 }
 
 /* ---------- MAPS ---------- */
@@ -1142,7 +1436,7 @@ body {
 }
 
 /* ============================================================
-   FOOTER (REVISI)
+   FOOTER
    ============================================================ */
 .footer {
     background: #0b1a33;
@@ -1281,10 +1575,6 @@ body {
     text-decoration: none;
 }
 
-.footer .footer-bottom a:hover {
-    text-decoration: underline;
-}
-
 /* ---------- FOOTER INFO (LIVE CLOCK & DATE) ---------- */
 .footer .footer-info {
     background: rgba(255, 255, 255, 0.04);
@@ -1293,22 +1583,25 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.footer .live-clock {
+.footer .footer-info .live-clock {
     font-size: 1rem;
     font-weight: 600;
     color: var(--gold);
+    background: transparent;
+    padding: 0;
+    border: none;
 }
 
-.footer .live-clock i {
+.footer .footer-info .live-clock i {
     color: var(--gold);
 }
 
-.footer .update-date {
+.footer .footer-info .update-date {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.6);
 }
 
-.footer .update-date i {
+.footer .footer-info .update-date i {
     color: var(--gold);
     opacity: 0.7;
 }
