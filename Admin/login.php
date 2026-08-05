@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="login-card">
         <div class="logo">
-            <img src="../assets/logo/logo-smp-al-islam.png" alt="Logo"> <!-- PERBAIKI DI SINI -->
+            <img src="../assets/logo/logo-smp-al-islam.png" alt="Logo">
             <h4>SMP Al Islam <span>Krian</span></h4>
             <p>Panel Administrator</p>
         </div>
@@ -115,7 +115,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <span>Login</span>
             </button>
         </form>
-        <script src="js/login.js"></script>
-</body>
 
+        <!-- ===== TOMBOL KEMBALI KE BERANDA ===== -->
+        <div class="login-footer">
+            <a href="../index.html" class="btn-back-home">
+                <i class="bi bi-arrow-left"></i>
+                <span>Kembali ke Beranda</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
 </html>

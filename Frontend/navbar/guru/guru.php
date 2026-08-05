@@ -85,7 +85,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
 
 <body>
 
-    <!-- ==================== LOADING SCREEN ==================== -->
+    <!-- LOADING SCREEN -->
     <div id="loading-screen">
         <div class="loader-wrapper">
             <div class="loader-ring"></div>
@@ -95,7 +95,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
 
     <div id="scroll-progress-bar"></div>
 
-    <!-- ==================== NAVBAR ==================== -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="../../../index.html">
@@ -132,7 +132,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
         </div>
     </nav>
 
-    <!-- ==================== PAGE HEADER ==================== -->
+    <!-- PAGE HEADER -->
     <section class="page-header-guru">
         <div class="header-decoration">
             <span class="deco-shape shape-1"></span>
@@ -186,7 +186,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
         </div>
     </section>
 
-    <!-- ==================== STATISTIK GURU ==================== -->
+    <!-- STATISTIK GURU -->
     <section class="py-4">
         <div class="container">
             <div class="guru-stats-modern" data-aos="fade-up">
@@ -228,7 +228,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
         </div>
     </section>
 
-    <!-- ==================== SEARCH ==================== -->
+    <!-- SEARCH -->
     <section class="py-3">
         <div class="container">
             <div class="row justify-content-center">
@@ -242,7 +242,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
         </div>
     </section>
 
-    <!-- ==================== DAFTAR GURU ==================== -->
+    <!-- DAFTAR GURU -->
     <section class="py-4 pb-5" id="daftar-guru">
         <div class="container">
             <div class="row g-4" id="guruGrid">
@@ -350,7 +350,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
         </div>
     </section>
 
-    <!-- ==================== QUOTE / TESTIMONI GURU ==================== -->
+    <!-- QUOTE / TESTIMONI GURU -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center" data-aos="fade-up">
@@ -369,11 +369,12 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
+    <!-- FOOTER -->
     <footer class="footer py-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
+                <!-- Kolom 1: Tentang Sekolah -->
+                <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">SMP Al Islam Krian</h5>
                     <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya
                         saing global.</p>
@@ -384,31 +385,37 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
                         <a href="#"><i class="bi bi-tiktok"></i></a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
+
+                <!-- Kolom 2: Informasi Sekolah -->
+                <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Informasi Sekolah</h5>
                     <ul class="list-unstyled">
-                        <li><a href="../profil/sejarah.html">Sejarah Sekolah</a></li>
-                        <li><a href="../profil/visi-misi.html">Visi &amp; Misi</a></li>
-                        <li><a href="../profil/sambutan.html">Sambutan Kepsek</a></li>
-                        <li><a href="../../../index.html#fasilitas">Fasilitas</a></li>
+                        <li><a href="index.html#fasilitas"><i class="bi bi-chevron-right"></i> Fasilitas</a></li>
+                        <li><a href="index.html#akademik"><i class="bi bi-chevron-right"></i> Program Unggulan</a></li>
+                        <li><a href="index.html#testimoni"><i class="bi bi-chevron-right"></i> Testimoni Alumni</a></li>
+                        <li><a href="index.html#galeri"><i class="bi bi-chevron-right"></i> Dokumentasi</a></li>
+                        <li><a href="Frontend/navbar/faq/faq.html"><i class="bi bi-chevron-right"></i> FAQ</a></li>
+                        <li><a href="Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="fw-bold">Layanan &amp; Publikasi</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../../../index.html#ppdb">Pendaftaran PPDB</a></li>
-                        <li><a href="../../../index.html#agenda">Kalender Akademik</a></li>
-                        <li><a href="../berita/berita.php">Arsip Berita</a></li>
-                        <li><a href="../../../index.html#galeri">Dokumentasi</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-6 col-lg-3">
+
+                <!-- Kolom 3: Kontak + Live Clock + Tanggal Update -->
+                <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Kontak</h5>
                     <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
-                    <p><i class="bi bi-telephone me-2"></i> (031) 1234567</p>
-                    <p><i class="bi bi-envelope me-2"></i> info@smpalislankrian.sch.id</p>
-                    <div class="live-clock mt-2">
-                        <i class="bi bi-clock me-1"></i> <span id="clock">00:00:00</span>
+                    <p><i class="bi bi-telephone me-2"></i> +62 812-3154-8399</p>
+                    <p><i class="bi bi-envelope me-2"></i> admin@smpalislam-krian.sch.id</p>
+                    <p><i class="bi bi-clock me-2"></i> Senin - Jumat: 07.00 - 16.00</p>
+
+                    <!-- Live Clock & Tanggal Update -->
+                    <div class="footer-info mt-3">
+                        <div class="live-clock">
+                            <i class="bi bi-clock me-1"></i> <span id="clock">00:00:00</span>
+                        </div>
+                        <div class="update-date mt-2">
+                            <i class="bi bi-calendar3 me-1"></i> <span id="updateDate">Loading...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -419,17 +426,17 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
         </div>
     </footer>
 
-    <!-- ==================== FLOATING WHATSAPP ==================== -->
+    <!-- FLOATING WHATSAPP -->
     <a href="https://wa.me/6281234567890" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
-    <!-- ==================== BACK TO TOP ==================== -->
+    <!-- BACK TO TOP -->
     <button id="backToTop" class="btn btn-primary back-to-top" aria-label="Back to top">
         <i class="bi bi-chevron-up"></i>
     </button>
 
-    <!-- ==================== SCRIPTS ==================== -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../../Frontend/js/script.js"></script>

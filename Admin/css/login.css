@@ -1,6 +1,6 @@
 /* ============================================================
    LOGIN PAGE - SMP Al Islam Krian
-   Tema Elegan & Profesional - Sesuai Website Profil
+   Tema Elegan & Profesional
    ============================================================ */
 
 * {
@@ -17,7 +17,6 @@ body {
     justify-content: center;
     padding: 20px;
     background: #0b1a33;
-    position: relative;
 }
 
 /* ===== LOGIN CARD ===== */
@@ -28,7 +27,6 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     max-width: 420px;
     width: 100%;
-    position: relative;
     animation: fadeIn 0.5s ease;
 }
 
@@ -64,7 +62,6 @@ body {
     color: #6B7280;
     font-size: 0.85rem;
     margin-top: 2px;
-    font-weight: 400;
 }
 
 /* ===== ALERT ===== */
@@ -89,10 +86,6 @@ body {
     background: #FEF2F2;
     color: #DC2626;
     border-left: 3px solid #DC2626;
-}
-
-.login-card .alert i {
-    font-size: 1.1rem;
 }
 
 /* ===== FORM ===== */
@@ -125,7 +118,7 @@ body {
 
 .login-card .form-control {
     border-radius: 10px;
-    padding: 12px 42px 12px 16px;
+    padding: 12px 42px 12px 42px;
     border: 1.5px solid #E5E7EB;
     transition: all 0.25s ease;
     font-size: 0.95rem;
@@ -145,7 +138,6 @@ body {
 .login-card .form-control::placeholder {
     color: #9CA3AF;
     font-size: 0.85rem;
-    font-weight: 400;
 }
 
 /* ===== INPUT ICON (kiri) ===== */
@@ -157,7 +149,6 @@ body {
     color: #9CA3AF;
     font-size: 1rem;
     pointer-events: none;
-    transition: color 0.25s ease;
     z-index: 1;
 }
 
@@ -177,18 +168,11 @@ body {
     font-size: 1.1rem;
     cursor: pointer;
     padding: 4px 6px;
-    transition: color 0.25s ease;
     z-index: 2;
 }
 
 .login-card .password-toggle:hover {
     color: #15803D;
-}
-
-/* ==== PADDING FORM CONTROL DENGAN ICON KIRI ==== */
-.login-card .form-control {
-    padding-left: 42px;  /* space untuk icon di kiri */
-    padding-right: 42px; /* space untuk toggle di kanan */
 }
 
 /* ===== OPTIONS ===== */
@@ -260,8 +244,20 @@ body {
     transform: translateY(0);
 }
 
-.login-card .btn-login i {
-    font-size: 1.1rem;
+/* ===== LOADING STATE ===== */
+.login-card .btn-login.loading {
+    opacity: 0.8;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ===== VALIDASI ===== */
+.was-validated .form-control:invalid {
+    border-color: #EF4444;
+}
+
+.was-validated .form-control:valid {
+    border-color: #22C55E;
 }
 
 /* ===== FOOTER ===== */
@@ -292,7 +288,30 @@ body {
 
 .login-card .login-footer .default-cred strong {
     color: #15803D;
-    font-weight: 600;
+}
+
+/* ===== TOMBOL KEMBALI ===== */
+.login-card .login-footer .btn-back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    background: #F8FAFC;
+    color: #1F2937;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.88rem;
+    transition: all 0.25s ease;
+    border: 1.5px solid #E5E7EB;
+    margin-top: 8px;
+}
+
+.login-card .login-footer .btn-back-home:hover {
+    background: #F0FDF4;
+    border-color: #15803D;
+    color: #15803D;
+    transform: translateY(-2px);
 }
 
 /* ============================================================
@@ -327,6 +346,11 @@ body {
         gap: 10px;
         align-items: flex-start;
     }
+
+    .login-card .login-footer .btn-back-home {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 360px) {
@@ -336,5 +360,12 @@ body {
 
     .login-card .logo img {
         height: 45px;
+    }
+
+    .login-card .login-footer .btn-back-home {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+        width: 100%;
+        justify-content: center;
     }
 }
