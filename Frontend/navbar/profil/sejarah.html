@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sejarah SMP Al Islam Krian - Perjalanan panjang mencetak generasi cerdas dan berakhlak mulia sejak 1998" />
+    <title>Sejarah - SMP Al Islam Krian</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="../../../assets/logo/logo-smp-al-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/180/3031/3031515.png" />
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    
+    <!-- Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+    <link href="../../css/animation.css" rel="stylesheet" />
+    
+    <style>
+        /* ===== HALAMAN SEJARAH - TAMBAHAN CSS ===== */
+        
+        /* Page Header */
+        .page-header-sejarah {
+            background: linear-gradient(135deg, var(--primary) 0%, #0b5c2a 50%, var(--secondary) 100%);
+            padding: 130px 0 70px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header-sejarah .breadcrumb {
+            background: transparent;
+            padding: 0;
+        }
+        
+        .page-header-sejarah .breadcrumb-item a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .page-header-sejarah .breadcrumb-item a:hover {
+            color: var(--white);
+        }
+        
+        .page-header-sejarah .breadcrumb-item.active {
+            color: var(--white);
+        }
+        
+        .page-header-sejarah .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Timeline Sejarah */
+        .sejarah-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .sejarah-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--gold), var(--secondary));
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+        
+        .timeline-item-sejarah {
+            position: relative;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item-sejarah:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item-sejarah:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-item-sejarah .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+        }
+        
+        .timeline-item-sejarah .timeline-content:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        
+        .timeline-item-sejarah .timeline-content .year-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        
+        .timeline-item-sejarah .timeline-content h4 {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item-sejarah .timeline-content p {
+            color: var(--text-soft);
+            line-height: 1.8;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .timeline-item-sejarah .timeline-content .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            box-shadow: 0 4px 20px rgba(21, 128, 61, 0.2);
+        }
+        
+        .timeline-item-sejarah:nth-child(odd) .timeline-content .timeline-icon {
+            right: -80px;
+        }
+        
+        .timeline-item-sejarah:nth-child(even) .timeline-content .timeline-icon {
+            left: -80px;
+        }
+        
+        /* Statistik Sejarah */
+        .sejarah-stats {
+            background: var(--soft-bg);
+            border-radius: var(--radius);
+            padding: 50px;
+            margin: 40px 0;
+        }
+        
+        .sejarah-stats .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .sejarah-stats .stat-item .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .sejarah-stats .stat-item .stat-label {
+            font-size: 1rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+        
+        /* Gallery Sejarah */
+        .sejarah-gallery {
+            margin: 40px 0;
+        }
+        
+        .sejarah-gallery .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            aspect-ratio: 4 / 3;
+        }
+        
+        .sejarah-gallery .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .sejarah-gallery .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .sejarah-gallery .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .sejarah-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item-sejarah {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+            
+            .timeline-item-sejarah .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-item-sejarah .timeline-content .timeline-icon {
+                left: -45px !important;
+                right: auto !important;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .sejarah-stats {
+                padding: 30px;
+            }
+            .sejarah-stats .stat-item .stat-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .page-header-sejarah {
+                padding: 110px 0 40px;
+            }
+            .sejarah-timeline {
+                padding: 20px 0;
+            }
+            .timeline-item-sejarah {
+                padding-left: 50px;
+                margin-bottom: 40px;
+            }
+            .timeline-item-sejarah .timeline-content {
+                padding: 20px;
+            }
+            .timeline-item-sejarah .timeline-content .timeline-icon {
+                width: 34px;
+                height: 34px;
+                left: -40px !important;
+                font-size: 0.8rem;
+            }
+            .sejarah-stats {
+                padding: 20px;
+            }
+            .sejarah-stats .stat-item .stat-number {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div id="loading-screen">
+        <div class="loader-wrapper">
+            <div class="loader-ring"></div>
+            <div class="loader-text">SMP Al Islam Krian</div>
+        </div>
+    </div>
+
+    <div id="scroll-progress-bar"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../../../index.html">
+                <img src="../../../assets/logo/logo-smp-al-islam.png" alt="Logo SMP Al Islam Krian" height="50" class="me-2" />
+                <span class="brand-text">SMP Al Islam <span>Krian</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Beranda</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownProfil" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfil">
+                            <li><a class="dropdown-item active" href="../profil/sejarah.html">Sejarah</a></li>
+                            <li><a class="dropdown-item" href="../profil/visi&misi.html">Visi &amp; Misi</a></li>
+                            <li><a class="dropdown-item" href="../profil/sambutan.html">Sambutan Kepsek</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../guru/guru.php">Guru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.html">Prestasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../faq/faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>
+                </ul>
+                <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== PAGE HEADER ==================== -->
+    <section class="page-header-sejarah">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../../index.html">Beranda</a></li>
+                            <li class="breadcrumb-item"><a href="../profil.html">Profil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sejarah</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-3 fw-bold mb-3">Sejarah <span style="color: var(--gold);">Sekolah</span></h1>
+                    <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">
+                        Perjalanan panjang SMP Al Islam Krian dalam mencetak generasi cerdas dan berakhlak mulia
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark me-2 px-4 py-2 rounded-pill">
+                            <i class="bi bi-calendar3 me-1"></i> Berdiri 1998
+                        </span>
+                        <span class="badge bg-light text-dark px-4 py-2 rounded-pill">
+                            <i class="bi bi-award me-1"></i> 25+ Tahun Berprestasi
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center d-none d-lg-block" data-aos="fade-left">
+                    <i class="bi bi-clock-history" style="font-size: 6rem; opacity: 0.25; color: var(--white);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STATISTIK SEJARAH ==================== -->
+    <section class="py-4">
+        <div class="container">
+            <div class="sejarah-stats" data-aos="fade-up">
+                <div class="row g-4">
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <span class="stat-number">1998</span>
+                            <span class="stat-label">Tahun Berdiri</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Tahun Perjalanan</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Alumni Berprestasi</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <span class="stat-number">A</span>
+                            <span class="stat-label">Akreditasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ISI SEJARAH ==================== -->
+    <section class="py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up">
+                    <div class="sambutan-content" style="background: var(--white); border-radius: var(--radius); padding: 45px 50px; box-shadow: var(--shadow); border: 1px solid rgba(0,0,0,0.04);">
+                        <h2 class="sambutan-title" style="font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 25px; position: relative; padding-bottom: 15px;">
+                            Awal Mula Berdirinya SMP Al Islam Krian
+                            <span style="position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 4px;"></span>
+                        </h2>
+                        
+                        <p style="font-size: 1.1rem; line-height: 2; color: var(--text); margin-bottom: 20px;">
+                            <strong>SMP Al Islam Krian</strong> didirikan pada tahun <strong>1998</strong> oleh Yayasan Al Islam Krian sebagai bentuk kepedulian terhadap pendidikan Islam di wilayah Krian dan sekitarnya. Berawal dari sebuah gagasan sederhana untuk menyediakan akses pendidikan berkualitas yang memadukan ilmu pengetahuan umum dan agama, sekolah ini mulai berdiri dengan fasilitas yang sangat terbatas.
+                        </p>
+                        
+                        <p style="font-size: 1.1rem; line-height: 2; color: var(--text); margin-bottom: 20px;">
+                            Pada awalnya, SMP Al Islam Krian hanya memiliki <strong>3 ruang kelas</strong> dan <strong>12 tenaga pendidik</strong> dengan jumlah siswa sekitar <strong>80 orang</strong>. Meskipun dengan keterbatasan yang ada, semangat dan dedikasi para pendiri serta guru-guru pertama berhasil membangun fondasi pendidikan yang kuat.
+                        </p>
+                        
+                        <p style="font-size: 1.1rem; line-height: 2; color: var(--text); margin-bottom: 20px;">
+                            Seiring berjalannya waktu, SMP Al Islam Krian terus berkembang. Pada tahun <strong>2005</strong>, sekolah ini berhasil meraih akreditasi <strong>B</strong> dari BAN-S/M. Kemudian pada tahun <strong>2015</strong>, setelah melalui berbagai pembenahan dan peningkatan kualitas, sekolah ini berhasil meraih akreditasi <strong>A</strong> dengan nilai sangat memuaskan.
+                        </p>
+                        
+                        <p style="font-size: 1.1rem; line-height: 2; color: var(--text); margin-bottom: 20px;">
+                            Saat ini, SMP Al Islam Krian telah menjadi salah satu sekolah menengah pertama favorit di Kabupaten Sidoarjo dengan <strong>850+ siswa aktif</strong>, <strong>65 tenaga pendidik</strong>, dan <strong>24 rombongan belajar</strong>. Kami terus berkomitmen untuk mencetak generasi yang cerdas, berakhlak mulia, dan berdaya saing global.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TIMELINE SEJARAH ==================== -->
+    <section class="py-4">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary mb-3">Perjalanan</span>
+                <h2 class="display-5 fw-bold">Timeline <span style="color: var(--gold);">Perkembangan</span></h2>
+                <p class="lead">Momen-momen penting dalam perjalanan SMP Al Islam Krian</p>
+            </div>
+            
+            <div class="sejarah-timeline">
+                <!-- Item 1 -->
+                <div class="timeline-item-sejarah" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="year-badge">1998</span>
+                        <h4>Pendirian Sekolah</h4>
+                        <p>SMP Al Islam Krian resmi didirikan oleh Yayasan Al Islam Krian dengan 3 ruang kelas, 12 guru, dan 80 siswa pertama.</p>
+                        <span class="timeline-icon"><i class="bi bi-building"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="timeline-item-sejarah" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <span class="year-badge">2002</span>
+                        <h4>Penambahan Fasilitas</h4>
+                        <p>Pembangunan ruang kelas baru dan perpustakaan sekolah untuk meningkatkan kenyamanan belajar siswa.</p>
+                        <span class="timeline-icon"><i class="bi bi-plus-circle"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="timeline-item-sejarah" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="year-badge">2005</span>
+                        <h4>Akreditasi B</h4>
+                        <p>SMP Al Islam Krian berhasil meraih akreditasi B dari BAN-S/M, menandai pengakuan kualitas pendidikan.</p>
+                        <span class="timeline-icon"><i class="bi bi-award"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="timeline-item-sejarah" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <span class="year-badge">2010</span>
+                        <h4>Laboratorium & Masjid</h4>
+                        <p>Pembangunan laboratorium komputer, laboratorium IPA, dan masjid sekolah untuk mendukung kegiatan belajar dan ibadah.</p>
+                        <span class="timeline-icon"><i class="bi bi-flask"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="timeline-item-sejarah" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="year-badge">2015</span>
+                        <h4>Akreditasi A</h4>
+                        <p>Pencapaian tertinggi! SMP Al Islam Krian meraih akreditasi A dengan nilai sangat memuaskan dari BAN-S/M.</p>
+                        <span class="timeline-icon"><i class="bi bi-star-fill"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 6 -->
+                <div class="timeline-item-sejarah" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <span class="year-badge">2018</span>
+                        <h4>Digitalisasi Sekolah</h4>
+                        <p>Implementasi sistem pembelajaran berbasis teknologi dengan smart TV di setiap kelas dan akses internet cepat.</p>
+                        <span class="timeline-icon"><i class="bi bi-wifi"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 7 -->
+                <div class="timeline-item-sejarah" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="year-badge">2022</span>
+                        <h4>Kurikulum Merdeka</h4>
+                        <p>SMP Al Islam Krian menjadi salah satu sekolah perintis penerapan Kurikulum Merdeka di Kabupaten Sidoarjo.</p>
+                        <span class="timeline-icon"><i class="bi bi-book"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 8 -->
+                <div class="timeline-item-sejarah" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <span class="year-badge">2024</span>
+                        <h4>Fasilitas Modern</h4>
+                        <p>Penambahan fasilitas olahraga multifungsi, perpustakaan digital, dan ruang seni untuk pengembangan bakat siswa.</p>
+                        <span class="timeline-icon"><i class="bi bi-trophy"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Item 9 -->
+                <div class="timeline-item-sejarah" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="year-badge">2026</span>
+                        <h4>Website Resmi & Digital</h4>
+                        <p>Peluncuran website resmi SMP Al Islam Krian sebagai pusat informasi digital dan layanan online bagi siswa, orang tua, dan masyarakat.</p>
+                        <span class="timeline-icon"><i class="bi bi-globe2"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUOTE PENUTUP ==================== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8 text-center">
+                    <i class="bi bi-quote" style="font-size: 3rem; color: var(--primary); opacity: 0.3;"></i>
+                    <blockquote class="blockquote fs-4 fst-italic mt-3">
+                        "Masa lalu adalah pelajaran, masa kini adalah perjuangan, dan masa depan adalah harapan. Mari kita terus berjuang untuk pendidikan yang lebih baik."
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2">
+                        Dyah Rakhmayanti, S.T., M.Pd. <cite title="Source Title">Kepala Sekolah SMP Al Islam Krian</cite>
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">SMP Al Islam Krian</h5>
+                    <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya saing global.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Informasi Sekolah</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="sejarah.html">Sejarah Sekolah</a></li>
+                        <li><a href="visi&misi.html">Visi &amp; Misi</a></li>
+                        <li><a href="..sambutan.html">Sambutan Kepsek</a></li>
+                        <li><a href="../../../index.html#fasilitas">Fasilitas</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Layanan &amp; Publikasi</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../../../index.html#ppdb">Pendaftaran PPDB</a></li>
+                        <li><a href="../../../index.html#agenda">Kalender Akademik</a></li>
+                        <li><a href="../../../index.html#berita">Arsip Berita</a></li>
+                        <li><a href="../../../index.html#galeri">Dokumentasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
+                    <p><i class="bi bi-telephone me-2"></i> (031) 1234567</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@smpalislankrian.sch.id</p>
+                    <div class="live-clock mt-2">
+                        <i class="bi bi-clock me-1"></i> <span id="clock">00:00:00</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4" />
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 SMP Al Islam Krian. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP ==================== -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- ==================== BACK TO TOP ==================== -->
+    <button id="backToTop" class="btn btn-primary back-to-top" aria-label="Back to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/counter.js"></script>
+
+    <script>
+        // ===== AOS INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-out-cubic'
+            });
+        });
+    </script>
+
+</body>
+</html>

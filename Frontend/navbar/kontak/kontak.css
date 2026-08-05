@@ -1,0 +1,262 @@
+/* ===== HALAMAN KONTAK - TAMBAHAN CSS ===== */
+
+/* Page Header */
+.page-header-kontak {
+    background: linear-gradient(135deg, var(--primary) 0%, #0b5c2a 50%, var(--secondary) 100%);
+    padding: 130px 0 70px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header-kontak .breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.page-header-kontak .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.page-header-kontak .breadcrumb-item a:hover {
+    color: var(--white);
+}
+
+.page-header-kontak .breadcrumb-item.active {
+    color: var(--white);
+}
+
+.page-header-kontak .breadcrumb-item+.breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Kontak Cards */
+.kontak-card-main {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 35px 30px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.kontak-card-main:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
+}
+
+.kontak-card-main .kontak-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--soft-bg);
+    color: var(--primary);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    transition: var(--transition);
+}
+
+.kontak-card-main:hover .kontak-icon {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.kontak-card-main h5 {
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.kontak-card-main p {
+    color: var(--text-soft);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.kontak-card-main a {
+    color: var(--text-soft);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.kontak-card-main a:hover {
+    color: var(--primary);
+}
+
+/* Form Kontak */
+.form-kontak {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 45px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.form-kontak .form-control {
+    border-radius: 12px;
+    padding: 14px 18px;
+    border: 2px solid var(--border);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-kontak .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(21, 128, 61, 0.1);
+}
+
+.form-kontak .form-label {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.form-kontak .btn-submit {
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    background: var(--primary);
+    border: none;
+    color: var(--white);
+}
+
+.form-kontak .btn-submit:hover {
+    background: var(--hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(21, 128, 61, 0.25);
+}
+
+/* Map */
+.map-container {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+    aspect-ratio: 16 / 9;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Jam Operasional */
+.jam-operasional {
+    background: var(--soft-bg);
+    border-radius: var(--radius);
+    padding: 30px 35px;
+    border-left: 4px solid var(--primary);
+}
+
+.jam-operasional .jam-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.jam-operasional .jam-item:last-child {
+    border-bottom: none;
+}
+
+.jam-operasional .jam-item .hari {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.jam-operasional .jam-item .waktu {
+    color: var(--text-soft);
+}
+
+/* Social Media */
+.social-media-kontak {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.social-media-kontak a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--white);
+}
+
+.social-media-kontak a.facebook {
+    background: #1877F2;
+}
+
+.social-media-kontak a.instagram {
+    background: #E4405F;
+}
+
+.social-media-kontak a.youtube {
+    background: #FF0000;
+}
+
+.social-media-kontak a.tiktok {
+    background: #010101;
+}
+
+.social-media-kontak a.whatsapp {
+    background: #25D366;
+}
+
+.social-media-kontak a:hover {
+    transform: scale(1.1) translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .form-kontak {
+        padding: 30px;
+    }
+
+    .kontak-card-main {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-header-kontak {
+        padding: 110px 0 40px;
+    }
+
+    .form-kontak {
+        padding: 20px;
+    }
+
+    .jam-operasional {
+        padding: 20px;
+    }
+
+    .kontak-card-main .kontak-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+
+    .social-media-kontak a {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+}

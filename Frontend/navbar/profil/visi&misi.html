@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Visi dan Misi SMP Al Islam Krian - Menjadi lembaga pendidikan Islam unggulan yang mencetak generasi cerdas dan berakhlak mulia" />
+    <title>Visi & Misi - SMP Al Islam Krian</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="../../../assets/logo/logo-smp-al-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/180/3031/3031515.png" />
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    
+    <!-- Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+    <link href="../../css/animation.css" rel="stylesheet" />
+    
+    <style>
+        /* ===== HALAMAN VISI MISI - TAMBAHAN CSS ===== */
+        
+        /* Page Header */
+        .page-header-visi {
+            background: linear-gradient(135deg, var(--primary) 0%, #0b5c2a 50%, var(--secondary) 100%);
+            padding: 130px 0 70px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header-visi .breadcrumb {
+            background: transparent;
+            padding: 0;
+        }
+        
+        .page-header-visi .breadcrumb-item a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .page-header-visi .breadcrumb-item a:hover {
+            color: var(--white);
+        }
+        
+        .page-header-visi .breadcrumb-item.active {
+            color: var(--white);
+        }
+        
+        .page-header-visi .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Hero Visi Misi */
+        .visi-hero {
+            padding: 40px 0 20px;
+        }
+        
+        .visi-hero .visi-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(21, 128, 61, 0.1);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        
+        /* Visi Card */
+        .visi-card-main {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            color: var(--white);
+            box-shadow: var(--shadow-hover);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .visi-card-main:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 80px rgba(21, 128, 61, 0.25);
+        }
+        
+        .visi-card-main::before {
+            content: '\F474';
+            font-family: 'bootstrap-icons';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 12rem;
+            opacity: 0.06;
+            color: var(--white);
+        }
+        
+        .visi-card-main .visi-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+            color: var(--gold);
+        }
+        
+        .visi-card-main h2 {
+            font-weight: 800;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .visi-card-main p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            max-width: 90%;
+        }
+        
+        /* Misi Cards */
+        .misi-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px 28px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .misi-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        
+        .misi-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        
+        .misi-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .misi-card .misi-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--soft-bg);
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 50px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .misi-card:hover .misi-number {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .misi-card h5 {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        
+        .misi-card p {
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .misi-card .misi-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .misi-card:hover .misi-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        
+        /* Tujuan Sekolah */
+        .tujuan-sekolah {
+            background: var(--soft-bg);
+            border-radius: var(--radius);
+            padding: 45px;
+            margin-top: 30px;
+        }
+        
+        .tujuan-sekolah .tujuan-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .tujuan-sekolah .tujuan-item:last-child {
+            border-bottom: none;
+        }
+        
+        .tujuan-sekolah .tujuan-item .tujuan-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(21, 128, 61, 0.1);
+        }
+        
+        .tujuan-sekolah .tujuan-item .tujuan-text h6 {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        
+        .tujuan-sekolah .tujuan-item .tujuan-text p {
+            color: var(--text-soft);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Value Cards */
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.04);
+            height: 100%;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        
+        .value-card .value-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--soft-bg);
+            color: var(--primary);
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            transition: var(--transition);
+        }
+        
+        .value-card:hover .value-icon {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .value-card h5 {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        
+        .value-card p {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .visi-card-main {
+                padding: 35px 28px;
+            }
+            .visi-card-main h2 {
+                font-size: 1.8rem;
+            }
+            .visi-card-main p {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+            .tujuan-sekolah {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .page-header-visi {
+                padding: 110px 0 40px;
+            }
+            .visi-card-main {
+                padding: 28px 20px;
+            }
+            .visi-card-main h2 {
+                font-size: 1.5rem;
+            }
+            .visi-card-main .visi-icon {
+                font-size: 2.5rem;
+            }
+            .misi-card {
+                padding: 22px 20px;
+            }
+            .tujuan-sekolah {
+                padding: 20px;
+            }
+            .value-card {
+                padding: 20px 15px;
+            }
+            .value-card .value-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div id="loading-screen">
+        <div class="loader-wrapper">
+            <div class="loader-ring"></div>
+            <div class="loader-text">SMP Al Islam Krian</div>
+        </div>
+    </div>
+
+    <div id="scroll-progress-bar"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../../../index.html">
+                <img src="../../../assets/logo/logo-smp-al-islam.png" alt="Logo SMP Al Islam Krian" height="50" class="me-2" />
+                <span class="brand-text">SMP Al Islam <span>Krian</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Beranda</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownProfil" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfil">
+                            <li><a class="dropdown-item" href="../profil/sejarah.html">Sejarah</a></li>
+                            <li><a class="dropdown-item active" href="../profil/visi&misi.html">Visi &amp; Misi</a></li>
+                            <li><a class="dropdown-item" href="../profil/sambutan.html">Sambutan Kepsek</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../guru/guru.php">Guru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.html">Prestasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../faq/faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>
+                </ul>
+                <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== PAGE HEADER ==================== -->
+    <section class="page-header-visi">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../../index.html">Beranda</a></li>
+                            <li class="breadcrumb-item"><a href="../profil.html">Profil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Visi &amp; Misi</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-3 fw-bold mb-3">Visi &amp; <span style="color: var(--gold);">Misi</span></h1>
+                    <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">
+                        Arah dan tujuan kami dalam mencetak generasi cerdas, berakhlak mulia, dan berdaya saing global
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center d-none d-lg-block" data-aos="fade-left">
+                    <i class="bi bi-bullseye" style="font-size: 6rem; opacity: 0.25; color: var(--white);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HERO VISI MISI ==================== -->
+    <section class="visi-hero">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="visi-badge">
+                    <i class="bi bi-compass me-2"></i> Panduan Kami
+                </span>
+                <p style="font-size: 1.2rem; color: var(--text-soft); max-width: 700px; margin: 0 auto;">
+                    "Visi dan misi adalah kompas yang memandu setiap langkah kami dalam mencerdaskan generasi bangsa"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VISI ==================== -->
+    <section class="py-3">
+        <div class="container">
+            <div class="visi-card-main" data-aos="fade-up">
+                <span class="visi-icon"><i class="bi bi-eye"></i></span>
+                <h2>Visi Kami</h2>
+                <p>Terwujudnya generasi muslim yang cerdas, berakhlak mulia, dan berdaya saing global berdasarkan Al-Qur'an dan Sunnah.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MISI ==================== -->
+    <section class="py-4">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary mb-3">Misi</span>
+                <h2 class="display-5 fw-bold">Misi <span style="color: var(--gold);">Kami</span></h2>
+                <p class="lead">Langkah-langkah strategis untuk mewujudkan visi</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Misi 1 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="misi-card">
+                        <span class="misi-number">01</span>
+                        <span class="misi-icon"><i class="bi bi-mortarboard"></i></span>
+                        <h5>Pendidikan Berkualitas</h5>
+                        <p>Menyelenggarakan pendidikan berkualitas dengan kurikulum nasional dan agama yang terintegrasi.</p>
+                    </div>
+                </div>
+                
+                <!-- Misi 2 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="misi-card">
+                        <span class="misi-number">02</span>
+                        <span class="misi-icon"><i class="bi bi-heart"></i></span>
+                        <h5>Karakter Islami</h5>
+                        <p>Membentuk karakter siswa dengan nilai-nilai Islam dan kebangsaan yang kuat.</p>
+                    </div>
+                </div>
+                
+                <!-- Misi 3 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="misi-card">
+                        <span class="misi-number">03</span>
+                        <span class="misi-icon"><i class="bi bi-star"></i></span>
+                        <h5>Potensi Siswa</h5>
+                        <p>Mengembangkan potensi akademik dan non-akademik siswa secara holistik.</p>
+                    </div>
+                </div>
+                
+                <!-- Misi 4 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="misi-card">
+                        <span class="misi-number">04</span>
+                        <span class="misi-icon"><i class="bi bi-tree"></i></span>
+                        <h5>Lingkungan Inovatif</h5>
+                        <p>Mewujudkan lingkungan belajar yang inovatif, menyenangkan, dan kondusif.</p>
+                    </div>
+                </div>
+                
+                <!-- Misi 5 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="misi-card">
+                        <span class="misi-number">05</span>
+                        <span class="misi-icon"><i class="bi bi-people"></i></span>
+                        <h5>Kerjasama</h5>
+                        <p>Menjalin kerjasama yang erat dengan orang tua dan masyarakat untuk mendukung pendidikan.</p>
+                    </div>
+                </div>
+                
+                <!-- Misi 6 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="misi-card">
+                        <span class="misi-number">06</span>
+                        <span class="misi-icon"><i class="bi bi-globe2"></i></span>
+                        <h5>Daya Saing Global</h5>
+                        <p>Mempersiapkan siswa dengan kompetensi global dan nilai-nilai keislaman yang kokoh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NILAI-NILAI SEKOLAH ==================== -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary mb-3">Nilai</span>
+                <h2 class="display-5 fw-bold">Nilai-Nilai <span style="color: var(--gold);">Sekolah</span></h2>
+                <p class="lead">Prinsip yang menjadi landasan kami dalam berbuat dan berkarya</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="flip-up" data-aos-delay="100">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="bi bi-heart-fill"></i></div>
+                        <h5>Keikhlasan</h5>
+                        <p>Bekerja dengan hati yang tulus untuk pendidikan yang lebih baik</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="flip-up" data-aos-delay="200">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="bi bi-stars"></i></div>
+                        <h5>Keunggulan</h5>
+                        <p>Berkomitmen memberikan yang terbaik dalam setiap aspek</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="flip-up" data-aos-delay="300">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="bi bi-people-fill"></i></div>
+                        <h5>Kekeluargaan</h5>
+                        <p>Membangun lingkungan yang hangat dan saling mendukung</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="flip-up" data-aos-delay="400">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="bi bi-lamp"></i></div>
+                        <h5>Inovasi</h5>
+                        <p>Terus berinovasi untuk pembelajaran yang lebih efektif</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TUJUAN SEKOLAH ==================== -->
+    <section class="py-4">
+        <div class="container">
+            <div class="tujuan-sekolah" data-aos="fade-up">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-4">
+                        <h3 class="fw-bold" style="color: var(--text);">
+                            <i class="bi bi-bullseye text-primary me-2"></i> 
+                            Tujuan <span style="color: var(--gold);">Sekolah</span>
+                        </h3>
+                        <p style="color: var(--text-soft);">Sasaran yang ingin dicapai dalam jangka pendek dan panjang</p>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="tujuan-item">
+                            <div class="tujuan-icon"><i class="bi bi-check-lg"></i></div>
+                            <div class="tujuan-text">
+                                <h6>Meningkatkan Prestasi Akademik</h6>
+                                <p>Mencapai rata-rata nilai ujian nasional di atas standar nasional</p>
+                            </div>
+                        </div>
+                        <div class="tujuan-item">
+                            <div class="tujuan-icon"><i class="bi bi-check-lg"></i></div>
+                            <div class="tujuan-text">
+                                <h6>Mengembangkan Bakat Siswa</h6>
+                                <p>Menciptakan lingkungan yang mendukung pengembangan minat dan bakat siswa</p>
+                            </div>
+                        </div>
+                        <div class="tujuan-item">
+                            <div class="tujuan-icon"><i class="bi bi-check-lg"></i></div>
+                            <div class="tujuan-text">
+                                <h6>Membangun Karakter Islami</h6>
+                                <p>Membentuk siswa yang berakhlak mulia dan berpegang teguh pada nilai-nilai Islam</p>
+                            </div>
+                        </div>
+                        <div class="tujuan-item">
+                            <div class="tujuan-icon"><i class="bi bi-check-lg"></i></div>
+                            <div class="tujuan-text">
+                                <h6>Meningkatkan Kualitas Guru</h6>
+                                <p>Melakukan peningkatan kompetensi guru secara berkelanjutan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUOTE PENUTUP ==================== -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8 text-center">
+                    <i class="bi bi-quote" style="font-size: 3rem; color: var(--primary); opacity: 0.3;"></i>
+                    <blockquote class="blockquote fs-4 fst-italic mt-3">
+                        "Mimpi besar dimulai dengan visi yang jelas. Misi yang kuat membawa mimpi itu menjadi kenyataan. Bersama, kita wujudkan generasi emas."
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2">
+                        Dyah Rakhmayanti, S.T., M.Pd. <cite title="Source Title">Kepala Sekolah SMP Al Islam Krian</cite>
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">SMP Al Islam Krian</h5>
+                    <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya saing global.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Informasi Sekolah</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="sejarah.html">Sejarah Sekolah</a></li>
+                        <li><a href="visi-misi.html">Visi &amp; Misi</a></li>
+                        <li><a href="../sambutan/sambutan.html">Sambutan Kepsek</a></li>
+                        <li><a href="../../../index.html#fasilitas">Fasilitas</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Layanan &amp; Publikasi</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../../../index.html#ppdb">Pendaftaran PPDB</a></li>
+                        <li><a href="../../../index.html#agenda">Kalender Akademik</a></li>
+                        <li><a href="../../../index.html#berita">Arsip Berita</a></li>
+                        <li><a href="../../../index.html#galeri">Dokumentasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
+                    <p><i class="bi bi-telephone me-2"></i> (031) 1234567</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@smpalislankrian.sch.id</p>
+                    <div class="live-clock mt-2">
+                        <i class="bi bi-clock me-1"></i> <span id="clock">00:00:00</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4" />
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 SMP Al Islam Krian. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP ==================== -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- ==================== BACK TO TOP ==================== -->
+    <button id="backToTop" class="btn btn-primary back-to-top" aria-label="Back to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/counter.js"></script>
+
+    <script>
+        // ===== AOS INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-out-cubic'
+            });
+        });
+    </script>
+
+</body>
+</html>

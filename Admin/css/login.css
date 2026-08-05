@@ -1,0 +1,340 @@
+/* ============================================================
+   LOGIN PAGE - SMP Al Islam Krian
+   Tema Elegan & Profesional - Sesuai Website Profil
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #0b1a33;
+    position: relative;
+}
+
+/* ===== LOGIN CARD ===== */
+.login-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 48px 40px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== LOGO ===== */
+.login-card .logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-card .logo img {
+    height: 70px;
+    width: auto;
+    margin-bottom: 12px;
+}
+
+.login-card .logo h4 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #1F2937;
+    margin: 0;
+}
+
+.login-card .logo h4 span {
+    color: #15803D;
+}
+
+.login-card .logo .logo-subtitle {
+    color: #6B7280;
+    font-size: 0.85rem;
+    margin-top: 2px;
+    font-weight: 400;
+}
+
+/* ===== ALERT ===== */
+.login-card .alert {
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.login-card .alert-success {
+    background: #F0FDF4;
+    color: #15803D;
+    border-left: 3px solid #15803D;
+}
+
+.login-card .alert-danger {
+    background: #FEF2F2;
+    color: #DC2626;
+    border-left: 3px solid #DC2626;
+}
+
+.login-card .alert i {
+    font-size: 1.1rem;
+}
+
+/* ===== FORM ===== */
+.login-card .form-group {
+    margin-bottom: 20px;
+}
+
+.login-card .form-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1F2937;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.login-card .form-label i {
+    color: #15803D;
+    margin-right: 6px;
+}
+
+.login-card .form-label .required {
+    color: #DC2626;
+    margin-left: 2px;
+}
+
+/* ===== INPUT GROUP ===== */
+.login-card .input-group {
+    position: relative;
+}
+
+.login-card .form-control {
+    border-radius: 10px;
+    padding: 12px 42px 12px 16px;
+    border: 1.5px solid #E5E7EB;
+    transition: all 0.25s ease;
+    font-size: 0.95rem;
+    background: #F8FAFC;
+    width: 100%;
+    color: #1F2937;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-card .form-control:focus {
+    border-color: #15803D;
+    box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.08);
+    background: #FFFFFF;
+    outline: none;
+}
+
+.login-card .form-control::placeholder {
+    color: #9CA3AF;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+/* ===== INPUT ICON (kiri) ===== */
+.login-card .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: color 0.25s ease;
+    z-index: 1;
+}
+
+.login-card .form-control:focus ~ .input-icon {
+    color: #15803D;
+}
+
+/* ===== PASSWORD TOGGLE (kanan) ===== */
+.login-card .password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9CA3AF;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    transition: color 0.25s ease;
+    z-index: 2;
+}
+
+.login-card .password-toggle:hover {
+    color: #15803D;
+}
+
+/* ==== PADDING FORM CONTROL DENGAN ICON KIRI ==== */
+.login-card .form-control {
+    padding-left: 42px;  /* space untuk icon di kiri */
+    padding-right: 42px; /* space untuk toggle di kanan */
+}
+
+/* ===== OPTIONS ===== */
+.login-card .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 24px;
+}
+
+.login-card .form-options .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #6B7280;
+    cursor: pointer;
+}
+
+.login-card .form-options .remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid #D1D5DB;
+    accent-color: #15803D;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.login-card .form-options .forgot-link {
+    font-size: 0.85rem;
+    color: #15803D;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+
+.login-card .form-options .forgot-link:hover {
+    color: #166534;
+    text-decoration: underline;
+}
+
+/* ===== BUTTON ===== */
+.login-card .btn-login {
+    background: #15803D;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #FFFFFF;
+    width: 100%;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-card .btn-login:hover {
+    background: #166534;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(21, 128, 61, 0.2);
+}
+
+.login-card .btn-login:active {
+    transform: translateY(0);
+}
+
+.login-card .btn-login i {
+    font-size: 1.1rem;
+}
+
+/* ===== FOOTER ===== */
+.login-card .login-footer {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid #F1F5F9;
+}
+
+.login-card .login-footer p {
+    font-size: 0.8rem;
+    color: #9CA3AF;
+    margin: 0;
+}
+
+.login-card .login-footer .default-cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #F8FAFC;
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    color: #6B7280;
+    margin-top: 8px;
+}
+
+.login-card .login-footer .default-cred strong {
+    color: #15803D;
+    font-weight: 600;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 32px 24px 28px;
+        border-radius: 14px;
+    }
+
+    .login-card .logo img {
+        height: 55px;
+    }
+
+    .login-card .logo h4 {
+        font-size: 1.2rem;
+    }
+
+    .login-card .form-control {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+
+    .login-card .btn-login {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .login-card .form-options {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 360px) {
+    .login-card {
+        padding: 24px 16px 20px;
+    }
+
+    .login-card .logo img {
+        height: 45px;
+    }
+}

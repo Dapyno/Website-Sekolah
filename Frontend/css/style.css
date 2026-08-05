@@ -211,39 +211,70 @@ body {
     transition: var(--transition);
     background: transparent;
     backdrop-filter: blur(0px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--white) !important;
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+}
+
+.navbar:not(.scrolled) {
+    background: rgba(0,0,0,0.2) !important;
+    backdrop-filter: blur(4px);
 }
 
 .navbar .brand-text {
     font-weight: 700;
     color: var(--white);
     transition: var(--transition);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .navbar.scrolled .brand-text {
     color: var(--text);
+    text-shadow: none;
 }
 
 .navbar .brand-text span {
     color: var(--gold);
 }
 
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.3);
+    transition: var(--transition);
+}
+
+.navbar.scrolled .navbar-toggler {
+    border-color: rgba(0,0,0,0.2);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar.scrolled .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
 .navbar .nav-link {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.9) !important;
     font-weight: 500;
     font-size: 0.95rem;
     padding: 8px 18px;
     transition: var(--transition);
     position: relative;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .navbar.scrolled .nav-link {
-    color: var(--text);
+    color: var(--text) !important;
+    text-shadow: none;
 }
 
 .navbar .nav-link::after {
@@ -253,9 +284,13 @@ body {
     left: 50%;
     width: 0;
     height: 2px;
-    background: var(--primary);
+    background: var(--white);
     transition: var(--transition);
     transform: translateX(-50%);
+}
+
+.navbar.scrolled .nav-link::after {
+    background: var(--primary);
 }
 
 .navbar .nav-link:hover::after,
@@ -265,6 +300,11 @@ body {
 
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
+    color: var(--white) !important;
+}
+
+.navbar.scrolled .nav-link:hover,
+.navbar.scrolled .nav-link.active {
     color: var(--primary) !important;
 }
 
@@ -274,12 +314,19 @@ body {
     box-shadow: var(--shadow);
     padding: 10px 0;
     margin-top: 10px;
+    background: var(--white);
+}
+
+.navbar:not(.scrolled) .dropdown-menu {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
 }
 
 .navbar .dropdown-item {
     padding: 8px 24px;
     font-weight: 500;
     transition: var(--transition);
+    color: var(--text);
 }
 
 .navbar .dropdown-item:hover {
@@ -288,7 +335,6 @@ body {
     transform: translateX(6px);
 }
 
-/* Dark Mode Toggle */
 .btn-dark-mode {
     width: 42px;
     height: 42px;
@@ -404,7 +450,6 @@ body {
     50% { transform: translateY(-20px); }
 }
 
-/* Wave Divider */
 .wave-divider {
     position: absolute;
     bottom: -2px;
@@ -420,7 +465,6 @@ body {
     height: 80px;
 }
 
-/* Running Text */
 .running-text {
     position: absolute;
     bottom: 30px;
@@ -1097,16 +1141,46 @@ body {
     color: var(--primary);
 }
 
-/* ---------- FOOTER ---------- */
+/* ============================================================
+   FOOTER (REVISI)
+   ============================================================ */
 .footer {
     background: #0b1a33;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 60px 0 30px;
 }
 
 .footer h5 {
     color: var(--white);
     font-weight: 700;
     margin-bottom: 20px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 3px;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 15px;
+}
+
+.footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .footer ul li {
@@ -1114,9 +1188,11 @@ body {
 }
 
 .footer ul li a {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: var(--transition);
+    font-size: 0.9rem;
+    display: inline-block;
 }
 
 .footer ul li a:hover {
@@ -1124,34 +1200,117 @@ body {
     padding-left: 6px;
 }
 
-.social-icons a {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    color: var(--white);
-    text-align: center;
-    line-height: 40px;
-    margin-right: 10px;
-    transition: var(--transition);
-    font-size: 1.1rem;
+.footer ul li a i {
+    margin-right: 8px;
+    font-size: 0.8rem;
+    opacity: 0.5;
 }
 
-.social-icons a:hover {
+.footer .social-icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.footer .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--white);
+    transition: var(--transition);
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.footer .social-icons a:hover {
     background: var(--primary);
     transform: translateY(-3px);
     color: var(--white);
 }
 
-.footer hr {
-    border-color: rgba(255,255,255,0.08);
+.footer .contact-info p {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.live-clock {
-    font-size: 0.95rem;
+.footer .contact-info p i {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-top: 3px;
+    min-width: 18px;
+}
+
+.footer .live-clock {
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--gold);
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer .live-clock i {
+    margin-right: 8px;
+}
+
+.footer hr {
+    border-color: rgba(255, 255, 255, 0.06);
+    margin: 30px 0 20px;
+}
+
+.footer .footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer .footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.footer .footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- FOOTER INFO (LIVE CLOCK & DATE) ---------- */
+.footer .footer-info {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 15px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer .live-clock {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.footer .live-clock i {
+    color: var(--gold);
+}
+
+.footer .update-date {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer .update-date i {
+    color: var(--gold);
+    opacity: 0.7;
 }
 
 /* ---------- FLOATING WHATSAPP ---------- */
@@ -1228,9 +1387,14 @@ body {
     pointer-events: none;
 }
 
-/* ---------- GURU SECTION (MODERN) ---------- */
+@keyframes rippleAnim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
 
-/* Featured Guru Card - Kepala Sekolah */
+/* ---------- GURU SECTION (MODERN) ---------- */
 .guru-card-featured {
     background: var(--white);
     border-radius: var(--radius);
@@ -1291,7 +1455,6 @@ body {
     color: var(--primary);
 }
 
-/* Modern Guru Cards */
 .guru-card-modern {
     background: var(--white);
     border-radius: var(--radius);
@@ -1393,7 +1556,6 @@ body {
     color: var(--primary);
 }
 
-/* ===== TOMBOL SELENGKAPNYA ===== */
 .guru .btn-outline-primary {
     border-radius: 50px;
     font-weight: 600;
@@ -1415,8 +1577,20 @@ body {
     transform: translateX(6px);
 }
 
-/* Responsive */
+/* ============================================================
+   RESPONSIVE FOOTER
+   ============================================================ */
 @media (max-width: 991px) {
+    .footer {
+        padding: 40px 0 20px;
+    }
+    .footer h5 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    .footer h5::after {
+        width: 30px;
+    }
     .guru-card-featured img {
         min-height: 200px;
     }
@@ -1429,6 +1603,27 @@ body {
 }
 
 @media (max-width: 767px) {
+    .footer {
+        padding: 30px 0 15px;
+        text-align: center;
+    }
+    .footer h5::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .footer .social-icons {
+        justify-content: center;
+    }
+    .footer .contact-info p {
+        justify-content: center;
+    }
+    .footer .live-clock {
+        display: block;
+        text-align: center;
+    }
+    .footer ul li a:hover {
+        padding-left: 0;
+    }
     .guru-card-featured img {
         min-height: 180px;
     }
@@ -1451,10 +1646,19 @@ body {
     }
 }
 
-@keyframes rippleAnim {
-    to {
-        transform: scale(4);
-        opacity: 0;
+@media (max-width: 575px) {
+    .sambutan-foto {
+        max-width: 180px;
+    }
+    .sambutan-signature .signature-img {
+        max-width: 99px;
+    }
+    .sambutan-signature p {
+        font-size: 0.85rem;
+    }
+    .tentang .logo-tentang img {
+        max-width: 200px;
+        padding: 12px;
     }
 }
 
@@ -1583,18 +1787,6 @@ body.dark-mode .timeline-content p {
     }
 }
 
-@media (max-width: 575px) {
-    .sambutan-foto {
-        max-width: 180px;
-    }
-    .sambutan-signature .signature-img {
-        max-width: 99px;
-    }
-    .sambutan-signature p {
-        font-size: 0.85rem;
-    }
-}
-
 /* ---------- RESPONSIVE TENTANG ---------- */
 @media (max-width: 991px) {
     .tentang .logo-tentang img {
@@ -1613,12 +1805,5 @@ body.dark-mode .timeline-content p {
     .tentang .logo-tentang {
         min-height: auto;
         padding: 20px 0;
-    }
-}
-
-@media (max-width: 575px) {
-    .tentang .logo-tentang img {
-        max-width: 200px;
-        padding: 12px;
     }
 }

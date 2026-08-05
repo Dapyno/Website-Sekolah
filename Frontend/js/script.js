@@ -1,3 +1,8 @@
+/* ============================================================
+   SCRIPT.JS - SMP Al Islam Krian
+   Fungsi utama dan interaksi
+   ============================================================ */
+
 document.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
@@ -56,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ============================
-    // 4. LIVE CLOCK
+    // 4. LIVE CLOCK & DATE
     // ============================
     function updateClock() {
         const now = new Date();
@@ -68,8 +73,28 @@ document.addEventListener('DOMContentLoaded', function() {
             clockElement.textContent = hours + ':' + minutes + ':' + seconds;
         }
     }
+
+    function updateDate() {
+        const now = new Date();
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+        const dayName = days[now.getDay()];
+        const day = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+
+        const dateElement = document.getElementById('updateDate');
+        if (dateElement) {
+            dateElement.textContent = dayName + ', ' + day + ' ' + month + ' ' + year;
+        }
+    }
+
+    // Jalankan clock dan date
     updateClock();
+    updateDate();
     setInterval(updateClock, 1000);
+    setInterval(updateDate, 3600000); // Update setiap jam
 
     // ============================
     // 5. RIPPLE BUTTON EFFECT
@@ -221,17 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ============================
-    // 12. SWIPER SLIDER INIT (dari slider.js)
-    // ============================
-    // Dipindahkan ke slider.js
-
-    // ============================
-    // 13. COUNTER UP (dari counter.js)
-    // ============================
-    // Dipindahkan ke counter.js
-
-    // ============================
-    // 14. HERO SLIDER (auto slideshow)
+    // 12. HERO SLIDER (auto slideshow)
     // ============================
     let slideIndex = 0;
     const slides = document.querySelectorAll('.hero-slide');

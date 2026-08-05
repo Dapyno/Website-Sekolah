@@ -1,0 +1,254 @@
+/* ===== HALAMAN FAQ - TAMBAHAN CSS ===== */
+
+/* Page Header */
+.page-header-faq {
+    background: linear-gradient(135deg, var(--primary) 0%, #0b5c2a 50%, var(--secondary) 100%);
+    padding: 130px 0 70px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header-faq .breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.page-header-faq .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.page-header-faq .breadcrumb-item a:hover {
+    color: var(--white);
+}
+
+.page-header-faq .breadcrumb-item.active {
+    color: var(--white);
+}
+
+.page-header-faq .breadcrumb-item+.breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Statistik FAQ */
+.faq-stats {
+    margin-top: -40px;
+    position: relative;
+    z-index: 2;
+}
+
+.faq-stats .stat-card-faq {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-hover);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.faq-stats .stat-card-faq:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(21, 128, 61, 0.15);
+}
+
+.faq-stats .stat-card-faq .stat-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.faq-stats .stat-card-faq .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.faq-stats .stat-card-faq .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+}
+
+/* Kategori FAQ */
+.faq-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.faq-categories .btn-category {
+    padding: 10px 28px;
+    border-radius: 50px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.faq-categories .btn-category:hover,
+.faq-categories .btn-category.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(21, 128, 61, 0.2);
+}
+
+/* FAQ Accordion Custom */
+.faq-accordion-custom .accordion-item {
+    border: none;
+    border-radius: var(--radius) !important;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-accordion-custom .accordion-item:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.faq-accordion-custom .accordion-button {
+    font-weight: 600;
+    padding: 20px 28px;
+    background: var(--white);
+    transition: var(--transition);
+    font-size: 1.05rem;
+    gap: 12px;
+}
+
+.faq-accordion-custom .accordion-button::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: var(--primary);
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.faq-accordion-custom .accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--primary);
+}
+
+.faq-accordion-custom .accordion-button:not(.collapsed) {
+    background: rgba(21, 128, 61, 0.05);
+    color: var(--primary);
+    box-shadow: inset 0 -1px 0 var(--border);
+}
+
+.faq-accordion-custom .accordion-button .accordion-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--soft-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.faq-accordion-custom .accordion-button:not(.collapsed) .accordion-icon {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.faq-accordion-custom .accordion-body {
+    padding: 20px 28px 28px;
+    background: var(--white);
+    color: var(--text-soft);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.faq-accordion-custom .accordion-body strong {
+    color: var(--text);
+}
+
+/* CTA Contact */
+.faq-cta {
+    background: var(--soft-bg);
+    border-radius: var(--radius);
+    padding: 50px;
+    text-align: center;
+    margin-top: 40px;
+    border: 2px dashed var(--border);
+}
+
+.faq-cta h4 {
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.faq-cta p {
+    color: var(--text-soft);
+    margin-bottom: 20px;
+}
+
+.faq-cta .btn-contact {
+    padding: 12px 36px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.faq-cta .btn-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(21, 128, 61, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .page-header-faq {
+        padding: 110px 0 40px;
+    }
+
+    .faq-stats {
+        margin-top: -20px;
+    }
+
+    .faq-stats .stat-card-faq {
+        padding: 18px 15px;
+    }
+
+    .faq-stats .stat-card-faq .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .faq-accordion-custom .accordion-button {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+    }
+
+    .faq-accordion-custom .accordion-button .accordion-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .faq-accordion-custom .accordion-body {
+        padding: 16px 20px 20px;
+        font-size: 0.95rem;
+    }
+
+    .faq-categories .btn-category {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+    }
+
+    .faq-cta {
+        padding: 30px 20px;
+    }
+}
