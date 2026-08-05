@@ -74,3 +74,84 @@ document.addEventListener('DOMContentLoaded', function () {
         easing: 'ease-out-cubic'
     });
 });
+
+// ===== SEARCH GURU =====
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchGuru');
+    const guruItems = document.querySelectorAll('.guru-item');
+    const searchResult = document.getElementById('searchResult');
+
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function () {
+            const searchTerm = this.value.toLowerCase().trim();
+            let hasResult = false;
+
+            guruItems.forEach(function (item) {
+                const nama = item.getAttribute('data-nama') || '';
+                if (nama.includes(searchTerm) || searchTerm === '') {
+                    item.style.display = 'block';
+                    hasResult = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Tampilkan pesan jika tidak ada hasil
+            if (searchResult) {
+                if (!hasResult && searchTerm !== '') {
+                    searchResult.style.display = 'block';
+                } else {
+                    searchResult.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // ===== AOS INIT =====
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: 'ease-out-cubic'
+    });
+});
+
+// ===== SEARCH GURU =====
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchGuru');
+    const guruItems = document.querySelectorAll('.guru-item');
+    const searchResult = document.getElementById('searchResult');
+
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function () {
+            const searchTerm = this.value.toLowerCase().trim();
+            let hasResult = false;
+
+            guruItems.forEach(function (item) {
+                const nama = item.getAttribute('data-nama') || '';
+                if (nama.includes(searchTerm) || searchTerm === '') {
+                    item.style.display = 'block';
+                    hasResult = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (searchResult) {
+                if (!hasResult && searchTerm !== '') {
+                    searchResult.style.display = 'block';
+                } else {
+                    searchResult.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // ===== AOS INIT =====
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: 'ease-out-cubic'
+    });
+});

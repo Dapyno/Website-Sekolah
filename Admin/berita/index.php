@@ -21,6 +21,7 @@ $messageType = $_GET['type'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Berita - Admin</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/logo/logo-smp-al-islam.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,8 +37,9 @@ $messageType = $_GET['type'] ?? '';
             </div>
             <ul class="sidebar-menu">
                 <li><a href="../dashboard.php"><i class="bi bi-grid"></i> <span>Dashboard</span></a></li>
-                <li><a href="../berita/index.php"><i class="bi bi-newspaper"></i> <span>Berita</span></a></li>
-                <li class="active"><a href="index.php"><i class="bi bi-person"></i> <span>Guru</span></a></li>
+                <!-- ===== BERITA - ACTIVE ===== -->
+                <li class="active"><a href="index.php"><i class="bi bi-newspaper"></i> <span>Berita</span></a></li>
+                <li><a href="../guru/index.php"><i class="bi bi-person"></i> <span>Guru</span></a></li>
                 <li><a href="../prestasi/index.php"><i class="bi bi-trophy"></i> <span>Prestasi</span></a></li>
                 <li><a href="../logout.php" class="text-danger"><i class="bi bi-box-arrow-right"></i> <span>Logout</span></a></li>
             </ul>

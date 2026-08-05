@@ -95,6 +95,7 @@ $messageType = $_GET['type'] ?? '';
                                             <?php endif; ?>
                                         </td>
                                         <td><strong><?= htmlspecialchars($g['nama']) ?></strong></td>
+                                        <!-- ===== GUNAKAN FUNGSI BARU ===== -->
                                         <td><?= getJabatanBadge($g['jabatan']) ?></td>
                                         <td><?= htmlspecialchars($g['mapel'] ?? '-') ?></td>
                                         <td><?= getStatusBadge($g['status']) ?></td>

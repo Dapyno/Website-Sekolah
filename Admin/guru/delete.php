@@ -15,7 +15,7 @@ $guru = $guruModel->getById($id);
 
 if($guru) {
     // Hapus foto jika ada
-    if($guru['foto'] && file_exists('../../assets/guru/' . $guru['foto'])) {
+    if($guru['foto'] && file_exists('../../assets/guru/' . $guru['foto']) && $guru['foto'] != 'default.jpg') {
         unlink('../../assets/guru/' . $guru['foto']);
     }
     $guruModel->delete($id);

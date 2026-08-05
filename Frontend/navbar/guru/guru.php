@@ -2,27 +2,58 @@
 require_once '../../../Backend/config/database.php';
 require_once '../../../Backend/helpers/functions.php';
 
-// Ambil data guru dari database
-$stmt = $pdo->query("SELECT * FROM guru ORDER BY id ASC");
+// Ambil data guru dari database dengan urutan yang benar
+$stmt = $pdo->query("SELECT * FROM guru ORDER BY 
+                     FIELD(jabatan, 'Kepala Sekolah', 'Wakil Kepala Sekolah', 'Guru', 'Staff Administrasi', 'Tenaga Kependidikan'),
+                     status DESC,
+                     nama ASC");
 $guruList = $stmt->fetchAll();
+
+// Pisahkan guru aktif dan non-aktif
+$guruAktif = [];
+$guruNonAktif = [];
+
+foreach($guruList as $g) {
+    if(($g['status'] ?? 'active') == 'active') {
+        $guruAktif[] = $g;
+    } else {
+        $guruNonAktif[] = $g;
+    }
+}
+
+// Gabungkan: aktif dulu, lalu non-aktif
+$guruList = array_merge($guruAktif, $guruNonAktif);
 
 // Hitung statistik
 $totalGuru = count($guruList);
 $totalStaff = 0;
 $totalWakil = 0;
 $totalKepsek = 0;
+$totalTenaga = 0;
+$totalNonAktif = count($guruNonAktif);
 
-foreach($guruList as $g) {
-    if(strpos(strtolower($g['jabatan']), 'kepala sekolah') !== false) {
+foreach($guruAktif as $g) {
+    $jabatan = trim($g['jabatan']);
+    if($jabatan == 'Kepala Sekolah' || strpos(strtolower($jabatan), 'kepala sekolah') !== false) {
         $totalKepsek++;
-    } elseif(strpos(strtolower($g['jabatan']), 'wakil') !== false) {
+    } elseif($jabatan == 'Wakil Kepala Sekolah' || strpos(strtolower($jabatan), 'wakil kepala sekolah') !== false) {
         $totalWakil++;
-    } elseif(strpos(strtolower($g['jabatan']), 'staff') !== false || strpos(strtolower($g['jabatan']), 'administrasi') !== false) {
+    } elseif($jabatan == 'Tenaga Kependidikan' || strpos(strtolower($jabatan), 'tenaga kependidikan') !== false) {
+        $totalTenaga++;
+    } elseif($jabatan == 'Staff Administrasi' || strpos(strtolower($jabatan), 'staff') !== false || strpos(strtolower($jabatan), 'administrasi') !== false) {
         $totalStaff++;
     }
 }
 
-$totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek;
+$totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek - $totalTenaga - $totalNonAktif;
+
+// ===== PAGINATION =====
+$limit = 9;
+$totalPages = ceil(count($guruList) / $limit);
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$currentPage = max(1, min($currentPage, $totalPages));
+$offset = ($currentPage - 1) * $limit;
+$guruPerPage = array_slice($guruList, $offset, $limit);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -40,15 +71,9 @@ $totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek;
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-
-    <!-- Google Fonts Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
@@ -134,7 +159,7 @@ $totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek;
                     </p>
                     <div class="d-flex flex-wrap gap-3 mt-3">
                         <span class="badge bg-light text-dark px-4 py-2 rounded-pill">
-                            <i class="bi bi-people me-2"></i> <?= $totalGuru ?>+ Guru
+                            <i class="bi bi-people me-2"></i> <?= $totalGuru - $totalNonAktif ?> Guru Aktif
                         </span>
                         <span class="badge bg-light text-dark px-4 py-2 rounded-pill">
                             <i class="bi bi-award me-2"></i> 100% Profesional
@@ -170,23 +195,23 @@ $totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek;
                         <div class="stat-card-modern">
                             <div class="stat-icon"><i class="bi bi-person-badge"></i></div>
                             <div class="stat-number"><?= $totalGuruProfesional ?></div>
-                            <div class="stat-label">Guru Profesional</div>
+                            <div class="stat-label">Guru</div>
                             <div class="stat-bar"><span style="width: 100%;"></span></div>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3">
                         <div class="stat-card-modern">
                             <div class="stat-icon"><i class="bi bi-people"></i></div>
-                            <div class="stat-number"><?= $totalStaff ?></div>
-                            <div class="stat-label">Staff Administrasi</div>
+                            <div class="stat-number"><?= $totalStaff + $totalTenaga ?></div>
+                            <div class="stat-label">Staff & TU</div>
                             <div class="stat-bar"><span style="width: 85%;"></span></div>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3">
                         <div class="stat-card-modern">
-                            <div class="stat-icon"><i class="bi bi-clock-history"></i></div>
-                            <div class="stat-number">12</div>
-                            <div class="stat-label">Rata-rata Pengalaman (Tahun)</div>
+                            <div class="stat-icon"><i class="bi bi-star"></i></div>
+                            <div class="stat-number"><?= $totalKepsek + $totalWakil ?></div>
+                            <div class="stat-label">Pimpinan</div>
                             <div class="stat-bar"><span style="width: 90%;"></span></div>
                         </div>
                     </div>
@@ -203,15 +228,16 @@ $totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek;
         </div>
     </section>
 
-    <!-- ==================== FILTER ==================== -->
+    <!-- ==================== SEARCH ==================== -->
     <section class="py-3">
         <div class="container">
-            <div class="guru-filter" data-aos="fade-up">
-                <button class="btn-filter active" data-filter="all">Semua</button>
-                <button class="btn-filter" data-filter="kepsek">Kepala Sekolah</button>
-                <button class="btn-filter" data-filter="wakil">Wakil Kepsek</button>
-                <button class="btn-filter" data-filter="guru">Guru</button>
-                <button class="btn-filter" data-filter="staff">Staff</button>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="search-box">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="text" id="searchGuru" class="search-input" placeholder="Cari guru berdasarkan nama...">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -220,61 +246,107 @@ $totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek;
     <section class="py-4 pb-5" id="daftar-guru">
         <div class="container">
             <div class="row g-4" id="guruGrid">
-                <?php if(empty($guruList)): ?>
-                <div class="col-12 text-center py-5">
-                    <i class="bi bi-person-x" style="font-size:4rem;color:var(--text-soft);opacity:0.3;display:block;margin-bottom:15px;"></i>
-                    <h4 style="color:var(--text);">Belum Ada Data Guru</h4>
-                    <p style="color:var(--text-soft);">Silakan tambahkan data guru melalui panel admin.</p>
-                </div>
+                <?php if (empty($guruPerPage)): ?>
+                    <div class="col-12 text-center py-5">
+                        <i class="bi bi-person-x" style="font-size:4rem;color:var(--text-soft);opacity:0.3;display:block;margin-bottom:15px;"></i>
+                        <h4 style="color:var(--text);">Belum Ada Data Guru</h4>
+                        <p style="color:var(--text-soft);">Silakan tambahkan data guru melalui panel admin.</p>
+                    </div>
                 <?php else: ?>
-                <?php foreach($guruList as $guru): 
-                    // Tentukan kategori untuk filter
-                    $category = 'guru';
-                    $jabatanLower = strtolower($guru['jabatan']);
-                    if(strpos($jabatanLower, 'kepala sekolah') !== false) {
-                        $category = 'kepsek';
-                    } elseif(strpos($jabatanLower, 'wakil') !== false) {
-                        $category = 'wakil';
-                    } elseif(strpos($jabatanLower, 'staff') !== false || strpos($jabatanLower, 'administrasi') !== false) {
-                        $category = 'staff';
-                    }
-                    
-                    // Status badge
-                    $statusClass = ($guru['status'] ?? 'active') == 'active' ? 'active' : 'inactive';
-                    $statusText = ($guru['status'] ?? 'active') == 'active' ? 'Aktif' : 'Non-Aktif';
-                    
-                    // Foto
-                    $foto = !empty($guru['foto']) ? '../../../assets/guru/' . $guru['foto'] : '../../../assets/guru/default.jpg';
-                ?>
-                <div class="col-md-6 col-lg-4" data-category="<?= $category ?>" data-aos="fade-up" data-aos-delay="100">
-                    <div class="guru-card-detail">
-                        <div class="guru-img-wrapper">
-                            <img src="<?= $foto ?>" alt="<?= htmlspecialchars($guru['nama']) ?>" />
-                            <span class="guru-status <?= $statusClass ?>"><?= $statusText ?></span>
-                        </div>
-                        <div class="guru-info">
-                            <h4><?= htmlspecialchars($guru['nama']) ?></h4>
-                            <div class="guru-jabatan"><?= htmlspecialchars($guru['jabatan']) ?></div>
-                            <ul class="guru-detail-list">
-                                <li><i class="bi bi-book"></i> Mapel: <?= htmlspecialchars($guru['mapel'] ?? '-') ?></li>
-                                <li><i class="bi bi-calendar3"></i> Bergabung: <?= htmlspecialchars($guru['tahun_bergabung'] ?? '-') ?></li>
-                                <li><i class="bi bi-award"></i> <?= htmlspecialchars($guru['pendidikan'] ?? '-') ?></li>
-                            </ul>
-                            <div class="guru-social-detail">
-                                <?php if(!empty($guru['instagram'])): ?>
-                                <a href="https://instagram.com/<?= htmlspecialchars($guru['instagram']) ?>" target="_blank"><i class="bi bi-instagram"></i></a>
-                                <?php endif; ?>
-                                <?php if(!empty($guru['linkedin'])): ?>
-                                <a href="https://linkedin.com/in/<?= htmlspecialchars($guru['linkedin']) ?>" target="_blank"><i class="bi bi-linkedin"></i></a>
-                                <?php endif; ?>
-                                <a href="mailto:<?= htmlspecialchars($guru['email'] ?? 'info@smpalislankrian.sch.id') ?>"><i class="bi bi-envelope"></i></a>
+                    <?php foreach ($guruPerPage as $guru):
+                        // Status badge
+                        $statusClass = ($guru['status'] ?? 'active') == 'active' ? 'active' : 'inactive';
+                        $statusText = ($guru['status'] ?? 'active') == 'active' ? 'Aktif' : 'Non-Aktif';
+
+                        // Foto
+                        $foto = !empty($guru['foto']) && file_exists('../../../assets/guru/' . $guru['foto'])
+                            ? '../../../assets/guru/' . $guru['foto']
+                            : '../../../assets/guru/default.jpg';
+                    ?>
+                        <div class="col-md-6 col-lg-4 guru-item" data-nama="<?= strtolower($guru['nama']) ?>" data-aos="fade-up" data-aos-delay="100">
+                            <div class="guru-card-detail">
+                                <div class="guru-img-wrapper">
+                                    <img src="<?= $foto ?>" alt="<?= htmlspecialchars($guru['nama']) ?>" />
+                                    <span class="guru-status <?= $statusClass ?>"><?= $statusText ?></span>
+                                </div>
+                                <div class="guru-info">
+                                    <h4><?= htmlspecialchars($guru['nama']) ?></h4>
+                                    <div class="guru-jabatan">
+                                        <?php
+                                        $jabatanLower = strtolower($guru['jabatan']);
+                                        if (strpos($jabatanLower, 'kepala sekolah') !== false || strpos($jabatanLower, 'kepsek') !== false) {
+                                            echo '<span class="badge bg-primary"><i class="bi bi-star me-1"></i> ' . htmlspecialchars($guru['jabatan']) . '</span>';
+                                        } elseif (strpos($jabatanLower, 'wakil') !== false || strpos($jabatanLower, 'wakasek') !== false) {
+                                            echo '<span class="badge bg-warning text-dark"><i class="bi bi-award me-1"></i> ' . htmlspecialchars($guru['jabatan']) . '</span>';
+                                        } elseif (strpos($jabatanLower, 'staff') !== false || strpos($jabatanLower, 'administrasi') !== false) {
+                                            echo '<span class="badge bg-secondary"><i class="bi bi-person me-1"></i> ' . htmlspecialchars($guru['jabatan']) . '</span>';
+                                        } elseif (strpos($jabatanLower, 'tenaga kependidikan') !== false) {
+                                            echo '<span class="badge bg-info text-dark"><i class="bi bi-person-gear me-1"></i> ' . htmlspecialchars($guru['jabatan']) . '</span>';
+                                        } else {
+                                            echo '<span class="badge bg-info"><i class="bi bi-book me-1"></i> ' . htmlspecialchars($guru['jabatan']) . '</span>';
+                                        }
+                                        ?>
+                                    </div>
+                                    <ul class="guru-detail-list">
+                                        <li><i class="bi bi-book"></i> Mapel: <?= htmlspecialchars($guru['mapel'] ?? '-') ?></li>
+                                        <li><i class="bi bi-calendar3"></i> Bergabung: <?= htmlspecialchars($guru['tahun_bergabung'] ?? '-') ?></li>
+                                        <li><i class="bi bi-award"></i> <?= htmlspecialchars($guru['pendidikan'] ?? '-') ?></li>
+                                    </ul>
+                                    <div class="guru-social-detail">
+                                        <?php if (!empty($guru['instagram'])): ?>
+                                            <a href="https://instagram.com/<?= htmlspecialchars($guru['instagram']) ?>" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($guru['linkedin'])): ?>
+                                            <a href="https://linkedin.com/in/<?= htmlspecialchars($guru['linkedin']) ?>" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                        <?php endif; ?>
+                                        <a href="mailto:<?= htmlspecialchars($guru['email'] ?? 'info@smpalislankrian.sch.id') ?>" title="Email"><i class="bi bi-envelope"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
+
+            <!-- Pesan jika tidak ada hasil pencarian -->
+            <div id="searchResult" class="col-12 text-center py-4" style="display:none;">
+                <i class="bi bi-search" style="font-size:2rem;color:var(--text-soft);opacity:0.5;display:block;margin-bottom:10px;"></i>
+                <p style="color:var(--text-soft);">Tidak ada guru dengan nama yang dicari</p>
+            </div>
+
+            <!-- ===== PAGINATION ===== -->
+            <?php if($totalPages > 1): ?>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <!-- Previous -->
+                            <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">
+                                <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+                            </li>
+                            
+                            <?php for($i = 1; $i <= $totalPages; $i++): ?>
+                            <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                                <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                            </li>
+                            <?php endfor; ?>
+                            
+                            <!-- Next -->
+                            <li class="page-item <?= $currentPage >= $totalPages ? 'disabled' : '' ?>">
+                                <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <p class="text-center text-muted small mt-2">
+                        Menampilkan <?= $offset + 1 ?> - <?= min($offset + $limit, count($guruList)) ?> dari <?= count($guruList) ?> guru
+                    </p>
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
     </section>
 

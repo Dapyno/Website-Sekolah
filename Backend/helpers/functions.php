@@ -105,7 +105,7 @@ function getKategoriColor($kategori) {
 
 /**
  * ============================================================
- * FUNGSI UNTUK GURU
+ * FUNGSI UNTUK GURU (REVISI - LEBIH AKURAT)
  * ============================================================
  */
 
@@ -123,23 +123,85 @@ function getStatusBadge($status) {
 }
 
 /**
- * Mendapatkan badge jabatan guru
+ * Mendapatkan badge jabatan guru - REVISI AKURAT
  * @param string $jabatan Nama jabatan
  * @return string HTML badge
  */
 function getJabatanBadge($jabatan) {
-    $jabatanLower = strtolower($jabatan);
+    $jabatanTrim = trim($jabatan);
+    $jabatanLower = strtolower($jabatanTrim);
     
-    if(strpos($jabatanLower, 'kepala sekolah') !== false || strpos($jabatanLower, 'kepsek') !== false) {
-        return '<span class="badge bg-primary"><i class="bi bi-star me-1"></i> Kepala Sekolah</span>';
-    } elseif(strpos($jabatanLower, 'wakil') !== false || strpos($jabatanLower, 'wakasek') !== false) {
-        return '<span class="badge bg-warning text-dark"><i class="bi bi-award me-1"></i> Wakil Kepsek</span>';
-    } elseif(strpos($jabatanLower, 'staff') !== false || strpos($jabatanLower, 'administrasi') !== false) {
-        return '<span class="badge bg-secondary"><i class="bi bi-person me-1"></i> Staff</span>';
-    } elseif(strpos($jabatanLower, 'tenaga kependidikan') !== false) {
-        return '<span class="badge bg-info text-dark"><i class="bi bi-person-gear me-1"></i> Tenaga Kependidikan</span>';
-    } else {
-        return '<span class="badge bg-info"><i class="bi bi-book me-1"></i> ' . htmlspecialchars($jabatan) . '</span>';
+    // ===== URUTAN PENGECEKAN YANG BENAR =====
+    // 1. Cek "Kepala Sekolah" (harus sama persis atau tepat)
+    if($jabatanLower == 'kepala sekolah' || $jabatanLower == 'kepsek') {
+        return '<span class="badge bg-primary"><i class="bi bi-star me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
+    } 
+    
+    // 2. Cek "Wakil Kepala Sekolah" (harus mengandung "wakil" dan "kepala sekolah")
+    elseif(strpos($jabatanLower, 'wakil') !== false && strpos($jabatanLower, 'kepala sekolah') !== false) {
+        return '<span class="badge bg-warning text-dark"><i class="bi bi-award me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
+    } 
+    
+    // 3. Cek "Wakasek" (singkatan)
+    elseif($jabatanLower == 'wakasek') {
+        return '<span class="badge bg-warning text-dark"><i class="bi bi-award me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
+    }
+    
+    // 4. Cek "Staff" atau "Administrasi"
+    elseif(strpos($jabatanLower, 'staff') !== false || 
+           strpos($jabatanLower, 'administrasi') !== false) {
+        return '<span class="badge bg-secondary"><i class="bi bi-person me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
+    } 
+    
+    // 5. Cek "Tenaga Kependidikan"
+    elseif(strpos($jabatanLower, 'tenaga kependidikan') !== false) {
+        return '<span class="badge bg-info text-dark"><i class="bi bi-person-gear me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
+    } 
+    
+    // 6. SELAIN ITU ADALAH GURU
+    else {
+        return '<span class="badge bg-info"><i class="bi bi-book me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
+    }
+}
+
+/**
+ * Mendapatkan kategori untuk filter guru
+ * @param string $jabatan Nama jabatan
+ * @return string kategori (kepsek, wakil, staff, guru)
+ */
+function getGuruCategory($jabatan) {
+    $jabatanTrim = trim($jabatan);
+    $jabatanLower = strtolower($jabatanTrim);
+    
+    // 1. Cek Kepala Sekolah
+    if($jabatanLower == 'kepala sekolah' || $jabatanLower == 'kepsek') {
+        return 'kepsek';
+    } 
+    
+    // 2. Cek Wakil Kepala Sekolah
+    elseif(strpos($jabatanLower, 'wakil') !== false && strpos($jabatanLower, 'kepala sekolah') !== false) {
+        return 'wakil';
+    } 
+    
+    // 3. Cek Wakasek
+    elseif($jabatanLower == 'wakasek') {
+        return 'wakil';
+    }
+    
+    // 4. Cek Staff
+    elseif(strpos($jabatanLower, 'staff') !== false || 
+           strpos($jabatanLower, 'administrasi') !== false) {
+        return 'staff';
+    } 
+    
+    // 5. Cek Tenaga Kependidikan
+    elseif(strpos($jabatanLower, 'tenaga kependidikan') !== false) {
+        return 'staff';
+    } 
+    
+    // 6. SELAIN ITU ADALAH GURU
+    else {
+        return 'guru';
     }
 }
 
@@ -329,7 +391,7 @@ function isLoggedIn() {
 }
 
 /**
- ============================================================
+ * ============================================================
  * FUNGSI UNTUK RESPONSIF DAN TAMPILAN
  * ============================================================
  */

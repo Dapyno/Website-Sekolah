@@ -80,6 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <li><a href="../dashboard.php"><i class="bi bi-grid"></i> <span>Dashboard</span></a></li>
                 <li><a href="../berita/index.php"><i class="bi bi-newspaper"></i> <span>Berita</span></a></li>
                 <li class="active"><a href="index.php"><i class="bi bi-person"></i> <span>Guru</span></a></li>
+                <li><a href="../prestasi/index.php"><i class="bi bi-trophy"></i> <span>Prestasi</span></a></li>
                 <li><a href="../logout.php" class="text-danger"><i class="bi bi-box-arrow-right"></i> <span>Logout</span></a></li>
             </ul>
         </nav>
