@@ -95,7 +95,7 @@ $totalGuruProfesional = $totalGuru - $totalStaff - $totalWakil - $totalKepsek;
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link active" href="guru.php">Guru</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.html">Prestasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.php">Prestasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
                     <li class="nav-item"><a class="nav-link" href="../faq/faq.html">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>

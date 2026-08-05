@@ -143,7 +143,7 @@ $changeAgenda = $agendaCount > 0 ? round(($agendaCount - $lastMonthAgenda) / max
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="prestasi/index.php">
                         <i class="bi bi-trophy menu-icon"></i>
                         <span class="menu-label">Prestasi</span>
                         <span class="menu-badge"><?= $prestasiCount ?></span>

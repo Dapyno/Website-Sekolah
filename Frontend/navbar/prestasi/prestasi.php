@@ -1,22 +1,35 @@
 <?php
-require_once __DIR__ . '/../../../Backend/config/database.php';
-require_once __DIR__ . '/../../../Backend/models/Berita.php';
-require_once __DIR__ . '/../../../Backend/helpers/functions.php';
+// Frontend/navbar/prestasi/prestasi.php
+require_once '../../../Backend/config/database.php';
+require_once '../../../Backend/models/Prestasi.php';
+require_once '../../../Backend/helpers/functions.php';
 
-$beritaModel = new Berita($pdo);
-$beritaList = $beritaModel->getAll();
+$prestasiModel = new Prestasi($pdo);
+$prestasiList = $prestasiModel->getAll();
 
-// Pisahkan berita featured (pertama) dan sisanya
-$featured = !empty($beritaList) ? array_shift($beritaList) : null;
-$remainingBerita = $beritaList;
+// Hitung statistik
+$totalPrestasi = count($prestasiList);
+$totalInternasional = 0;
+$totalNasional = 0;
+$totalProvinsi = 0;
+$totalKabupaten = 0;
+
+foreach($prestasiList as $p) {
+    switch($p['tingkat']) {
+        case 'internasional': $totalInternasional++; break;
+        case 'nasional': $totalNasional++; break;
+        case 'provinsi': $totalProvinsi++; break;
+        case 'kabupaten': $totalKabupaten++; break;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Berita SMP Al Islam Krian - Informasi terkini seputar kegiatan, prestasi, dan pengumuman sekolah" />
-    <title>Berita - SMP Al Islam Krian</title>
+    <meta name="description" content="Prestasi SMP Al Islam Krian - Berbagai penghargaan dan pencapaian yang telah diraih oleh siswa dan guru" />
+    <title>Prestasi - SMP Al Islam Krian</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="64x64" href="../../../assets/logo/logo-smp-al-islam.png" />
@@ -32,7 +45,7 @@ $remainingBerita = $beritaList;
     <link href="../../../Frontend/css/style.css" rel="stylesheet" />
     <link href="../../../Frontend/css/responsive.css" rel="stylesheet" />
     <link href="../../../Frontend/css/animation.css" rel="stylesheet" />
-    <link href="berita.css" rel="stylesheet" />
+    <link rel="stylesheet" href="prestasi.css">
 </head>
 <body>
 
@@ -43,9 +56,10 @@ $remainingBerita = $beritaList;
             <div class="loader-text">SMP Al Islam Krian</div>
         </div>
     </div>
+
     <div id="scroll-progress-bar"></div>
 
-    <!-- ==================== NAVBAR ==================== -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="../../../index.html">
@@ -69,8 +83,8 @@ $remainingBerita = $beritaList;
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="../guru/guru.php">Guru</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.php">Prestasi</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="berita.php">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="prestasi.php">Prestasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
                     <li class="nav-item"><a class="nav-link" href="../faq/faq.html">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>
                 </ul>
@@ -81,192 +95,134 @@ $remainingBerita = $beritaList;
         </div>
     </nav>
 
-    <!-- ==================== PAGE HEADER ==================== -->
-    <section class="page-header-berita">
+    <!-- PAGE HEADER -->
+    <section class="page-header-prestasi">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-up">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="../../../index.html">Beranda</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Berita</li>
+                            <li class="breadcrumb-item active" aria-current="page">Prestasi</li>
                         </ol>
                     </nav>
-                    <h1 class="display-3 fw-bold mb-3">Berita <span style="color: var(--gold);">Terkini</span></h1>
+                    <h1 class="display-3 fw-bold mb-3">Prestasi <span style="color: var(--gold);">Kami</span></h1>
                     <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">
-                        Informasi terbaru seputar kegiatan, prestasi, dan pengumuman dari SMP Al Islam Krian
+                        Berbagai penghargaan dan pencapaian yang telah diraih oleh siswa dan guru SMP Al Islam Krian
                     </p>
                     <div class="mt-3">
                         <span class="badge bg-light text-dark me-2 px-4 py-2 rounded-pill">
-                            <i class="bi bi-newspaper me-1"></i> <?= count($beritaList) + ($featured ? 1 : 0) ?>+ Berita
+                            <i class="bi bi-trophy me-1"></i> <?= $totalPrestasi ?>+ Prestasi
                         </span>
                         <span class="badge bg-light text-dark px-4 py-2 rounded-pill">
-                            <i class="bi bi-calendar3 me-1"></i> Update Terkini
+                            <i class="bi bi-award me-1"></i> <?= $totalNasional + $totalInternasional ?>+ Juara
                         </span>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center d-none d-lg-block" data-aos="fade-left">
-                    <i class="bi bi-newspaper" style="font-size: 6rem; opacity: 0.25; color: var(--white);"></i>
+                    <i class="bi bi-trophy-fill" style="font-size: 6rem; opacity: 0.25; color: var(--white);"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== STATISTIK BERITA ==================== -->
-    <section class="berita-stats">
+    <!-- STATISTIK PRESTASI -->
+    <section class="prestasi-stats">
         <div class="container">
             <div class="row g-4">
                 <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-card-berita">
-                        <span class="stat-icon"><i class="bi bi-newspaper"></i></span>
-                        <div class="stat-number"><?= count($beritaList) + ($featured ? 1 : 0) ?>+</div>
-                        <div class="stat-label">Total Berita</div>
+                    <div class="stat-card-prestasi">
+                        <span class="stat-icon"><i class="bi bi-trophy"></i></span>
+                        <div class="stat-number"><?= $totalPrestasi ?>+</div>
+                        <div class="stat-label">Total Prestasi</div>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-card-berita">
-                        <span class="stat-icon"><i class="bi bi-trophy"></i></span>
-                        <div class="stat-number">
-                            <?php 
-                            $countPrestasi = 0;
-                            foreach($beritaList as $b) {
-                                if($b['kategori'] == 'prestasi') $countPrestasi++;
-                            }
-                            if($featured && $featured['kategori'] == 'prestasi') $countPrestasi++;
-                            echo $countPrestasi . '+';
-                            ?>
-                        </div>
-                        <div class="stat-label">Berita Prestasi</div>
+                    <div class="stat-card-prestasi">
+                        <span class="stat-icon"><i class="bi bi-award"></i></span>
+                        <div class="stat-number"><?= $totalNasional + $totalInternasional ?>+</div>
+                        <div class="stat-label">Juara Lomba</div>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-card-berita">
-                        <span class="stat-icon"><i class="bi bi-calendar-event"></i></span>
-                        <div class="stat-number">
-                            <?php 
-                            $countAcara = 0;
-                            foreach($beritaList as $b) {
-                                if($b['kategori'] == 'acara') $countAcara++;
-                            }
-                            if($featured && $featured['kategori'] == 'acara') $countAcara++;
-                            echo $countAcara . '+';
-                            ?>
-                        </div>
-                        <div class="stat-label">Berita Acara</div>
+                    <div class="stat-card-prestasi">
+                        <span class="stat-icon"><i class="bi bi-globe2"></i></span>
+                        <div class="stat-number"><?= $totalInternasional ?>+</div>
+                        <div class="stat-label">Prestasi Internasional</div>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-card-berita">
-                        <span class="stat-icon"><i class="bi bi-megaphone"></i></span>
-                        <div class="stat-number">
-                            <?php 
-                            $countPengumuman = 0;
-                            foreach($beritaList as $b) {
-                                if($b['kategori'] == 'pengumuman') $countPengumuman++;
-                            }
-                            if($featured && $featured['kategori'] == 'pengumuman') $countPengumuman++;
-                            echo $countPengumuman . '+';
-                            ?>
-                        </div>
-                        <div class="stat-label">Pengumuman</div>
+                    <div class="stat-card-prestasi">
+                        <span class="stat-icon"><i class="bi bi-star"></i></span>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Siswa Berprestasi</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== FILTER BERITA ==================== -->
+    <!-- FILTER PRESTASI -->
     <section class="py-4">
         <div class="container">
-            <div class="berita-filter" data-aos="fade-up">
+            <div class="prestasi-filter" data-aos="fade-up">
                 <button class="btn-filter active" data-filter="all">Semua</button>
-                <button class="btn-filter" data-filter="prestasi">Prestasi</button>
-                <button class="btn-filter" data-filter="acara">Acara</button>
-                <button class="btn-filter" data-filter="pendidikan">Pendidikan</button>
-                <button class="btn-filter" data-filter="pengumuman">Pengumuman</button>
+                <button class="btn-filter" data-filter="internasional">Internasional</button>
+                <button class="btn-filter" data-filter="nasional">Nasional</button>
+                <button class="btn-filter" data-filter="provinsi">Provinsi</button>
+                <button class="btn-filter" data-filter="kabupaten">Kabupaten</button>
             </div>
         </div>
     </section>
 
-    <!-- ==================== DAFTAR BERITA ==================== -->
+    <!-- DAFTAR PRESTASI -->
     <section class="py-3 pb-5">
         <div class="container">
-            
-            <?php if($featured): ?>
-            <div class="berita-featured" data-aos="fade-up" data-aos-delay="100">
-                <div class="row g-0">
-                    <div class="col-md-6">
-                        <div class="berita-featured-image">
-                            <?php if($featured['gambar']): ?>
-                            <img src="../../../assets/berita/<?= $featured['gambar'] ?>" alt="<?= htmlspecialchars($featured['judul']) ?>" />
-                            <?php else: ?>
-                            <img src="../../../assets/berita/default.jpg" alt="Default" />
-                            <?php endif; ?>
-                            <span class="berita-badge">Featured</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="berita-featured-body">
-                            <div class="berita-date">
-                                <i class="bi bi-calendar3"></i> <?= formatTanggal($featured['tanggal']) ?>
-                            </div>
-                            <h3><?= htmlspecialchars($featured['judul']) ?></h3>
-                            <p><?= substr(strip_tags($featured['konten']), 0, 180) ?>...</p>
-                            <a href="detail.php?id=<?= $featured['id'] ?>" class="btn-readmore">Baca Selengkapnya <i class="bi bi-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
+            <div class="row g-4" id="prestasiGrid">
+                <?php if(empty($prestasiList)): ?>
+                <div class="col-12 text-center py-5">
+                    <i class="bi bi-trophy" style="font-size:4rem;color:var(--text-soft);opacity:0.3;display:block;margin-bottom:15px;"></i>
+                    <h4 style="color:var(--text);">Belum Ada Data Prestasi</h4>
+                    <p style="color:var(--text-soft);">Silakan tambahkan data prestasi melalui panel admin.</p>
                 </div>
-            </div>
-            <?php endif; ?>
-
-            <?php if(!empty($remainingBerita)): ?>
-            <div class="row g-4" id="beritaGrid">
-                <?php foreach($remainingBerita as $b): ?>
-                <div class="col-md-6 col-lg-4" data-category="<?= $b['kategori'] ?>" data-aos="fade-up" data-aos-delay="200">
-                    <div class="berita-card-full">
-                        <div class="berita-image">
-                            <?php if($b['gambar']): ?>
-                            <img src="../../../assets/berita/<?= $b['gambar'] ?>" alt="<?= htmlspecialchars($b['judul']) ?>" />
+                <?php else: ?>
+                <?php foreach($prestasiList as $p): ?>
+                <div class="col-md-6 col-lg-4" data-category="<?= $p['tingkat'] ?>" data-aos="fade-up" data-aos-delay="100">
+                    <div class="prestasi-card">
+                        <div class="prestasi-image">
+                            <?php if($p['gambar'] && file_exists('../../../assets/prestasi/' . $p['gambar'])): ?>
+                            <img src="../../../assets/prestasi/<?= $p['gambar'] ?>" alt="<?= htmlspecialchars($p['nama_prestasi']) ?>" />
                             <?php else: ?>
-                            <img src="../../../assets/berita/default.jpg" alt="Default" />
+                            <img src="../../../assets/prestasi/default.jpg" alt="Default" />
                             <?php endif; ?>
-                            <span class="berita-badge"><?= getKategoriLabel($b['kategori']) ?></span>
-                            <span class="berita-date"><i class="bi bi-calendar3"></i> <?= formatTanggal($b['tanggal']) ?></span>
+                            <span class="prestasi-badge"><?= getTingkatLabel($p['tingkat']) ?></span>
+                            <span class="prestasi-year"><?= $p['tahun'] ?></span>
                         </div>
-                        <div class="berita-body">
-                            <span class="berita-category <?= $b['kategori'] ?>"><?= getKategoriLabel($b['kategori']) ?></span>
-                            <h5><?= htmlspecialchars($b['judul']) ?></h5>
-                            <p><?= substr(strip_tags($b['konten']), 0, 100) ?>...</p>
-                            <a href="detail.php?id=<?= $b['id'] ?>" class="btn-readmore">Baca Selengkapnya <i class="bi bi-arrow-right ms-1"></i></a>
+                        <div class="prestasi-body">
+                            <span class="prestasi-level <?= getTingkatClass($p['tingkat']) ?>"><?= getTingkatBadge($p['tingkat']) ?></span>
+                            <h5><?= htmlspecialchars($p['nama_prestasi']) ?></h5>
+                            <p><?= htmlspecialchars(substr($p['deskripsi'] ?? '', 0, 100)) ?>...</p>
+                            <div class="prestasi-meta">
+                                <span><i class="bi bi-person"></i> <?= htmlspecialchars($p['siswa'] ?? '-') ?></span>
+                                <span><i class="bi bi-geo-alt"></i> <?= htmlspecialchars($p['lokasi'] ?? '-') ?></span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
-            </div>
-            <?php else: ?>
-            <div class="empty-berita">
-                <i class="bi bi-newspaper"></i>
-                <h4>Belum Ada Berita</h4>
-                <p>Belum ada berita yang dipublikasikan. Silakan cek kembali nanti.</p>
-            </div>
-            <?php endif; ?>
-
-            <div class="text-center mt-5" data-aos="fade-up">
-                <a href="#" class="btn btn-outline-primary btn-lg px-5 py-3 ripple">
-                    Muat Lebih Banyak <i class="bi bi-arrow-down ms-2"></i>
-                </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
 
-    <!-- ==================== QUOTE ==================== -->
+    <!-- QUOTE PENUTUP -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center" data-aos="fade-up">
                 <div class="col-lg-8 text-center">
                     <i class="bi bi-quote" style="font-size: 3rem; color: var(--primary); opacity: 0.3;"></i>
                     <blockquote class="blockquote fs-4 fst-italic mt-3">
-                        "Berita adalah jendela informasi yang menghubungkan sekolah dengan masyarakat. Melalui berita, kita berbagi cerita, inspirasi, dan prestasi."
+                        "Prestasi bukanlah tujuan akhir, tetapi adalah bukti dari perjalanan panjang yang penuh dengan kerja keras, dedikasi, dan doa."
                     </blockquote>
                     <figcaption class="blockquote-footer mt-2">
                         Dyah Rakhmayanti, S.T., M.Pd. <cite title="Source Title">Kepala Sekolah SMP Al Islam Krian</cite>
@@ -276,7 +232,7 @@ $remainingBerita = $beritaList;
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
+    <!-- FOOTER -->
     <footer class="footer py-5">
         <div class="container">
             <div class="row g-4">
@@ -304,7 +260,7 @@ $remainingBerita = $beritaList;
                     <ul class="list-unstyled">
                         <li><a href="../../../index.html#ppdb">Pendaftaran PPDB</a></li>
                         <li><a href="../../../index.html#agenda">Kalender Akademik</a></li>
-                        <li><a href="berita.php">Arsip Berita</a></li>
+                        <li><a href="../berita/berita.php">Arsip Berita</a></li>
                         <li><a href="../../../index.html#galeri">Dokumentasi</a></li>
                     </ul>
                 </div>
@@ -325,18 +281,22 @@ $remainingBerita = $beritaList;
         </div>
     </footer>
 
+    <!-- FLOATING WHATSAPP -->
     <a href="https://wa.me/6281234567890" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
+    <!-- BACK TO TOP -->
     <button id="backToTop" class="btn btn-primary back-to-top" aria-label="Back to top">
         <i class="bi bi-chevron-up"></i>
     </button>
 
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../../Frontend/js/script.js"></script>
     <script src="../../../Frontend/js/counter.js"></script>
-    <script src="berita.js"></script>
+    <script src="prestasi.js"></script>
+
 </body>
 </html>
