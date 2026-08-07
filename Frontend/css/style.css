@@ -3,7 +3,7 @@
    Gaya utama untuk website - TEMA HIJAU
    ============================================================ */
 
-/* ---------- RESET & VARIABLES ---------- */
+/* RESET & VARIABLES */
 :root {
     /* Primary Colors - Hijau */
     --primary: #15803D;
@@ -42,7 +42,7 @@ body {
     cursor: default;
 }
 
-/* ---------- BOOTSTRAP OVERRIDE (WARNA HIJAU) ---------- */
+/* BOOTSTRAP OVERRIDE (WARNA HIJAU) */
 .bg-primary,
 .btn-primary,
 .badge.bg-primary,
@@ -106,7 +106,7 @@ body {
     color: var(--primary) !important;
 }
 
-/* ---------- CUSTOM CURSOR ---------- */
+/* CUSTOM CURSOR */
 @media (min-width: 1024px) {
     body {
         cursor: none;
@@ -132,7 +132,7 @@ body {
     }
 }
 
-/* ---------- SCROLL PROGRESS BAR ---------- */
+/* SCROLL PROGRESS BAR */
 #scroll-progress-bar {
     position: fixed;
     top: 0;
@@ -144,7 +144,7 @@ body {
     transition: width 0.1s;
 }
 
-/* ---------- LOADING SCREEN ---------- */
+/* LOADING SCREEN */
 #loading-screen {
     position: fixed;
     inset: 0;
@@ -205,7 +205,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* ---------- NAVBAR ---------- */
+/* NAVBAR */
 .navbar {
     padding: 12px 0;
     transition: var(--transition);
@@ -358,7 +358,7 @@ body {
     transform: scale(1.1);
 }
 
-/* ---------- HERO SECTION ---------- */
+/* HERO SECTION */
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -495,7 +495,7 @@ body {
     100% { transform: translateX(-50%); }
 }
 
-/* ---------- QUICK MENU ---------- */
+/* QUICK MENU */
 .quick-menu {
     margin-top: -40px;
     position: relative;
@@ -551,7 +551,7 @@ body {
     color: var(--text-soft);
 }
 
-/* ---------- STATISTICS ---------- */
+/* STATISTICS */
 .statistics {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     padding: 80px 0;
@@ -574,7 +574,7 @@ body {
     font-weight: 500;
 }
 
-/* ---------- SAMBUTAN KEPALA SEKOLAH ---------- */
+/* SAMBUTAN KEPALA SEKOLAH */
 .sambutan-foto {
     max-width: 350px;
     margin: 0 auto;
@@ -626,7 +626,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* ---------- TENTANG SEKOLAH ---------- */
+/* TENTANG SEKOLAH */
 .tentang .logo-tentang {
     display: flex;
     justify-content: center;
@@ -670,7 +670,7 @@ body {
     color: var(--primary) !important;
 }
 
-/* ---------- VISI MISI ---------- */
+/* VISI MISI */
 .vision-card,
 .mission-card {
     background: var(--white);
@@ -699,7 +699,7 @@ body {
     color: var(--primary) !important;
 }
 
-/* ---------- PROGRAM UNGGULAN ---------- */
+/* PROGRAM UNGGULAN */
 .program-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -742,7 +742,7 @@ body {
     margin-bottom: 0;
 }
 
-/* ---------- FASILITAS ---------- */
+/* FASILITAS */
 .fasilitas-card {
     position: relative;
     overflow: hidden;
@@ -796,7 +796,7 @@ body {
     opacity: 0.9;
 }
 
-/* ---------- PRESTASI (TIMELINE) ---------- */
+/* PRESTASI (TIMELINE) */
 .timeline {
     position: relative;
     padding-left: 30px;
@@ -861,7 +861,7 @@ body {
     color: var(--text-soft);
 }
 
-/* ---------- GURU SLIDER ---------- */
+/* GURU SLIDER */
 .guru-swiper {
     padding: 20px 0 50px;
 }
@@ -910,7 +910,7 @@ body {
     color: var(--text-soft);
 }
 
-/* ---------- BERITA ---------- */
+/* BERITA */
 .berita-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -961,7 +961,7 @@ body {
     color: var(--white);
 }
 
-/* ---------- AGENDA & PENGUMUMAN ---------- */
+/* AGENDA & PENGUMUMAN */
 .list-group-item {
     border-left: 4px solid transparent;
     transition: var(--transition);
@@ -985,7 +985,7 @@ body {
     background: var(--gold) !important;
 }
 
-/* ---------- GALERI ---------- */
+/* GALERI */
 .galeri-item {
     position: relative;
     overflow: hidden;
@@ -1027,14 +1027,14 @@ body {
     opacity: 1;
 }
 
-/* ---------- VIDEO ---------- */
+/* VIDEO */
 .video-wrapper {
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-hover);
 }
 
-/* ---------- TESTIMONI ---------- */
+/* TESTIMONI */
 .testimoni-swiper {
     padding: 20px 0 50px;
 }
@@ -1065,7 +1065,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* ---------- FAQ ---------- */
+/* FAQ */
 .accordion-item {
     border: none;
     border-radius: var(--radius) !important;
@@ -1360,7 +1360,7 @@ body {
     border-top: 1px solid var(--border);
 }
 
-/* ---------- PPDB RESPONSIVE ---------- */
+/* PPDB RESPONSIVE */
 @media (max-width: 767px) {
     .timeline-ppdb {
         padding-left: 30px;
@@ -1404,7 +1404,7 @@ body {
     }
 }
 
-/* ---------- MAPS ---------- */
+/* MAPS */
 .map-wrapper {
     border-radius: var(--radius);
     overflow: hidden;
@@ -1575,7 +1575,7 @@ body {
     text-decoration: none;
 }
 
-/* ---------- FOOTER INFO (LIVE CLOCK & DATE) ---------- */
+/* FOOTER INFO (LIVE CLOCK & DATE) */
 .footer .footer-info {
     background: rgba(255, 255, 255, 0.04);
     border-radius: 12px;
@@ -1606,7 +1606,7 @@ body {
     opacity: 0.7;
 }
 
-/* ---------- FLOATING WHATSAPP ---------- */
+/* FLOATING WHATSAPP */
 .floating-whatsapp {
     position: fixed;
     bottom: 30px;
@@ -1632,7 +1632,7 @@ body {
     box-shadow: 0 8px 40px rgba(37, 211, 102, 0.6);
 }
 
-/* ---------- BACK TO TOP ---------- */
+/* BACK TO TOP */
 .back-to-top {
     position: fixed;
     bottom: 100px;
@@ -1665,7 +1665,7 @@ body {
     background: var(--hover);
 }
 
-/* ---------- RIPPLE BUTTON ---------- */
+/* RIPPLE BUTTON */
 .ripple {
     position: relative;
     overflow: hidden;
@@ -1687,7 +1687,7 @@ body {
     }
 }
 
-/* ---------- GURU SECTION (MODERN) ---------- */
+/* GURU SECTION (MODERN) */
 .guru-card-featured {
     background: var(--white);
     border-radius: var(--radius);
@@ -1955,7 +1955,7 @@ body {
     }
 }
 
-/* ---------- DARK MODE ---------- */
+/* DARK MODE */
 body.dark-mode {
     background: #111827;
     color: #e5e7eb;
@@ -2040,14 +2040,14 @@ body.dark-mode .timeline-content p {
     color: #9ca3af;
 }
 
-/* ---------- GLASSMORPHISM ---------- */
+/* GLASSMORPHISM */
 .glass {
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* ---------- SCROLL REVEAL (AOS overwrite) ---------- */
+/* SCROLL REVEAL (AOS overwrite) */
 [data-aos] {
     pointer-events: none;
 }
@@ -2055,7 +2055,7 @@ body.dark-mode .timeline-content p {
     pointer-events: auto;
 }
 
-/* ---------- RESPONSIVE SAMBUTAN ---------- */
+/* RESPONSIVE SAMBUTAN */
 @media (max-width: 991px) {
     .sambutan-foto {
         max-width: 280px;
@@ -2080,7 +2080,7 @@ body.dark-mode .timeline-content p {
     }
 }
 
-/* ---------- RESPONSIVE TENTANG ---------- */
+/* RESPONSIVE TENTANG */
 @media (max-width: 991px) {
     .tentang .logo-tentang img {
         max-width: 300px;

@@ -13,7 +13,7 @@
     }
 }
 
-/* ---------- TABLET (768px - 1023px) ---------- */
+/* TABLET (768px - 1023px) */
 @media (max-width: 1023px) {
     .navbar .brand-text {
         font-size: 0.9rem;
@@ -81,7 +81,7 @@
     }
 }
 
-/* ---------- MOBILE (576px - 767px) ---------- */
+/* MOBILE (576px - 767px) */
 @media (max-width: 767px) {
     body {
         padding-top: 66px;
@@ -267,7 +267,7 @@
     }
 }
 
-/* ---------- MOBILE KECIL (320px - 575px) ---------- */
+/* MOBILE KECIL (320px - 575px) */
 @media (max-width: 575px) {
     .hero-content .display-2 {
         font-size: 1.8rem;
@@ -342,7 +342,7 @@
     }
 }
 
-/* ---------- TABLET LANDSCAPE (1024px ke atas) ---------- */
+/* TABLET LANDSCAPE (1024px ke atas) */
 @media (min-width: 1024px) and (max-height: 800px) {
     .hero-content .display-2 {
         font-size: 3.2rem;
@@ -355,12 +355,12 @@
     }
 }
 
-/* ---------- DARK MODE RESPONSIVE ---------- */
+/* DARK MODE RESPONSIVE */
 @media (prefers-color-scheme: dark) {
     /* Fallback untuk browser dengan preferensi dark */
 }
 
-/* ---------- PRINT ---------- */
+/* PRINT */
 @media print {
     .navbar,
     .hero-section,

@@ -1,9 +1,4 @@
-/* ============================================================
-   ANIMATION.CSS - SMP Al Islam Krian
-   Animasi dan efek visual
-   ============================================================ */
-
-/* ---------- AOS CUSTOM ---------- */
+/* AOS CUSTOM */
 [data-aos="flip-left"] {
     transform: perspective(1000px) rotateY(-10deg);
     transition: transform 0.8s ease, opacity 0.8s ease;
@@ -28,7 +23,7 @@
     transform: perspective(1000px) rotateX(0deg);
 }
 
-/* ---------- GLOW HOVER ---------- */
+/* GLOW HOVER */
 .glow-hover {
     transition: all 0.4s ease;
 }
@@ -37,7 +32,7 @@
     transform: translateY(-4px);
 }
 
-/* ---------- CARD ANIMATION ---------- */
+/* CARD ANIMATION */
 .card-animate {
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -46,12 +41,12 @@
     box-shadow: 0 20px 60px rgba(13, 110, 253, 0.15);
 }
 
-/* ---------- SMOOTH SCROLL (by browser) ---------- */
+/* SMOOTH SCROLL (by browser) */
 html {
     scroll-behavior: smooth;
 }
 
-/* ---------- PARALLAX HERO (fallback) ---------- */
+/* PARALLAX HERO (fallback) */
 .hero-section {
     background-attachment: fixed;
 }
@@ -61,7 +56,7 @@ html {
     }
 }
 
-/* ---------- LAZY LOAD IMAGE FADE ---------- */
+/* LAZY LOAD IMAGE FADE */
 img.lazy {
     opacity: 0;
     transition: opacity 0.6s ease;
@@ -70,7 +65,7 @@ img.lazy.loaded {
     opacity: 1;
 }
 
-/* ---------- MOUSE HOVER EFFECT ---------- */
+/* MOUSE HOVER EFFECT */
 .hover-scale {
     transition: transform 0.3s ease;
 }
@@ -78,7 +73,7 @@ img.lazy.loaded {
     transform: scale(1.05);
 }
 
-/* ---------- PURE CSS ANIMATIONS ---------- */
+/* PURE CSS ANIMATIONS */
 .pulse {
     animation: pulse 2s infinite;
 }
@@ -141,23 +136,23 @@ img.lazy.loaded {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* ---------- RIPPLE BUTTON (JS enhanced) ---------- */
+/* RIPPLE BUTTON (JS enhanced) */
 .ripple {
     position: relative;
     overflow: hidden;
 }
 
-/* ---------- SCROLL PROGRESS BAR (JS enhanced) ---------- */
+/* SCROLL PROGRESS BAR (JS enhanced) */
 #scroll-progress-bar {
     transition: width 0.1s linear;
 }
 
-/* ---------- COUNTER (JS enhanced) ---------- */
+/* COUNTER (JS enhanced) */
 .counter {
     font-variant-numeric: tabular-nums;
 }
 
-/* ---------- DARK MODE TRANSITION ---------- */
+/* DARK MODE TRANSITION */
 body,
 .navbar,
 .navbar *,

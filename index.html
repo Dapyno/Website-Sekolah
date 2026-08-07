@@ -1,34 +1,85 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Website resmi SMP Al Islam Krian - Sekolah Islam unggulan dengan program pendidikan berkualitas" />
-    <title>SMP Al-Islam Krian</title>
+    
+    <!-- SEO - META TAGS LENGKAP -->
+    <title>SMP Al Islam Krian - Sekolah Islam Unggulan di Sidoarjo</title>
+    <meta name="description" content="SMP Al Islam Krian adalah sekolah Islam unggulan di Sidoarjo dengan program Tahfidz Quran, Robotika, dan prestasi akademik. Informasi PPDB 2026/2027, fasilitas, dan berita terkini." />
+    <meta name="keywords" content="SMP Al Islam Krian, sekolah islam Sidoarjo, PPDB Sidoarjo, sekolah unggulan, tahfidz Quran, robotika, prestasi sekolah, SMP Islam Krian" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="SMP Al Islam Krian" />
+    <meta name="language" content="id" />
+    <link rel="canonical" href="https://smpalislamkrian.sch.id/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://smpalislamkrian.sch.id/" />
+    <meta property="og:title" content="SMP Al Islam Krian - Sekolah Islam Unggulan di Sidoarjo" />
+    <meta property="og:description" content="SMP Al Islam Krian, sekolah Islam unggulan di Sidoarjo dengan program Tahfidz Quran, Robotika, dan prestasi akademik." />
+    <meta property="og:image" content="https://smpalislamkrian.sch.id/assets/logo/logo-smp-al-islam.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SMP Al Islam Krian - Sekolah Islam Unggulan" />
+    <meta name="twitter:description" content="SMP Al Islam Krian, sekolah Islam unggulan di Sidoarjo." />
+    <meta name="twitter:image" content="https://smpalislamkrian.sch.id/assets/logo/logo-smp-al-islam.png" />
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="64x64" href="assets/logo/logo-smp-al-islam.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/180/3031/3031515.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/logo-smp-al-islam.png" />
+    
+    <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-
+    
     <!-- Google Fonts Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
+    
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
     <!-- SwiperJS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
-
+    
     <!-- Custom CSS -->
     <link href="Frontend/css/style.css" rel="stylesheet" />
     <link href="Frontend/css/responsive.css" rel="stylesheet" />
     <link href="Frontend/css/animation.css" rel="stylesheet" />
+    
+    <!-- SCHEMA MARKUP (JSON-LD) - Untuk SEO & Rich Snippet -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "SMP Al Islam Krian",
+        "alternateName": "SMP Al-Islam Krian",
+        "description": "Sekolah Islam unggulan di Sidoarjo dengan program tahfidz Quran, robotika, dan prestasi akademik.",
+        "url": "https://smpalislamkrian.sch.id",
+        "telephone": "+6281231548399",
+        "email": "admin@smpalislam-krian.sch.id",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Kyai Mojo No. 18, Jeruk Gamping",
+            "addressLocality": "Krian",
+            "addressRegion": "Sidoarjo",
+            "postalCode": "61262",
+            "addressCountry": "ID"
+        },
+        "foundingDate": "1998",
+        "openingHours": "Mo-Fr 07:00-16:00",
+        "sameAs": [
+            "https://facebook.com/smpalislamkrian",
+            "https://instagram.com/smpalislamkrian"
+        ]
+    }
+    </script>
 </head>
-
 <body>
+    <!-- LOADING SCREEN -->
     <div id="loading-screen">
         <div class="loader-wrapper">
             <div class="loader-ring"></div>
@@ -57,20 +108,16 @@
                             data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfil">
                             <li><a class="dropdown-item" href="Frontend/navbar/profil/sejarah.html">Sejarah</a></li>
-                            <li><a class="dropdown-item" href="Frontend/navbar/profil/visi&misi.html">Visi &amp;
-                                    Misi</a></li>
-                            <li><a class="dropdown-item" href="Frontend/navbar/profil/sambutan.html">Sambutan Kepsek</a>
-                            </li>
+                            <li><a class="dropdown-item" href="Frontend/navbar/profil/visi-misi.html">Visi &amp; Misi</a></li>
+                            <li><a class="dropdown-item" href="Frontend/navbar/profil/sambutan.html">Sambutan Kepsek</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="Frontend/navbar/guru/guru.php">Guru</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Frontend/navbar/prestasi/prestasi.php">Prestasi</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="Frontend/navbar/prestasi/prestasi.php">Prestasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="Frontend/navbar/berita/berita.php">Berita</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Frontend/navbar/ekstra/ekstra.html">Ekstrakulikuler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Frontend/navbar/ekstra/ekstra.html">Ekstrakurikuler</a></li>
                     <li class="nav-item"><a class="nav-link" href="Frontend/navbar/kontak/kontak.html">Kontak</a></li>
                 </ul>
-                <!-- Dark Mode Toggle -->
                 <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
                     <i class="bi bi-moon-fill"></i>
                 </button>
@@ -94,25 +141,20 @@
                     <p class="lead mb-4">Membangun generasi cerdas, berakhlak mulia, dan berdaya saing global melalui
                         pendidikan berbasis Islam dan teknologi modern.</p>
                     <div class="hero-buttons">
-                        <a href="index.html#ppdb" class="btn btn-primary btn-lg me-3 ripple">Daftar Sekarang <i
-                                class="bi bi-arrow-right"></i></a>
-                        <a href="Frontend/navbar/profil/sejarah.html" class="btn btn-outline-light btn-lg">Lihat
-                            Profil</a>
+                        <a href="index.html#ppdb" class="btn btn-primary btn-lg me-3 ripple">Daftar Sekarang <i class="bi bi-arrow-right"></i></a>
+                        <a href="Frontend/navbar/profil/sejarah.html" class="btn btn-outline-light btn-lg">Lihat Profil</a>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000">
-                    <img src="assets/hero/floating-image.jpg" alt="Ilustrasi Sekolah"
-                        class="img-fluid floating-image" />
+                    <img src="assets/hero/floating-image.jpg" alt="Ilustrasi Sekolah" class="img-fluid floating-image" />
                 </div>
             </div>
         </div>
-        <!-- Wave Divider -->
         <div class="wave-divider">
             <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,40 1440,20 L1440,100 L0,100 Z" fill="#F8FAFC" />
             </svg>
         </div>
-        <!-- Running Text -->
         <div class="running-text">
             <div class="running-text-content">
                 <span>Selamat datang di SMP Al Islam Krian</span>
@@ -164,7 +206,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
-                    <a href="Frontend/navbar/prestasi/prestasi.html" class="quick-card text-center">
+                    <a href="Frontend/navbar/prestasi/prestasi.php" class="quick-card text-center">
                         <div class="quick-icon"><i class="bi bi-trophy"></i></div>
                         <h5>Prestasi</h5>
                         <p>Penghargaan &amp; juara</p>
@@ -212,8 +254,7 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-4" data-aos="fade-right">
                     <div class="sambutan-foto text-center">
-                        <img src="assets/guru/kepala-sekolah.png" alt="Kepala Sekolah SMP Al Islam Krian"
-                            class="img-fluid rounded-4 shadow" />
+                        <img src="assets/guru/kepala-sekolah.png" alt="Kepala Sekolah SMP Al Islam Krian" class="img-fluid rounded-4 shadow" />
                         <div class="sambutan-signature mt-3">
                             <p class="fw-bold mb-0 mt-2">Dyah Rakhmayanti, S.T., M.Pd.</p>
                             <small>Kepala Sekolah</small>
@@ -226,18 +267,15 @@
                     <div class="sambutan-text">
                         <p class="lead">Assalamu'alaikum warahmatullahi wabarakatuh,</p>
                         <p>Puji syukur kita panjatkan ke hadirat Allah SWT yang telah melimpahkan rahmat dan hidayah-Nya
-                            sehingga kita dapat berkegiatan di SMP Al Islam Krian dengan penuh semangat dan dedikasi.
-                        </p>
+                            sehingga kita dapat berkegiatan di SMP Al Islam Krian dengan penuh semangat dan dedikasi.</p>
                         <p>Sebagai lembaga pendidikan Islam, kami berkomitmen untuk memberikan pendidikan terbaik yang
                             memadukan ilmu pengetahuan umum dan agama, membentuk generasi yang cerdas secara
                             intelektual, matang secara emosional, dan kuat secara spiritual.</p>
                         <p>Kami mengundang seluruh orang tua dan masyarakat untuk bersama-sama mendukung proses
-                            pendidikan anak-anak kita, karena keberhasilan pendidikan adalah tanggung jawab kita
-                            bersama.</p>
+                            pendidikan anak-anak kita, karena keberhasilan pendidikan adalah tanggung jawab kita bersama.</p>
                         <p>Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
                     </div>
-                    <a href="Frontend/navbar/profil/sambutan.html" class="btn btn-primary ripple mt-3">Selengkapnya <i
-                            class="bi bi-arrow-right"></i></a>
+                    <a href="Frontend/navbar/profil/sambutan.html" class="btn btn-primary ripple mt-3">Selengkapnya <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -250,11 +288,9 @@
                 <div class="col-lg-6" data-aos="fade-right">
                     <span class="badge bg-primary mb-3">Tentang Kami</span>
                     <h2 class="display-5 fw-bold mb-4">SMP Al Islam Krian</h2>
-                    <p class="lead">Sekolah Islam unggulan yang berkomitmen mencetak generasi berakhlak mulia dan
-                        berprestasi.</p>
+                    <p class="lead">Sekolah Islam unggulan yang berkomitmen mencetak generasi berakhlak mulia dan berprestasi.</p>
                     <p>Didirikan pada tahun 1998, SMP Al Islam Krian telah menjadi salah satu sekolah menengah pertama
-                        favorit di Kabupaten Sidoarjo dengan kombinasi kurikulum nasional dan pendidikan agama Islam
-                        yang kuat.</p>
+                        favorit di Kabupaten Sidoarjo dengan kombinasi kurikulum nasional dan pendidikan agama Islam yang kuat.</p>
                     <div class="row g-3 mt-4">
                         <div class="col-sm-6">
                             <div class="keunggulan-item d-flex align-items-center">
@@ -296,8 +332,7 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="logo-tentang text-center">
-                        <img src="assets/logo/logo-smp-al-islam.png" alt="Logo SMP Al Islam Krian"
-                            class="img-fluid rounded-4 shadow-lg" />
+                        <img src="assets/logo/logo-smp-al-islam.png" alt="Logo SMP Al Islam Krian" class="img-fluid rounded-4 shadow-lg" />
                     </div>
                 </div>
             </div>
@@ -325,16 +360,11 @@
                         <div class="vision-icon mb-3"><i class="bi bi-bullseye"></i></div>
                         <h3 class="fw-bold">Misi</h3>
                         <ul class="list-unstyled">
-                            <li><i class="bi bi-check-lg me-2"></i> Menyelenggarakan pendidikan berkualitas
-                                dengan kurikulum nasional dan agama</li>
-                            <li><i class="bi bi-check-lg me-2"></i> Membentuk karakter siswa dengan
-                                nilai-nilai Islam dan kebangsaan</li>
-                            <li><i class="bi bi-check-lg me-2"></i> Mengembangkan potensi akademik dan
-                                non-akademik siswa</li>
-                            <li><i class="bi bi-check-lg me-2"></i> Mewujudkan lingkungan belajar yang
-                                inovatif dan menyenangkan</li>
-                            <li><i class="bi bi-check-lg me-2"></i> Menjalin kerjasama dengan orang tua dan
-                                masyarakat</li>
+                            <li><i class="bi bi-check-lg me-2"></i> Menyelenggarakan pendidikan berkualitas dengan kurikulum nasional dan agama</li>
+                            <li><i class="bi bi-check-lg me-2"></i> Membentuk karakter siswa dengan nilai-nilai Islam dan kebangsaan</li>
+                            <li><i class="bi bi-check-lg me-2"></i> Mengembangkan potensi akademik dan non-akademik siswa</li>
+                            <li><i class="bi bi-check-lg me-2"></i> Mewujudkan lingkungan belajar yang inovatif dan menyenangkan</li>
+                            <li><i class="bi bi-check-lg me-2"></i> Menjalin kerjasama dengan orang tua dan masyarakat</li>
                         </ul>
                     </div>
                 </div>
@@ -429,7 +459,7 @@
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3" data-aos="flip-up" data-aos-delay="100">
                     <div class="fasilitas-card">
-                        <img src="assets/fasilitas/kelas.webp" alt="Kelas" class="img-fluid" />
+                        <img src="assets/fasilitas/kelas.webp" alt="Kelas Interaktif" class="img-fluid" />
                         <div class="fasilitas-overlay">
                             <h5>Kelas Interaktif</h5>
                             <p>Ruangan ber-AC dengan akses internet</p>
@@ -595,14 +625,78 @@
                 <p class="lead">Dokumentasi kegiatan dan fasilitas SMP Al Islam Krian</p>
             </div>
             <div class="row g-3">
-                <!-- Galeri items (tetap sama) -->
                 <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
                     <div class="galeri-item">
-                        <img src="assets/gallery/gallery-1.jpeg" alt="Gallery 1" class="img-fluid" />
+                        <img src="assets/gallery/gallery-1.jpeg" alt="Galeri 1 - Kegiatan Sekolah" class="img-fluid" />
                         <div class="galeri-overlay"><i class="bi bi-search"></i></div>
                     </div>
                 </div>
-                <!-- ... tambahkan semua galeri items ... -->
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-2.jpg" alt="Galeri 2 - Fasilitas Sekolah" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-3.jpg" alt="Galeri 3 - Kegiatan Siswa" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-4.jpg" alt="Galeri 4 - Prestasi Sekolah" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-5.jpg" alt="Galeri 5 - Kegiatan Ekstrakurikuler" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-6.jpg" alt="Galeri 6 - Lingkungan Sekolah" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-7.jpg" alt="Galeri 7 - Kegiatan Belajar" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-8.jpg" alt="Galeri 8 - Kegiatan Sekolah" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="900">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-9.jpg" alt="Galeri 9 - Prestasi Sekolah" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-10.jpg" alt="Galeri 10 - Kegiatan Siswa" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="1100">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-11.jpg" alt="Galeri 11 - Fasilitas Sekolah" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="1200">
+                    <div class="galeri-item">
+                        <img src="assets/gallery/gallery-12.jpg" alt="Galeri 12 - Kegiatan Sekolah" class="img-fluid" />
+                        <div class="galeri-overlay"><i class="bi bi-search"></i></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -618,7 +712,8 @@
             <div class="row justify-content-center" data-aos="fade-up">
                 <div class="col-lg-8">
                     <div class="video-wrapper ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/0MMRmmdyWrc" title="Video Profil SMP Al Islam Krian"
+                        <iframe src="https://www.youtube.com/embed/0MMRmmdyWrc" 
+                            title="Video Profil SMP Al Islam Krian"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
@@ -641,45 +736,37 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="testimoni-card text-center p-4">
-                            <img src="assets/alumni/alumni 1.jpeg" alt="Alumni 1" class="rounded-circle mb-3"
-                                width="80" />
+                            <img src="assets/alumni/alumni-1.jpeg" alt="Alumni 1" class="rounded-circle mb-3" width="80" />
                             <h5>Dr. Dicka, S.Pd., M.Pd.</h5>
                             <p class="text-muted">Dosen di Universitas Brawijaya</p>
-                            <p>"SMP Al Islam Krian memberikan fondasi pendidikan yang kuat dengan keseimbangan antara
-                                ilmu umum dan agama."</p>
+                            <p>"SMP Al Islam Krian memberikan fondasi pendidikan yang kuat dengan keseimbangan antara ilmu umum dan agama."</p>
                             <div class="stars text-warning">★★★★★</div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="testimoni-card text-center p-4">
-                            <img src="assets/alumni/alumni 2.jpeg" alt="Alumni 2" class="rounded-circle mb-3"
-                                width="80" />
+                            <img src="assets/alumni/alumni-2.jpeg" alt="Alumni 2" class="rounded-circle mb-3" width="80" />
                             <h5>M. Akbar Dika, S.T.</h5>
                             <p class="text-muted">Engineer di PT Telkom</p>
-                            <p>"Berkat pembinaan di SMP Al Islam, saya berhasil meraih beasiswa untuk kuliah di luar
-                                negeri."</p>
+                            <p>"Berkat pembinaan di SMP Al Islam, saya berhasil meraih beasiswa untuk kuliah di luar negeri."</p>
                             <div class="stars text-warning">★★★★★</div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="testimoni-card text-center p-4">
-                            <img src="assets/alumni/alumni 3.jpeg" alt="Alumni 3" class="rounded-circle mb-3"
-                                width="80" />
+                            <img src="assets/alumni/alumni-3.jpeg" alt="Alumni 3" class="rounded-circle mb-3" width="80" />
                             <h5>Deck Side, S.H.</h5>
                             <p class="text-muted">Pengacara Muda</p>
-                            <p>"Pendidikan karakter di SMP Al Islam Krian membentuk saya menjadi pribadi yang percaya
-                                diri dan berintegritas."</p>
+                            <p>"Pendidikan karakter di SMP Al Islam Krian membentuk saya menjadi pribadi yang percaya diri dan berintegritas."</p>
                             <div class="stars text-warning">★★★★★</div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="testimoni-card text-center p-4">
-                            <img src="assets/alumni/alumni 4.jpeg" alt="Alumni 4" class="rounded-circle mb-3"
-                                width="80" />
+                            <img src="assets/alumni/alumni-4.jpeg" alt="Alumni 4" class="rounded-circle mb-3" width="80" />
                             <h5>Decka Dude, S.E.</h5>
                             <p class="text-muted">Pengusaha Muda</p>
-                            <p>"Sekolah ini mengajarkan disiplin dan kerja keras yang saya terapkan hingga saat ini."
-                            </p>
+                            <p>"Sekolah ini mengajarkan disiplin dan kerja keras yang saya terapkan hingga saat ini."</p>
                             <div class="stars text-warning">★★★★★</div>
                         </div>
                     </div>
@@ -700,204 +787,104 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8" data-aos="fade-up">
                     <div class="accordion" id="faqAccordion">
-                        <!-- FAQ items (tetap sama) -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
                                     Apakah SMP Al Islam Krian sudah terakreditasi?
                                 </button>
                             </h2>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">Ya, SMP Al Islam Krian telah terakreditasi A dari BAN-S/M
-                                    dengan nilai sangat memuaskan.</div>
+                                <div class="accordion-body">Ya, SMP Al Islam Krian telah terakreditasi <strong>A</strong> dari BAN-S/M dengan nilai sangat memuaskan.</div>
                             </div>
                         </div>
-                        <!-- ... tambahkan semua FAQ items ... -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== PPDB ==================== -->
-    <section class="ppdb py-5" id="ppdb">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="badge bg-primary mb-3">Pendaftaran</span>
-                <h2 class="display-5 fw-bold">Penerimaan Peserta Didik <span style="color: var(--gold);">Baru</span>
-                </h2>
-                <p class="lead">Tahun Pelajaran 2026/2027</p>
-                <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
-                    <span class="badge bg-light text-dark px-4 py-2 rounded-pill">
-                        <i class="bi bi-calendar3 me-2"></i> Pendaftaran Dibuka
-                    </span>
-                    <span class="badge bg-light text-dark px-4 py-2 rounded-pill">
-                        <i class="bi bi-clock me-2"></i> 1 Feb - 30 Apr 2026
-                    </span>
-                </div>
-            </div>
-
-            <div class="row g-5 align-items-start">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="ppdb-timeline">
-                        <h4 class="fw-bold mb-4">
-                            <i class="bi bi-calendar-event text-primary me-2"></i> Timeline Pendaftaran
-                        </h4>
-                        <div class="timeline-ppdb">
-                            <div class="timeline-item-ppdb">
-                                <div class="timeline-icon"><i class="bi bi-calendar-check"></i></div>
-                                <div class="timeline-content-ppdb">
-                                    <div class="timeline-header">
-                                        <span class="timeline-step">1</span>
-                                        <span class="timeline-date">1 Feb - 30 Apr 2026</span>
-                                    </div>
-                                    <h6>Pendaftaran Online</h6>
-                                    <p>Pendaftaran dilakukan secara online melalui website resmi</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item-ppdb">
-                                <div class="timeline-icon"><i class="bi bi-file-text"></i></div>
-                                <div class="timeline-content-ppdb">
-                                    <div class="timeline-header">
-                                        <span class="timeline-step">2</span>
-                                        <span class="timeline-date">1-15 Mei 2026</span>
-                                    </div>
-                                    <h6>Verifikasi Berkas</h6>
-                                    <p>Verifikasi berkas pendaftaran oleh panitia PPDB</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item-ppdb">
-                                <div class="timeline-icon"><i class="bi bi-pencil-square"></i></div>
-                                <div class="timeline-content-ppdb">
-                                    <div class="timeline-header">
-                                        <span class="timeline-step">3</span>
-                                        <span class="timeline-date">20 Mei 2026</span>
-                                    </div>
-                                    <h6>Tes Potensi Akademik</h6>
-                                    <p>Tes potensi akademik bagi calon siswa</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item-ppdb">
-                                <div class="timeline-icon"><i class="bi bi-megaphone"></i></div>
-                                <div class="timeline-content-ppdb">
-                                    <div class="timeline-header">
-                                        <span class="timeline-step">4</span>
-                                        <span class="timeline-date">25 Mei 2026</span>
-                                    </div>
-                                    <h6>Pengumuman</h6>
-                                    <p>Pengumuman hasil seleksi PPDB</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item-ppdb">
-                                <div class="timeline-icon"><i class="bi bi-check2-circle"></i></div>
-                                <div class="timeline-content-ppdb">
-                                    <div class="timeline-header">
-                                        <span class="timeline-step">5</span>
-                                        <span class="timeline-date">26-30 Mei 2026</span>
-                                    </div>
-                                    <h6>Daftar Ulang</h6>
-                                    <p>Daftar ulang bagi siswa yang diterima</p>
-                                </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Bagaimana cara mendaftar PPDB di SMP Al Islam Krian?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Pendaftaran dapat dilakukan secara <strong>online</strong> melalui website resmi atau datang langsung ke sekolah dengan membawa persyaratan yang ditentukan.</div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Persyaratan -->
-                    <div class="ppdb-requirements mt-5">
-                        <h4 class="fw-bold mb-4">
-                            <i class="bi bi-file-check text-primary me-2"></i> Persyaratan Pendaftaran
-                        </h4>
-                        <div class="row g-3">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="requirement-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Fotokopi Akta Kelahiran</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="requirement-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Fotokopi Kartu Keluarga</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="requirement-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Pas foto 3x4 (2 lembar)</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="requirement-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Fotokopi Ijazah SD/MI</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="requirement-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Surat Keterangan Sehat</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="requirement-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Fotokopi Akta Kelahiran</span>
-                                </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Apa saja ekstrakurikuler yang tersedia?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Tersedia berbagai ekstrakurikuler seperti <strong>Tahfidz Quran, Robotics, Pramuka, Futsal, Basket, Seni Tari, Paduan Suara</strong>, dan masih banyak lainnya.</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Kolom Kanan: Informasi Penting & CTA -->
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="ppdb-info-card">
-                        <div class="ppdb-info-header">
-                            <i class="bi bi-info-circle"></i>
-                            <h4>Informasi Penting</h4>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Apakah sekolah menerapkan kurikulum Merdeka?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Ya, SMP Al Islam Krian telah menerapkan <strong>Kurikulum Merdeka</strong> dengan pendekatan pembelajaran yang berpusat pada siswa.</div>
+                            </div>
                         </div>
-                        <div class="ppdb-info-body">
-                            <div class="info-section">
-                                <h6><i class="bi bi-grid"></i> Jalur Pendaftaran</h6>
-                                <div class="jalur-grid">
-                                    <div class="jalur-item">
-                                        <span class="jalur-icon bg-primary">40%</span>
-                                        <div>
-                                            <strong>Jalur Zonasi</strong>
-                                            <small>Untuk siswa sesuai domisili</small>
-                                        </div>
-                                    </div>
-                                    <div class="jalur-item">
-                                        <span class="jalur-icon bg-warning text-dark">30%</span>
-                                        <div>
-                                            <strong>Jalur Prestasi</strong>
-                                            <small>Untuk siswa berprestasi</small>
-                                        </div>
-                                    </div>
-                                    <div class="jalur-item">
-                                        <span class="jalur-icon bg-success">30%</span>
-                                        <div>
-                                            <strong>Jalur Afirmasi</strong>
-                                            <small>Untuk siswa kurang mampu</small>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Bagaimana fasilitas pendukung di sekolah?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Sekolah dilengkapi dengan fasilitas modern seperti <strong>laboratorium komputer, laboratorium IPA, perpustakaan, masjid, lapangan olahraga</strong>, dan ruang kelas interaktif.</div>
                             </div>
-
-                            <div class="info-section">
-                                <h6><i class="bi bi-cash"></i> Biaya Pendaftaran</h6>
-                                <div class="biaya-box">
-                                    <span class="biaya-amount">Rp 150.000</span>
-                                    <span class="biaya-label">Biaya pendaftaran non-refundable</span>
-                                </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    Apakah ada program beasiswa?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Tersedia program <strong>beasiswa</strong> untuk siswa berprestasi dan kurang mampu secara ekonomi.</div>
                             </div>
-
-                            <div class="info-section">
-                                <h6><i class="bi bi-whatsapp"></i> Info Lebih Lanjut</h6>
-                                <a href="https://wa.me/6281231548399" target="_blank" class="btn-wa">
-                                    <i class="bi bi-whatsapp"></i>
-                                    <span>Hubungi via WhatsApp</span>
-                                </a>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                                    Bagaimana sistem pembelajaran di SMP Al Islam?
+                                </button>
+                            </h2>
+                            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Sistem pembelajaran menggunakan pendekatan <strong>blended learning</strong> dengan kombinasi tatap muka dan pembelajaran berbasis teknologi.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                                    Apakah ada program tahfidz Quran?
+                                </button>
+                            </h2>
+                            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Ya, ada program <strong>tahfidz Quran</strong> dengan target minimal 5 juz yang dikelola oleh guru-guru berpengalaman.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+                                    Bagaimana sistem penilaian siswa?
+                                </button>
+                            </h2>
+                            <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Penilaian menggunakan sistem <strong>berbasis kompetensi</strong> dengan komponen penilaian harian, tengah semester, akhir semester, dan proyek.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10">
+                                    Bagaimana cara menghubungi sekolah?
+                                </button>
+                            </h2>
+                            <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Sekolah dapat dihubungi melalui telepon, WhatsApp, email, atau datang langsung ke alamat di <strong>Jl. Kyai Mojo No. 18, Krian, Sidoarjo</strong>.</div>
                             </div>
                         </div>
                     </div>
@@ -906,7 +893,7 @@
         </div>
     </section>
 
-    <!-- MAPS -->
+    <!-- MAPS / LOKASI -->
     <section class="maps py-5 bg-light" id="kontak">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -937,8 +924,7 @@
                     <div class="kontak-item">
                         <i class="bi bi-geo-alt fs-2"></i>
                         <h5>Alamat</h5>
-                        <p>Jalan Kyai Mojo No. 18, Desa Jeruk Gamping, Kecamatan Krian, Kabupaten Sidoarjo, Jawa Timur
-                        </p>
+                        <p>Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -956,20 +942,17 @@
     <footer class="footer py-5">
         <div class="container">
             <div class="row g-4">
-                <!-- Kolom 1: Tentang Sekolah -->
                 <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">SMP Al Islam Krian</h5>
-                    <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya
-                        saing global.</p>
+                    <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya saing global.</p>
                     <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-youtube"></i></a>
-                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
                     </div>
                 </div>
 
-                <!-- Kolom 2: Informasi Sekolah -->
                 <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Informasi Sekolah</h5>
                     <ul class="list-unstyled">
@@ -977,13 +960,11 @@
                         <li><a href="index.html#akademik"><i class="bi bi-chevron-right"></i> Program Unggulan</a></li>
                         <li><a href="index.html#testimoni"><i class="bi bi-chevron-right"></i> Testimoni Alumni</a></li>
                         <li><a href="index.html#galeri"><i class="bi bi-chevron-right"></i> Dokumentasi</a></li>
-                        <li><a href="Frontend/navbar/faq/faq.html"><i class="bi bi-chevron-right"></i> FAQ</a></li>
-                        <li><a href="Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a>
-                        </li>
+                        <li><a href="Frontend/navbar/ekstra/ekstra.html"><i class="bi bi-chevron-right"></i> Ekstrakurikuler</a></li>
+                        <li><a href="Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a></li>
                     </ul>
                 </div>
 
-                <!-- Kolom 3: Kontak + Live Clock + Tanggal Update -->
                 <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Kontak</h5>
                     <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
@@ -991,7 +972,6 @@
                     <p><i class="bi bi-envelope me-2"></i> admin@smpalislam-krian.sch.id</p>
                     <p><i class="bi bi-clock me-2"></i> Senin - Jumat: 07.00 - 16.00</p>
 
-                    <!-- Live Clock & Tanggal Update -->
                     <div class="footer-info mt-3">
                         <div class="live-clock">
                             <i class="bi bi-clock me-1"></i> <span id="clock">00:00:00</span>
@@ -1020,15 +1000,11 @@
     </button>
 
     <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="Frontend/js/script.js"></script>
     <script src="Frontend/js/slider.js"></script>
     <script src="Frontend/js/counter.js"></script>
 </body>
-
 </html>
