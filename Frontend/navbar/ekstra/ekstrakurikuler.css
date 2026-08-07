@@ -1,0 +1,304 @@
+/* ============================================================
+   EKSTRAKURIKULER.CSS - SMP Al Islam Krian
+   Gaya untuk halaman Ekstrakurikuler
+   ============================================================ */
+
+/* ===== PAGE HEADER ===== */
+.page-header-ekskul {
+    background: linear-gradient(135deg, var(--primary) 0%, #0b5c2a 50%, var(--secondary) 100%);
+    padding: 130px 0 70px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header-ekskul .breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.page-header-ekskul .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.page-header-ekskul .breadcrumb-item a:hover {
+    color: var(--white);
+}
+
+.page-header-ekskul .breadcrumb-item.active {
+    color: var(--white);
+}
+
+.page-header-ekskul .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== STATISTIK EKSKUL ===== */
+.ekskul-stats {
+    margin-top: -40px;
+    position: relative;
+    z-index: 2;
+}
+
+.ekskul-stats .stat-card-ekskul {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-hover);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.ekskul-stats .stat-card-ekskul:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(21, 128, 61, 0.15);
+}
+
+.ekskul-stats .stat-card-ekskul .stat-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.ekskul-stats .stat-card-ekskul .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.ekskul-stats .stat-card-ekskul .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+}
+
+/* ===== KATEGORI EKSKUL ===== */
+.ekskul-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.ekskul-categories .btn-category {
+    padding: 10px 28px;
+    border-radius: 50px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.ekskul-categories .btn-category:hover,
+.ekskul-categories .btn-category.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(21, 128, 61, 0.2);
+}
+
+/* ===== EKSKUL CARD ===== */
+.ekskul-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 30px 25px 28px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.ekskul-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
+}
+
+.ekskul-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--soft-bg);
+    color: var(--primary);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    transition: var(--transition);
+}
+
+.ekskul-card:hover .ekskul-icon-wrapper {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.08);
+}
+
+.ekskul-body .ekskul-badge {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.ekskul-badge.keagamaan {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.ekskul-badge.olahraga {
+    background: #DBEAFE;
+    color: #1D4ED8;
+}
+
+.ekskul-badge.seni {
+    background: #FCE7F3;
+    color: #BE185D;
+}
+
+.ekskul-badge.sains {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.ekskul-body h5 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.ekskul-body p {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.ekskul-meta {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    flex-wrap: wrap;
+}
+
+.ekskul-meta i {
+    color: var(--primary);
+    margin-right: 4px;
+}
+
+/* ===== CTA / QUOTE ===== */
+.ekskul-cta {
+    background: var(--soft-bg);
+    border-radius: var(--radius);
+    padding: 50px;
+    text-align: center;
+    margin-top: 40px;
+    border: 2px dashed var(--border);
+}
+
+.ekskul-cta h4 {
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.ekskul-cta p {
+    color: var(--text-soft);
+    margin-bottom: 20px;
+}
+
+.ekskul-cta .btn-contact {
+    padding: 12px 36px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.ekskul-cta .btn-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(21, 128, 61, 0.25);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 991px) {
+    .page-header-ekskul {
+        padding: 100px 0 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-header-ekskul {
+        padding: 110px 0 40px;
+    }
+
+    .page-header-ekskul h1 {
+        font-size: 2.2rem;
+    }
+
+    .ekskul-stats {
+        margin-top: -20px;
+    }
+
+    .ekskul-stats .stat-card-ekskul {
+        padding: 18px 15px;
+    }
+
+    .ekskul-stats .stat-card-ekskul .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .ekskul-categories .btn-category {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+    }
+
+    .ekskul-card {
+        padding: 22px 18px 22px;
+    }
+
+    .ekskul-cta {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .page-header-ekskul h1 {
+        font-size: 1.8rem;
+    }
+
+    .page-header-ekskul .lead {
+        font-size: 1rem !important;
+    }
+
+    .ekskul-meta {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ekskul-icon-wrapper {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+}

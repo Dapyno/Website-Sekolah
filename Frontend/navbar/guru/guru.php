@@ -122,7 +122,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
                     <li class="nav-item"><a class="nav-link active" href="guru.php">Guru</a></li>
                     <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.php">Prestasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../faq/faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ekstra/ekstra.html">Ekstrakulikuler</a></li>
                     <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>
                 </ul>
                 <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
