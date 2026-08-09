@@ -107,7 +107,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="checkbox" name="remember" value="1" autocomplete="off" />
                     Ingat saya
                 </label>
-                <a href="#" class="forgot-link">Lupa password?</a>
             </div>
 
             <button type="submit" class="btn-login">
