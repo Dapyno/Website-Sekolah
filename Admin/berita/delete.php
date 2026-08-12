@@ -7,20 +7,33 @@ if(!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true
 
 require_once '../../Backend/config/database.php';
 require_once '../../Backend/models/Berita.php';
-require_once '../../Backend/helpers/functions.php';
 
 $beritaModel = new Berita($pdo);
-$id = $_GET['id'] ?? 0;
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+if($id <= 0) {
+    header('Location: index.php?msg=ID berita tidak valid&type=danger');
+    exit();
+}
+
 $berita = $beritaModel->getById($id);
 
-if($berita) {
-    if($berita['gambar'] && file_exists('../../assets/berita/' . $berita['gambar'])) {
-        unlink('../../assets/berita/' . $berita['gambar']);
+if(!$berita) {
+    header('Location: index.php?msg=Berita tidak ditemukan&type=danger');
+    exit();
+}
+
+if(!empty($berita['gambar']) && $berita['gambar'] != 'default.jpg') {
+    $filePath = '../../assets/berita/' . $berita['gambar'];
+    if(file_exists($filePath)) {
+        unlink($filePath);
     }
-    $beritaModel->delete($id);
+}
+
+if($beritaModel->delete($id)) {
     header('Location: index.php?msg=Berita berhasil dihapus&type=success');
 } else {
-    header('Location: index.php?msg=Berita tidak ditemukan&type=danger');
+    header('Location: index.php?msg=Gagal menghapus berita&type=danger');
 }
 exit();
 ?>

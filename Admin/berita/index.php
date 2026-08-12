@@ -7,111 +7,293 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 require_once '../../Backend/config/database.php';
 require_once '../../Backend/models/Berita.php';
-require_once '../../Backend/helpers/functions.php';
 
 $beritaModel = new Berita($pdo);
 $beritaList = $beritaModel->getAll();
+
+$stmt = $pdo->query("SELECT COUNT(*) as total FROM berita");
+$totalBerita = $stmt->fetch()['total'] ?? 0;
+
+$stmt = $pdo->query("SELECT COUNT(*) as total FROM guru");
+$totalGuru = $stmt->fetch()['total'] ?? 0;
+
+$stmt = $pdo->query("SELECT COUNT(*) as total FROM prestasi");
+$totalPrestasi = $stmt->fetch()['total'] ?? 0;
+
 $message = $_GET['msg'] ?? '';
 $messageType = $_GET['type'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelola Berita - Admin</title>
+    <title>Kelola Berita - Admin SMP Al Islam Krian</title>
     <link rel="icon" type="image/png" sizes="64x64" href="../../assets/logo/logo-smp-al-islam.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'smp': '#0E9F6E',
+                        'smp-dark': '#0B8159',
+                        'smp-gold': '#D4AF37',
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="../css/admin-style.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #F4F5F7; }
+        
+        .sidebar {
+            width: 260px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(229,231,235,0.5);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            z-index: 50;
+            padding: 24px 16px;
+        }
+        
+        .sidebar-brand { display: flex; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid #E5E7EB; margin-bottom: 20px; }
+        .sidebar-brand img { height: 40px; width: 40px; border-radius: 10px; object-fit: cover; }
+        .sidebar-brand .name { font-weight: 700; font-size: 0.95rem; color: #1F2937; }
+        .sidebar-brand .tag { font-size: 0.6rem; color: #0E9F6E; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .sidebar-menu { list-style: none; padding: 0; margin: 0; }
+        .sidebar-menu li { margin-bottom: 2px; }
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: #6B7280;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .sidebar-menu li a:hover { background: rgba(14,159,110,0.06); color: #0E9F6E; }
+        .sidebar-menu li.active a { background: #0E9F6E; color: #FFFFFF; }
+        .sidebar-menu li a .badge {
+            margin-left: auto;
+            background: #E5E7EB;
+            color: #6B7280;
+            font-size: 0.6rem;
+            padding: 2px 10px;
+            border-radius: 50px;
+        }
+        .sidebar-menu li.active a .badge { background: rgba(255,255,255,0.2); color: #FFFFFF; }
+        .sidebar-menu li a.text-danger { color: #EF4444; }
+        .sidebar-menu li a.text-danger:hover { background: rgba(239,68,68,0.08); }
+        
+        .sidebar-divider { height: 1px; background: #E5E7EB; margin: 16px 12px; }
+        
+        .sidebar-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 20px;
+            border-top: 1px solid #E5E7EB;
+            background: rgba(255,255,255,0.8);
+        }
+        .sidebar-footer .user { display: flex; align-items: center; gap: 12px; }
+        .sidebar-footer .user .avatar {
+            width: 36px; height: 36px; border-radius: 50%; background: #0E9F6E;
+            display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 700; font-size: 0.8rem;
+        }
+        .sidebar-footer .user .info .name { font-weight: 600; font-size: 0.85rem; color: #1F2937; }
+        .sidebar-footer .user .info .role { font-size: 0.7rem; color: #6B7280; }
+        
+        .main-content { margin-left: 260px; padding: 24px 32px; min-height: 100vh; }
+        
+        .alert-success { background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; }
+        .alert-danger { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+        
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #F4F5F7; }
+        ::-webkit-scrollbar-thumb { background: #0E9F6E; border-radius: 10px; }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 70px; padding: 16px 8px; }
+            .sidebar-brand .text, .sidebar-menu li a span, .sidebar-menu li a .badge, .sidebar-footer .user .info { display: none; }
+            .sidebar-brand { justify-content: center; padding-bottom: 16px; }
+            .sidebar-menu li a { justify-content: center; padding: 12px; gap: 0; }
+            .sidebar-menu li a i { font-size: 1.2rem; }
+            .main-content { margin-left: 70px; padding: 16px; }
+            .sidebar-footer { padding: 12px; }
+            .sidebar-footer .user { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar { width: 60px; padding: 12px 6px; }
+            .main-content { margin-left: 60px; padding: 12px; }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="admin-wrapper">
-        <nav class="admin-sidebar">
-            <div class="sidebar-brand">
-                <img src="../../assets/logo/logo-smp-al-islam.png" alt="Logo" height="40">
-                <span>Admin</span>
-            </div>
-            <ul class="sidebar-menu">
-                <li><a href="../dashboard.php"><i class="bi bi-grid"></i> <span>Dashboard</span></a></li>
-                <!-- ===== BERITA - ACTIVE ===== -->
-                <li class="active"><a href="index.php"><i class="bi bi-newspaper"></i> <span>Berita</span></a></li>
-                <li><a href="../guru/index.php"><i class="bi bi-person"></i> <span>Guru</span></a></li>
-                <li><a href="../prestasi/index.php"><i class="bi bi-trophy"></i> <span>Prestasi</span></a></li>
-                <li><a href="../logout.php" class="text-danger"><i class="bi bi-box-arrow-right"></i> <span>Logout</span></a></li>
-            </ul>
-        </nav>
 
-        <main class="admin-main">
-            <header class="admin-header">
-                <h4><i class="bi bi-newspaper me-2"></i> Kelola Berita</h4>
-                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Tambah Berita</a>
-            </header>
-
-            <div class="admin-content">
-                <?php if ($message): ?>
-                    <div class="alert alert-<?= $messageType ?> alert-dismissible fade show">
-                        <?= $message ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                <?php endif; ?>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Semua Berita (<?= count($beritaList) ?>)</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Gambar</th>
-                                        <th>Judul</th>
-                                        <th>Kategori</th>
-                                        <th>Tanggal</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php if (empty($beritaList)): ?>
-                                        <tr>
-                                            <td colspan="6" class="text-center py-4 text-muted">Belum ada berita. <a href="create.php">Tambahkan berita pertama</a></td>
-                                        </tr>
-                                    <?php else: ?>
-                                        <?php $no = 1;
-                                        foreach ($beritaList as $b): ?>
-                                            <tr>
-                                                <td><?= $no++ ?></td>
-                                                <td>
-                                                    <?php if ($b['gambar']): ?>
-                                                        <img src="../../assets/berita/<?= $b['gambar'] ?>" width="60" height="45" style="object-fit:cover; border-radius:6px;">
-                                                    <?php else: ?>
-                                                        <span class="text-muted">No image</span>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td><?= substr($b['judul'], 0, 50) ?>...</td>
-                                                <td><span class="badge <?= getKategoriClass($b['kategori']) ?>"><?= getKategoriLabel($b['kategori']) ?></span></td>
-                                                <td><?= formatTanggal($b['tanggal']) ?></td>
-                                                <td>
-                                                    <a href="edit.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
-                                                    <a href="delete.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')"><i class="bi bi-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <img src="../../assets/logo/logo-smp-al-islam.png" alt="Logo" />
+        <div class="text">
+            <div class="name">SMP Al Islam</div>
+            <div class="tag">Administrator</div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
+    <ul class="sidebar-menu">
+        <li><a href="../dashboard.php"><i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+        <li class="active"><a href="index.php"><i class="bi bi-newspaper"></i><span>Berita</span><span class="badge"><?= $totalBerita ?></span></a></li>
+        <li><a href="../guru/index.php"><i class="bi bi-person"></i><span>Guru</span><span class="badge"><?= $totalGuru ?></span></a></li>
+        <li><a href="../prestasi/index.php"><i class="bi bi-trophy"></i><span>Prestasi</span><span class="badge"><?= $totalPrestasi ?></span></a></li>
+        <div class="sidebar-divider"></div>
+        <li><a href="../logout.php" class="text-danger"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <div class="user">
+            <div class="avatar"><?= strtoupper(substr($_SESSION['nama'], 0, 1)) ?></div>
+            <div class="info">
+                <div class="name"><?= $_SESSION['nama'] ?></div>
+                <div class="role">Administrator</div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<main class="main-content">
+
+    <header class="flex justify-between items-center flex-wrap gap-3 pb-6 border-b border-gray-200">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="bi bi-newspaper text-smp"></i> Kelola Berita
+            </h1>
+            <p class="text-sm text-gray-400 mt-0.5">Kelola berita dan informasi sekolah</p>
+        </div>
+        <a href="create.php" class="bg-smp hover:bg-smp-dark text-white px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all hover:shadow-lg text-sm font-medium">
+            <i class="bi bi-plus-lg"></i> Tambah Berita
+        </a>
+    </header>
+
+    <?php if($message): ?>
+    <div class="mt-4 p-4 rounded-xl flex items-center gap-3 animate-fade-in <?= $messageType == 'success' ? 'alert-success' : 'alert-danger' ?>">
+        <i class="bi bi-<?= $messageType == 'success' ? 'check-circle' : 'exclamation-circle' ?> text-lg"></i>
+        <span class="flex-1"><?= $message ?></span>
+        <button type="button" class="text-gray-400 hover:text-gray-600" onclick="this.parentElement.remove()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+    <?php endif; ?>
+
+    <div class="mt-6 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center flex-wrap gap-3">
+            <div class="flex items-center gap-2">
+                <i class="bi bi-newspaper text-smp text-lg"></i>
+                <h3 class="font-semibold text-gray-800">Semua Berita</h3>
+                <span class="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-full"><?= $totalBerita ?></span>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-gray-50">
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">#</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Gambar</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Judul</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Kategori</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Tanggal</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    <?php if(empty($beritaList)): ?>
+                    <tr>
+                        <td colspan="6" class="text-center py-12 text-gray-400">
+                            <i class="bi bi-newspaper text-4xl block mb-3 text-gray-300"></i>
+                            <p class="font-medium">Belum ada data berita</p>
+                            <p class="text-sm mt-1">Klik tombol <span class="text-smp font-medium">"Tambah Berita"</span></p>
+                        </td>
+                    </tr>
+                    <?php else: ?>
+                    <?php $no = 1; foreach($beritaList as $b): ?>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 text-gray-400"><?= $no++ ?></td>
+                        <td class="px-4 py-3">
+                            <?php if($b['gambar'] && file_exists('../../assets/berita/' . $b['gambar'])): ?>
+                            <img src="../../assets/berita/<?= $b['gambar'] ?>" class="w-14 h-10 rounded-lg object-cover border border-gray-100" />
+                            <?php else: ?>
+                            <div class="w-14 h-10 rounded-lg bg-gray-100 flex items-center justify-center border border-gray-200">
+                                <i class="bi bi-image text-gray-300 text-lg"></i>
+                            </div>
+                            <?php endif; ?>
+                        </td>
+                        <td class="px-4 py-3 font-medium text-gray-800 max-w-xs truncate"><?= htmlspecialchars($b['judul']) ?></td>
+                        <td class="px-4 py-3">
+                            <?php 
+                            $kategoriClasses = [
+                                'prestasi' => 'bg-yellow-100 text-yellow-700',
+                                'acara' => 'bg-purple-100 text-purple-700',
+                                'pendidikan' => 'bg-blue-100 text-blue-700',
+                                'pengumuman' => 'bg-green-100 text-green-700'
+                            ];
+                            $kategoriLabels = [
+                                'prestasi' => '🏆 Prestasi',
+                                'acara' => '🎉 Acara',
+                                'pendidikan' => '📚 Pendidikan',
+                                'pengumuman' => '📢 Pengumuman'
+                            ];
+                            $kat = $b['kategori'] ?? 'pendidikan';
+                            $class = $kategoriClasses[$kat] ?? 'bg-gray-100 text-gray-700';
+                            $label = $kategoriLabels[$kat] ?? ucfirst($kat);
+                            ?>
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold <?= $class ?>">
+                                <?= $label ?>
+                            </span>
+                        </td>
+                        <td class="px-4 py-3 text-gray-600"><?= date('d-m-Y', strtotime($b['tanggal'])) ?></td>
+                        <td class="px-4 py-3">
+                            <div class="flex gap-1">
+                                <a href="edit.php?id=<?= $b['id'] ?>" class="p-2 rounded-lg text-blue-500 hover:bg-blue-50 transition-colors" title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="delete.php?id=<?= $b['id'] ?>" class="p-2 rounded-lg text-red-500 hover:bg-red-50 transition-colors" title="Hapus" onclick="return confirm('Yakin ingin menghapus berita ini?')">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="text-center text-sm text-gray-400 border-t border-gray-200 mt-8 pt-4">
+        <i class="bi bi-shield-check text-smp"></i>
+        SMP Al Islam Krian &bull; Dashboard Administrator &bull; <?= date('Y') ?>
+    </div>
+</main>
+
+</body>
 </html>

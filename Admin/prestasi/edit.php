@@ -33,6 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
         $uploadResult = uploadGambar($_FILES['gambar'], '../../assets/prestasi/');
         if($uploadResult['success']) {
+            // Hapus gambar lama jika ada dan bukan default
             if($prestasi['gambar'] && file_exists('../../assets/prestasi/' . $prestasi['gambar']) && $prestasi['gambar'] != 'default.jpg') {
                 unlink('../../assets/prestasi/' . $prestasi['gambar']);
             }
@@ -101,235 +102,431 @@ $totalPrestasi = $stmt->fetch()['total'] ?? 0;
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="../css/admin-style.css" rel="stylesheet" />
     
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: #F4F5F7; }
-        .form-label { @apply block text-sm font-semibold text-gray-700 mb-1.5; }
-        .form-control {
-            @apply w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-smp/20 focus:border-smp bg-gray-50/50 transition-all;
+        
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(229,231,235,0.5);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            z-index: 50;
+            padding: 24px 16px;
         }
-        .form-control:focus { @apply bg-white; }
-        .form-control::placeholder { @apply text-gray-400; }
+        
+        .sidebar-brand { display: flex; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid #E5E7EB; margin-bottom: 20px; }
+        .sidebar-brand img { height: 40px; width: 40px; border-radius: 10px; object-fit: cover; }
+        .sidebar-brand .name { font-weight: 700; font-size: 0.95rem; color: #1F2937; }
+        .sidebar-brand .tag { font-size: 0.6rem; color: #0E9F6E; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .sidebar-menu { list-style: none; padding: 0; margin: 0; }
+        .sidebar-menu li { margin-bottom: 2px; }
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: #6B7280;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .sidebar-menu li a:hover { background: rgba(14,159,110,0.06); color: #0E9F6E; }
+        .sidebar-menu li.active a { background: #0E9F6E; color: #FFFFFF; }
+        .sidebar-menu li a .badge {
+            margin-left: auto;
+            background: #E5E7EB;
+            color: #6B7280;
+            font-size: 0.6rem;
+            padding: 2px 10px;
+            border-radius: 50px;
+        }
+        .sidebar-menu li.active a .badge { background: rgba(255,255,255,0.2); color: #FFFFFF; }
+        .sidebar-menu li a.text-danger { color: #EF4444; }
+        .sidebar-menu li a.text-danger:hover { background: rgba(239,68,68,0.08); }
+        
+        .sidebar-divider { height: 1px; background: #E5E7EB; margin: 16px 12px; }
+        
+        .sidebar-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 20px;
+            border-top: 1px solid #E5E7EB;
+            background: rgba(255,255,255,0.8);
+        }
+        .sidebar-footer .user { display: flex; align-items: center; gap: 12px; }
+        .sidebar-footer .user .avatar {
+            width: 36px; height: 36px; border-radius: 50%; background: #0E9F6E;
+            display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 700; font-size: 0.8rem;
+        }
+        .sidebar-footer .user .info .name { font-weight: 600; font-size: 0.85rem; color: #1F2937; }
+        .sidebar-footer .user .info .role { font-size: 0.7rem; color: #6B7280; }
+        
+        /* Main Content */
+        .main-content { margin-left: 260px; padding: 24px 32px; min-height: 100vh; }
+        
+        /* Form Styles */
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.375rem;
+        }
+        .form-control, .form-select {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            background-color: #FFFFFF;
+            color: #1F2937;
+        }
+        .form-control:focus, .form-select:focus {
+            outline: none;
+            border-color: #0E9F6E;
+            box-shadow: 0 0 0 3px rgba(14,159,110,0.2);
+        }
+        .form-control::placeholder {
+            color: #9CA3AF;
+        }
         .form-select {
-            @apply w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-smp/20 focus:border-smp bg-gray-50/50 transition-all appearance-none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.75rem center;
             background-repeat: no-repeat;
-            background-position: right 16px center;
-            padding-right: 44px;
+            background-size: 1.25rem 1.25rem;
+            padding-right: 2.5rem;
         }
-        .form-select:focus { @apply bg-white; }
-        .form-text { @apply text-xs text-gray-400 mt-1.5; }
-        .alert-danger { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        /* Alert */
+        .alert-danger {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: #FEF2F2;
+            border: 1px solid #FECACA;
+            color: #991B1B;
+        }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #F4F5F7; }
+        ::-webkit-scrollbar-thumb { background: #0E9F6E; border-radius: 10px; }
+        
+        /* Image Preview */
+        .preview-container {
+            min-height: 180px;
+            border: 2px dashed #E5E7EB;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F9FAFB;
+        }
+        .preview-container.has-image {
+            border-color: #0E9F6E;
+            border-style: solid;
+            background-color: #FFFFFF;
+        }
+        .preview-image {
+            max-height: 160px;
+            width: auto;
+            border-radius: 0.5rem;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 70px; padding: 16px 8px; }
+            .sidebar-brand .text, .sidebar-menu li a span, .sidebar-menu li a .badge, .sidebar-footer .user .info { display: none; }
+            .sidebar-brand { justify-content: center; padding-bottom: 16px; }
+            .sidebar-menu li a { justify-content: center; padding: 12px; gap: 0; }
+            .sidebar-menu li a i { font-size: 1.2rem; }
+            .main-content { margin-left: 70px; padding: 16px; }
+            .sidebar-footer { padding: 12px; }
+            .sidebar-footer .user { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar { width: 60px; padding: 12px 6px; }
+            .main-content { margin-left: 60px; padding: 12px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="flex h-screen overflow-hidden bg-gray-50">
+<!-- ============================================================
+SIDEBAR
+============================================================ -->
+<aside class="sidebar">
+    <!-- Brand -->
+    <div class="sidebar-brand">
+        <img src="../../assets/logo/logo-smp-al-islam.png" alt="Logo" />
+        <div class="text">
+            <div class="name">SMP Al Islam</div>
+            <div class="tag">Administrator</div>
+        </div>
+    </div>
 
-    <!-- ============================================================
-    SIDEBAR - Tailwind
-    ============================================================ -->
-    <aside class="w-64 bg-white/80 backdrop-blur-md border-r border-gray-200/50 flex-shrink-0 overflow-y-auto admin-sidebar">
+    <!-- Menu -->
+    <ul class="sidebar-menu">
+        <li>
+            <a href="../dashboard.php">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="../berita/index.php">
+                <i class="bi bi-newspaper"></i>
+                <span>Berita</span>
+                <span class="badge"><?= $totalBerita ?></span>
+            </a>
+        </li>
+        <li>
+            <a href="../guru/index.php">
+                <i class="bi bi-person"></i>
+                <span>Guru</span>
+                <span class="badge"><?= $totalGuru ?></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="index.php">
+                <i class="bi bi-trophy"></i>
+                <span>Prestasi</span>
+                <span class="badge"><?= $totalPrestasi ?></span>
+            </a>
+        </li>
         
-        <div class="flex items-center gap-3 px-5 py-6 border-b border-gray-200/50">
-            <img src="../../assets/logo/logo-smp-al-islam.png" alt="Logo" class="h-10 w-10 rounded-xl object-cover" />
-            <div>
-                <div class="font-bold text-gray-800 text-sm">SMP Al Islam</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider">Administrator</div>
+        <div class="sidebar-divider"></div>
+        
+        <li>
+            <a href="../logout.php" class="text-danger">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    </ul>
+
+    <!-- Footer -->
+    <div class="sidebar-footer">
+        <div class="user">
+            <div class="avatar"><?= strtoupper(substr($_SESSION['nama'], 0, 1)) ?></div>
+            <div class="info">
+                <div class="name"><?= $_SESSION['nama'] ?></div>
+                <div class="role">Administrator</div>
             </div>
         </div>
+    </div>
+</aside>
 
-        <nav class="p-3">
-            <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 mb-2">Menu Utama</div>
-            
-            <a href="../dashboard.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition-all">
-                <i class="bi bi-grid text-lg"></i>
-                <span class="text-sm font-medium">Dashboard</span>
-            </a>
-            
-            <a href="../berita/index.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition-all mt-1">
-                <i class="bi bi-newspaper text-lg"></i>
-                <span class="text-sm font-medium">Berita</span>
-                <span class="ml-auto bg-blue-100 text-blue-600 text-xs px-2 py-0.5 rounded-full"><?= $totalBerita ?></span>
-            </a>
-            
-            <a href="../guru/index.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition-all mt-1">
-                <i class="bi bi-person text-lg"></i>
-                <span class="text-sm font-medium">Guru</span>
-                <span class="ml-auto bg-green-100 text-green-600 text-xs px-2 py-0.5 rounded-full"><?= $totalGuru ?></span>
-            </a>
-            
-            <a href="index.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition-all mt-1">
-                <i class="bi bi-trophy text-lg"></i>
-                <span class="text-sm font-medium">Prestasi</span>
-                <span class="ml-auto bg-yellow-100 text-yellow-600 text-xs px-2 py-0.5 rounded-full"><?= $totalPrestasi ?></span>
-            </a>
-            
-            <div class="border-t border-gray-200/50 my-3"></div>
-            
-            <a href="../logout.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-500 hover:bg-red-50 transition-all mt-1">
-                <i class="bi bi-box-arrow-right text-lg"></i>
-                <span class="text-sm font-medium">Logout</span>
-            </a>
-        </nav>
+<!-- ============================================================
+MAIN CONTENT
+============================================================ -->
+<main class="main-content">
 
-        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200/50 bg-white/80 backdrop-blur-sm">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-smp text-white flex items-center justify-center font-bold text-sm">
-                    <?= strtoupper(substr($_SESSION['nama'], 0, 1)) ?>
-                </div>
-                <div>
-                    <div class="text-sm font-semibold text-gray-800"><?= $_SESSION['nama'] ?></div>
-                    <div class="text-xs text-gray-400">Administrator</div>
-                </div>
+    <!-- HEADER -->
+    <header class="flex justify-between items-center flex-wrap gap-3 pb-6 border-b border-gray-200">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="bi bi-pencil text-smp"></i>
+                Edit Prestasi
+            </h1>
+            <p class="text-sm text-gray-400 mt-0.5">Edit data prestasi sekolah</p>
+        </div>
+        <a href="index.php" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all text-sm font-medium">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </a>
+    </header>
+
+    <!-- ERROR ALERT -->
+    <?php if($error): ?>
+    <div class="mt-4 p-4 rounded-xl flex items-center gap-3 animate-fade-in alert-danger">
+        <i class="bi bi-exclamation-circle text-lg"></i>
+        <span class="flex-1"><?= htmlspecialchars($error) ?></span>
+        <button type="button" class="text-red-400 hover:text-red-600" onclick="this.parentElement.remove()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+    <?php endif; ?>
+
+    <!-- FORM CARD -->
+    <div class="mt-6 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-100">
+            <div class="flex items-center gap-2">
+                <i class="bi bi-pencil-square text-smp text-lg"></i>
+                <h3 class="font-semibold text-gray-800">Form Edit Prestasi</h3>
             </div>
         </div>
-    </aside>
+        
+        <div class="p-6">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Kolom Kiri (2/3) -->
+                    <div class="lg:col-span-2 space-y-4">
+                        <!-- Nama Prestasi -->
+                        <div>
+                            <label class="form-label">Nama Prestasi <span class="text-red-500">*</span></label>
+                            <input type="text" name="nama_prestasi" class="form-control" 
+                                value="<?= htmlspecialchars($prestasi['nama_prestasi']) ?>" 
+                                placeholder="Masukkan nama prestasi" required>
+                        </div>
 
-    <!-- ============================================================
-    MAIN CONTENT - Tailwind
-    ============================================================ -->
-    <main class="flex-1 overflow-y-auto p-6">
+                        <!-- Tingkat & Tahun -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="form-label">Tingkat <span class="text-red-500">*</span></label>
+                                <select name="tingkat" class="form-select" required>
+                                    <option value="internasional" <?= $prestasi['tingkat'] == 'internasional' ? 'selected' : '' ?>>🌍 Internasional</option>
+                                    <option value="nasional" <?= $prestasi['tingkat'] == 'nasional' ? 'selected' : '' ?>>🇮🇩 Nasional</option>
+                                    <option value="provinsi" <?= $prestasi['tingkat'] == 'provinsi' ? 'selected' : '' ?>>🏅 Provinsi</option>
+                                    <option value="kabupaten" <?= $prestasi['tingkat'] == 'kabupaten' ? 'selected' : '' ?>>🏆 Kabupaten</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Tahun <span class="text-red-500">*</span></label>
+                                <input type="number" name="tahun" class="form-control" 
+                                    value="<?= $prestasi['tahun'] ?>" 
+                                    min="2000" max="<?= date('Y') + 1 ?>" 
+                                    placeholder="Masukkan tahun" required>
+                            </div>
+                        </div>
 
-        <!-- HEADER -->
-        <header class="flex justify-between items-center flex-wrap gap-3 pb-6 border-b border-gray-200/50">
-            <div>
-                <h1 class="text-2xl font-bold text-gray-800">
-                    <i class="bi bi-pencil text-smp mr-2"></i>Edit Prestasi
-                </h1>
-                <p class="text-sm text-gray-400 mt-0.5">Edit data prestasi sekolah</p>
-            </div>
-            <a href="index.php" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all text-sm font-medium">
-                <i class="bi bi-arrow-left"></i> Kembali
-            </a>
-        </header>
+                        <!-- Deskripsi -->
+                        <div>
+                            <label class="form-label">Deskripsi</label>
+                            <textarea name="deskripsi" class="form-control" rows="4" 
+                                placeholder="Tuliskan deskripsi prestasi"><?= htmlspecialchars($prestasi['deskripsi']) ?></textarea>
+                        </div>
 
-        <!-- ALERT ERROR -->
-        <?php if($error): ?>
-        <div class="mt-4 p-4 rounded-xl flex items-center gap-3 animate-fade-in alert-danger">
-            <i class="bi bi-exclamation-circle text-lg"></i>
-            <span class="flex-1"><?= $error ?></span>
-            <button type="button" class="text-gray-400 hover:text-gray-600" onclick="this.parentElement.remove()">
-                <i class="bi bi-x-lg"></i>
-            </button>
-        </div>
-        <?php endif; ?>
+                        <!-- Siswa & Lokasi -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="form-label">Siswa / Tim</label>
+                                <input type="text" name="siswa" class="form-control" 
+                                    value="<?= htmlspecialchars($prestasi['siswa']) ?>" 
+                                    placeholder="Nama siswa atau tim">
+                            </div>
+                            <div>
+                                <label class="form-label">Lokasi</label>
+                                <input type="text" name="lokasi" class="form-control" 
+                                    value="<?= htmlspecialchars($prestasi['lokasi']) ?>" 
+                                    placeholder="Tempat/lokasi prestasi">
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- FORM -->
-        <div class="mt-6 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-100/50 shadow-sm overflow-hidden">
-            <div class="px-6 py-4 border-b border-gray-100">
-                <h3 class="font-semibold text-gray-800 flex items-center gap-2">
-                    <i class="bi bi-pencil-square text-smp"></i>
-                    Form Edit Prestasi
-                </h3>
-            </div>
-            
-            <div class="p-6">
-                <form method="POST" enctype="multipart/form-data" class="space-y-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Kolom Kanan (1/3) - Gambar -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="form-label">Gambar</label>
+                            <input type="file" name="gambar" class="form-control" accept="image/*" onchange="previewImage(event)">
+                            <p class="text-xs text-gray-400 mt-1.5">
+                                <i class="bi bi-info-circle"></i> Kosongkan jika tidak ingin mengganti
+                            </p>
+                        </div>
                         
-                        <!-- Kolom Kiri (2/3) -->
-                        <div class="lg:col-span-2 space-y-4">
-                            <!-- Nama Prestasi -->
-                            <div>
-                                <label class="form-label">
-                                    Nama Prestasi <span class="text-red-500">*</span>
-                                </label>
-                                <input type="text" name="nama_prestasi" class="form-control" 
-                                    value="<?= htmlspecialchars($prestasi['nama_prestasi']) ?>" required />
+                        <div id="previewContainer" class="preview-container <?= ($prestasi['gambar'] && file_exists('../../assets/prestasi/' . $prestasi['gambar'])) ? 'has-image' : '' ?>">
+                            <?php if($prestasi['gambar'] && file_exists('../../assets/prestasi/' . $prestasi['gambar'])): ?>
+                            <img id="previewImage" src="../../assets/prestasi/<?= $prestasi['gambar'] ?>" class="preview-image" alt="Preview" />
+                            <div id="previewPlaceholder" class="hidden">
+                                <i class="bi bi-image text-4xl text-gray-300 block mb-2"></i>
+                                <p class="text-sm text-gray-400">Preview foto akan muncul di sini</p>
                             </div>
-
-                            <!-- Tingkat & Tahun -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="form-label">
-                                        Tingkat <span class="text-red-500">*</span>
-                                    </label>
-                                    <select name="tingkat" class="form-select" required>
-                                        <option value="internasional" <?= $prestasi['tingkat'] == 'internasional' ? 'selected' : '' ?>>🌍 Internasional</option>
-                                        <option value="nasional" <?= $prestasi['tingkat'] == 'nasional' ? 'selected' : '' ?>>🇮🇩 Nasional</option>
-                                        <option value="provinsi" <?= $prestasi['tingkat'] == 'provinsi' ? 'selected' : '' ?>>🏅 Provinsi</option>
-                                        <option value="kabupaten" <?= $prestasi['tingkat'] == 'kabupaten' ? 'selected' : '' ?>>🏆 Kabupaten</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="form-label">
-                                        Tahun <span class="text-red-500">*</span>
-                                    </label>
-                                    <input type="number" name="tahun" class="form-control" 
-                                        value="<?= $prestasi['tahun'] ?>" min="2000" max="<?= date('Y') + 1 ?>" required />
-                                </div>
+                            <?php else: ?>
+                            <div id="previewPlaceholder">
+                                <i class="bi bi-image text-4xl text-gray-300 block mb-2"></i>
+                                <p class="text-sm text-gray-400">Tidak ada gambar</p>
                             </div>
-
-                            <!-- Deskripsi -->
-                            <div>
-                                <label class="form-label">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control" rows="4"><?= htmlspecialchars($prestasi['deskripsi']) ?></textarea>
-                            </div>
-
-                            <!-- Siswa & Lokasi -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="form-label">Siswa / Tim</label>
-                                    <input type="text" name="siswa" class="form-control" 
-                                        value="<?= htmlspecialchars($prestasi['siswa']) ?>" />
-                                </div>
-                                <div>
-                                    <label class="form-label">Lokasi</label>
-                                    <input type="text" name="lokasi" class="form-control" 
-                                        value="<?= htmlspecialchars($prestasi['lokasi']) ?>" />
-                                </div>
-                            </div>
+                            <img id="previewImage" class="hidden preview-image" alt="Preview" />
+                            <?php endif; ?>
                         </div>
-
-                        <!-- Kolom Kanan (1/3) - Gambar -->
-                        <div class="space-y-4">
-                            <div>
-                                <label class="form-label">Gambar</label>
-                                <input type="file" name="gambar" class="form-control p-2" accept="image/*" />
-                                <p class="form-text">Kosongkan jika tidak ingin mengganti</p>
-                            </div>
-                            
-                            <div class="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center bg-gray-50/50 min-h-[180px] flex items-center justify-center">
-                                <?php if($prestasi['gambar'] && file_exists('../../assets/prestasi/' . $prestasi['gambar'])): ?>
-                                <img src="../../assets/prestasi/<?= $prestasi['gambar'] ?>" class="max-h-[160px] rounded-lg object-contain" />
-                                <?php else: ?>
-                                <div>
-                                    <i class="bi bi-image text-4xl text-gray-300 block mb-2"></i>
-                                    <p class="text-sm text-gray-400">Tidak ada gambar</p>
-                                </div>
-                                <?php endif; ?>
-                            </div>
+                        
+                        <!-- Informasi -->
+                        <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-start gap-2">
+                                <i class="bi bi-info-circle text-smp mt-0.5"></i>
+                                <span>Format: JPG, PNG, WebP. Maks 5MB</span>
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Buttons -->
-                    <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                        <button type="submit" class="bg-smp hover:bg-smp-dark text-white px-6 py-2.5 rounded-xl flex items-center gap-2 transition-all hover:shadow-lg text-sm font-medium">
-                            <i class="bi bi-save"></i> Update Prestasi
-                        </button>
-                        <a href="index.php" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-2.5 rounded-xl transition-all text-sm font-medium">
-                            Batal
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
+                <hr class="my-6 border-gray-200">
 
-        <!-- Footer -->
-        <div class="text-center text-sm text-gray-400 border-t border-gray-200/50 mt-8 pt-4">
-            <i class="bi bi-shield-check text-smp"></i>
-            SMP Al Islam Krian &bull; Dashboard Administrator &bull; <?= date('Y') ?>
+                <!-- Tombol Aksi -->
+                <div class="flex flex-wrap gap-3">
+                    <button type="submit" class="bg-smp hover:bg-smp-dark text-white px-6 py-2.5 rounded-xl flex items-center gap-2 transition-all hover:shadow-lg text-sm font-medium">
+                        <i class="bi bi-save"></i> Update Prestasi
+                    </button>
+                    <a href="index.php" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-2.5 rounded-xl flex items-center gap-2 transition-all text-sm font-medium">
+                        <i class="bi bi-x-lg"></i> Batal
+                    </a>
+                </div>
+            </form>
         </div>
-    </main>
-</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center text-sm text-gray-400 border-t border-gray-200 mt-8 pt-4">
+        <i class="bi bi-shield-check text-smp"></i>
+        SMP Al Islam Krian &bull; Dashboard Administrator &bull; <?= date('Y') ?>
+    </div>
+</main>
+
+<!-- ===== PREVIEW IMAGE SCRIPT ===== -->
+<script>
+function previewImage(event) {
+    const container = document.getElementById('previewContainer');
+    const placeholder = document.getElementById('previewPlaceholder');
+    const preview = document.getElementById('previewImage');
+    
+    if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+            container.classList.add('has-image');
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    } else {
+        preview.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+        container.classList.remove('has-image');
+    }
+}
+</script>
 
 </body>
 </html>

@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lokasi = $_POST['lokasi'] ?? '';
     $gambar = '';
     
-    // ===== VALIDASI TAHUN =====
+    // VALIDASI TAHUN
     $tahunSekarang = date('Y');
     if($tahun > $tahunSekarang) {
         $error = 'Tahun tidak boleh melebihi tahun sekarang (' . $tahunSekarang . ')!';
@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// ===== STATISTIK =====
+// STATISTIK
 $stmt = $pdo->query("SELECT COUNT(*) as total FROM berita");
 $totalBerita = $stmt->fetch()['total'] ?? 0;
 
@@ -152,7 +152,7 @@ $tahunSekarang = date('Y');
         
         .alert-danger { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
         
-        /* ===== FORM STYLE PREMIUM ===== */
+        /* FORM STYLE PREMIUM */
         .form-group { margin-bottom: 20px; }
         
         .form-label {
@@ -169,7 +169,7 @@ $tahunSekarang = date('Y');
         .form-control:focus { outline: none; border-color: #0E9F6E; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(14,159,110,0.08); }
         .form-control::placeholder { color: #9CA3AF; }
         
-        /* ===== INPUT TAHUN DENGAN SPINNER ===== */
+        /* INPUT TAHUN DENGAN SPINNER */
         .form-control-year {
             width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px;
             font-size: 0.9rem; transition: all 0.3s; background: #FAFAFA; color: #1F2937;
@@ -183,7 +183,7 @@ $tahunSekarang = date('Y');
         }
         .form-control-year:focus { outline: none; border-color: #0E9F6E; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(14,159,110,0.08); }
         
-        /* ===== SELECT DROPDOWN PREMIUM ===== */
+        /* SELECT DROPDOWN PREMIUM */
         .form-select-wrapper {
             position: relative;
         }
@@ -269,9 +269,8 @@ $tahunSekarang = date('Y');
 </head>
 <body>
 
-<!-- ============================================================
-SIDEBAR
-============================================================ -->
+<!--
+SIDEBAR -->
 <aside class="sidebar">
     <div class="brand">
         <img src="../../assets/logo/logo-smp-al-islam.png" alt="Logo" />
@@ -301,9 +300,8 @@ SIDEBAR
     </div>
 </aside>
 
-<!-- ============================================================
-MAIN CONTENT
-============================================================ -->
+<!--
+MAIN CONTENT -->
 <main class="main-content">
 
     <!-- HEADER -->
@@ -458,7 +456,7 @@ MAIN CONTENT
     </div>
 </main>
 
-<!-- ===== JAVASCRIPT UNTUK TAHUN ===== -->
+<!-- JAVASCRIPT UNTUK TAHUN -->
 <script>
     const tahunInput = document.getElementById('tahunInput');
     const maxTahun = <?= $tahunSekarang ?>;
