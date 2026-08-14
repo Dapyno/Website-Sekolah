@@ -62,12 +62,13 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Daftar lengkap Guru dan Staff SMP Al Islam Krian - Tenaga pendidik profesional yang berdedikasi" />
-    <title>Guru & Staff - SMP Al Islam Krian</title>
+        content="Daftar lengkap Guru dan Staff SMP Islam Watestanjung - Tenaga pendidik profesional yang berdedikasi" />
+    <title>Guru & Staff - SMP Islam Watestanjung</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="64x64" href="../../../assets/logo/logo-smp-al-islam.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/180/3031/3031515.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/logo/logo-smp-islam.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/logo/logo-smp-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/logo/logo-smp-islam.png" />
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -89,7 +90,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
     <div id="loading-screen">
         <div class="loader-wrapper">
             <div class="loader-ring"></div>
-            <div class="loader-text">SMP Al Islam Krian</div>
+            <div class="loader-text">SMP Islam Watestanjung</div>
         </div>
     </div>
 
@@ -99,9 +100,9 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="../../../index.html">
-                <img src="../../../assets/logo/logo-smp-al-islam.png" alt="Logo SMP Al Islam Krian" height="50"
+                <img src="../../../assets/logo/logo-smp-islam.png" alt="Logo SMP Islam Watestanjung" height="50"
                     class="me-2" />
-                <span class="brand-text">SMP Al Islam <span>Krian</span></span>
+                <span class="brand-text">SMP Islam <span>Watestanjung</span></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,7 +123,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
                     <li class="nav-item"><a class="nav-link active" href="guru.php">Guru</a></li>
                     <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.php">Prestasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../ekstra/ekstra.html">Ekstrakulikuler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ekstra/ekstra.html">Ekstrakurikuler</a></li>
                     <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>
                 </ul>
                 <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
@@ -299,7 +300,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
                                         <?php if (!empty($guru['linkedin'])): ?>
                                             <a href="https://linkedin.com/in/<?= htmlspecialchars($guru['linkedin']) ?>" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
                                         <?php endif; ?>
-                                        <a href="mailto:<?= htmlspecialchars($guru['email'] ?? 'info@smpalislankrian.sch.id') ?>" title="Email"><i class="bi bi-envelope"></i></a>
+                                        <a href="mailto:<?= htmlspecialchars($guru['email'] ?? 'admin@smpislamwatestanjung.sch.id') ?>" title="Email"><i class="bi bi-envelope"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -361,8 +362,8 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
                         muridnya untuk belajar dan berkembang."
                     </blockquote>
                     <figcaption class="blockquote-footer mt-2">
-                        Dyah Rakhmayanti, S.T., M.Pd. <cite title="Source Title">Kepala Sekolah SMP Al Islam
-                            Krian</cite>
+                        H. Fahru Rozi, M.Pd. <cite title="Source Title">Kepala Sekolah SMP Islam
+                            Watestanjung</cite>
                     </figcaption>
                 </div>
             </div>
@@ -375,7 +376,7 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
             <div class="row g-4">
                 <!-- Kolom 1: Tentang Sekolah -->
                 <div class="col-md-6 col-lg-4">
-                    <h5 class="fw-bold">SMP Al Islam Krian</h5>
+                    <h5 class="fw-bold">SMP Islam Watestanjung</h5>
                     <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya
                         saing global.</p>
                     <div class="social-icons">
@@ -390,12 +391,12 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
                 <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Informasi Sekolah</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html#fasilitas"><i class="bi bi-chevron-right"></i> Fasilitas</a></li>
-                        <li><a href="index.html#akademik"><i class="bi bi-chevron-right"></i> Program Unggulan</a></li>
-                        <li><a href="index.html#testimoni"><i class="bi bi-chevron-right"></i> Testimoni Alumni</a></li>
-                        <li><a href="index.html#galeri"><i class="bi bi-chevron-right"></i> Dokumentasi</a></li>
-                        <li><a href="Frontend/navbar/faq/faq.html"><i class="bi bi-chevron-right"></i> FAQ</a></li>
-                        <li><a href="Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a>
+                        <li><a href="../../../index.html#fasilitas"><i class="bi bi-chevron-right"></i> Fasilitas</a></li>
+                        <li><a href="../../../index.html#akademik"><i class="bi bi-chevron-right"></i> Program Unggulan</a></li>
+                        <li><a href="../../../index.html#testimoni"><i class="bi bi-chevron-right"></i> Testimoni Alumni</a></li>
+                        <li><a href="../../../index.html#galeri"><i class="bi bi-chevron-right"></i> Dokumentasi</a></li>
+                        <li><a href="../faq/faq.html"><i class="bi bi-chevron-right"></i> FAQ</a></li>
+                        <li><a href="../../../Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a>
                         </li>
                     </ul>
                 </div>
@@ -403,9 +404,9 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
                 <!-- Kolom 3: Kontak + Live Clock + Tanggal Update -->
                 <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Kontak</h5>
-                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
+                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Watestanjung, Sidoarjo</p>
                     <p><i class="bi bi-telephone me-2"></i> +62 812-3154-8399</p>
-                    <p><i class="bi bi-envelope me-2"></i> admin@smpalislam-krian.sch.id</p>
+                    <p><i class="bi bi-envelope me-2"></i> admin@smpislamwatestanjung.sch.id</p>
                     <p><i class="bi bi-clock me-2"></i> Senin - Jumat: 07.00 - 16.00</p>
 
                     <!-- Live Clock & Tanggal Update -->
@@ -421,13 +422,13 @@ $guruPerPage = array_slice($guruList, $offset, $limit);
             </div>
             <hr class="mt-4" />
             <div class="text-center">
-                <p class="mb-0">&copy; 2026 SMP Al Islam Krian. All Rights Reserved.</p>
+                <p class="mb-0">&copy; 2026 SMP Islam Watestanjung. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- FLOATING WHATSAPP -->
-    <a href="https://wa.me/6281234567890" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+    <a href="https://wa.me/6281231548399" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 

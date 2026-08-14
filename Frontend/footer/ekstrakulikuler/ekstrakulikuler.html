@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ekstrakurikuler SMP Islam Watestanjung - Berbagai kegiatan pengembangan minat dan bakat siswa" />
+    <title>Ekstrakurikuler - SMP Islam Watestanjung</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/logo/logo-smp-islam.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/logo/logo-smp-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/logo/logo-smp-islam.png" />
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link href="../../../Frontend/css/style.css" rel="stylesheet" />
+    <link href="../../../Frontend/css/responsive.css" rel="stylesheet" />
+    <link href="../../../Frontend/css/animation.css" rel="stylesheet" />
+    
+    <style>
+        /* ===== HALAMAN EKSTRAKURIKULER - TAMBAHAN CSS ===== */
+        
+        /* Page Header */
+        .page-header-ekskul {
+            background: linear-gradient(135deg, var(--primary) 0%, #0b5c2a 50%, var(--secondary) 100%);
+            padding: 130px 0 70px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header-ekskul .breadcrumb {
+            background: transparent;
+            padding: 0;
+        }
+        
+        .page-header-ekskul .breadcrumb-item a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .page-header-ekskul .breadcrumb-item a:hover {
+            color: var(--white);
+        }
+        
+        .page-header-ekskul .breadcrumb-item.active {
+            color: var(--white);
+        }
+        
+        .page-header-ekskul .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Statistik Ekskul */
+        .ekskul-stats {
+            padding: 40px 0;
+            background: var(--soft-bg);
+        }
+        
+        .stat-card-ekskul {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.04);
+            height: 100%;
+        }
+        
+        .stat-card-ekskul:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        
+        .stat-card-ekskul .stat-icon {
+            display: inline-block;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--soft-bg);
+            color: var(--primary);
+            font-size: 1.5rem;
+            line-height: 55px;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+        
+        .stat-card-ekskul:hover .stat-icon {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .stat-card-ekskul .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text);
+            display: block;
+        }
+        
+        .stat-card-ekskul .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+        
+        /* Filter Ekskul */
+        .ekskul-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .btn-category {
+            padding: 10px 25px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--text-soft);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .btn-category:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-category.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+        
+        /* Ekskul Card dengan Gambar */
+        .ekskul-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.04);
+            height: 100%;
+        }
+        
+        .ekskul-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        
+        .ekskul-card .ekskul-image {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+        
+        .ekskul-card .ekskul-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .ekskul-card:hover .ekskul-image img {
+            transform: scale(1.08);
+        }
+        
+        .ekskul-card .ekskul-image .ekskul-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .ekskul-badge.keagamaan {
+            background: #1e40af;
+        }
+        
+        .ekskul-badge.olahraga {
+            background: #166534;
+        }
+        
+        .ekskul-badge.seni {
+            background: #9d174d;
+        }
+        
+        .ekskul-badge.sains {
+            background: #92400e;
+        }
+        
+        .ekskul-card .ekskul-image .ekskul-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 20px 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: var(--white);
+        }
+        
+        .ekskul-card .ekskul-image .ekskul-overlay .ekskul-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+        }
+        
+        .ekskul-card .ekskul-image .ekskul-overlay .ekskul-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .ekskul-card .ekskul-body {
+            padding: 20px 22px 25px;
+        }
+        
+        .ekskul-card .ekskul-body h5 {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .ekskul-card .ekskul-body p {
+            color: var(--text-soft);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        
+        .ekskul-card .ekskul-body .btn-detail {
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .ekskul-card .ekskul-body .btn-detail:hover {
+            color: var(--secondary);
+            gap: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 767px) {
+            .page-header-ekskul {
+                padding: 110px 0 40px;
+            }
+            .ekskul-categories {
+                gap: 8px;
+            }
+            .btn-category {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+            .stat-card-ekskul .stat-number {
+                font-size: 1.8rem;
+            }
+            .ekskul-card .ekskul-image {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 575px) {
+            .ekskul-categories {
+                gap: 6px;
+            }
+            .btn-category {
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
+            .ekskul-card .ekskul-image {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+        <div class="loader-wrapper">
+            <div class="loader-ring"></div>
+            <div class="loader-text">SMP Islam Watestanjung</div>
+        </div>
+    </div>
+
+    <div id="scroll-progress-bar"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../../../index.html">
+                <img src="../../../assets/logo/logo-smp-islam.png" alt="Logo SMP Islam Watestanjung" height="50" class="me-2" />
+                <span class="brand-text">SMP Islam <span>Watestanjung</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Beranda</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfil" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfil">
+                            <li><a class="dropdown-item" href="../profil/sejarah.html">Sejarah</a></li>
+                            <li><a class="dropdown-item" href="../profil/visi-misi.html">Visi &amp; Misi</a></li>
+                            <li><a class="dropdown-item" href="../profil/sambutan.html">Sambutan Kepsek</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../guru/guru.php">Guru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../prestasi/prestasi.php">Prestasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="ekstra.html">Ekstrakurikuler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>
+                </ul>
+                <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header-ekskul">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../../index.html">Beranda</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Ekstrakurikuler</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-3 fw-bold mb-3">Ekstrakurikuler <span style="color: var(--gold);">Kami</span></h1>
+                    <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">
+                        Mengembangkan minat dan bakat siswa melalui berbagai kegiatan ekstrakurikuler unggulan
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark me-2 px-4 py-2 rounded-pill">
+                            <i class="bi bi-trophy me-1"></i> 10+ Kegiatan
+                        </span>
+                        <span class="badge bg-light text-dark px-4 py-2 rounded-pill">
+                            <i class="bi bi-people me-1"></i> 200+ Peserta
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center d-none d-lg-block" data-aos="fade-left">
+                    <i class="bi bi-activity" style="font-size: 6rem; opacity: 0.25; color: var(--white);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTIK EKSKUL -->
+    <section class="ekskul-stats">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card-ekskul">
+                        <div class="stat-icon"><i class="bi bi-grid"></i></div>
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Kegiatan Ekskul</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card-ekskul">
+                        <div class="stat-icon"><i class="bi bi-people"></i></div>
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Siswa Aktif</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card-ekskul">
+                        <div class="stat-icon"><i class="bi bi-trophy"></i></div>
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Prestasi Ekskul</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-card-ekskul">
+                        <div class="stat-icon"><i class="bi bi-person-check"></i></div>
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Pembina Profesional</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATEGORI EKSKUL -->
+    <section class="py-4">
+        <div class="container">
+            <div class="ekskul-categories" data-aos="fade-up">
+                <button class="btn-category active" data-category="all">Semua</button>
+                <button class="btn-category" data-category="keagamaan">Keagamaan</button>
+                <button class="btn-category" data-category="olahraga">Olahraga</button>
+                <button class="btn-category" data-category="seni">Seni & Budaya</button>
+                <button class="btn-category" data-category="sains">Sains & Teknologi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAFTAR EKSKURIKULER -->
+    <section class="py-3 pb-5">
+        <div class="container">
+            <div class="row g-4" id="ekskulGrid">
+                
+                <!-- Ekskul 1 - Tahfidz Quran -->
+                <div class="col-md-6 col-lg-4" data-category="keagamaan" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/tahfidz.jpg" alt="Tahfidz Quran" />
+                            <span class="ekskul-badge keagamaan">Keagamaan</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Senin-Kamis</span>
+                                    <span><i class="bi bi-person"></i> 30 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Tahfidz Quran</h5>
+                            <p>Program menghafal Al-Quran dengan target minimal 5 juz, dibimbing oleh guru-guru berpengalaman.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 2 - Kaligrafi Islam -->
+                <div class="col-md-6 col-lg-4" data-category="keagamaan" data-aos="fade-up" data-aos-delay="200">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/kaligrafi.jpg" alt="Kaligrafi Islam" />
+                            <span class="ekskul-badge keagamaan">Keagamaan</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Selasa-Jumat</span>
+                                    <span><i class="bi bi-person"></i> 20 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Kaligrafi Islam</h5>
+                            <p>Mengembangkan bakat seni kaligrafi Arab dengan berbagai gaya khat yang indah dan bernilai seni.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 3 - Futsal -->
+                <div class="col-md-6 col-lg-4" data-category="olahraga" data-aos="fade-up" data-aos-delay="300">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/futsal.jpg" alt="Futsal" />
+                            <span class="ekskul-badge olahraga">Olahraga</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Jumat</span>
+                                    <span><i class="bi bi-person"></i> 25 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Futsal</h5>
+                            <p>Kegiatan olahraga futsal untuk mengembangkan kerjasama tim, strategi, dan kebugaran fisik siswa.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 4 - Basket -->
+                <div class="col-md-6 col-lg-4" data-category="olahraga" data-aos="fade-up" data-aos-delay="400">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/basket.jpg" alt="Basket" />
+                            <span class="ekskul-badge olahraga">Olahraga</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Rabu</span>
+                                    <span><i class="bi bi-person"></i> 20 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Basket</h5>
+                            <p>Pengembangan bakat basket dengan pelatihan teknik dasar, strategi permainan, dan kerjasama tim.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 5 - Paduan Suara -->
+                <div class="col-md-6 col-lg-4" data-category="seni" data-aos="fade-up" data-aos-delay="500">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/paduan-suara.jpg" alt="Paduan Suara" />
+                            <span class="ekskul-badge seni">Seni & Budaya</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Selasa-Kamis</span>
+                                    <span><i class="bi bi-person"></i> 25 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Paduan Suara</h5>
+                            <p>Mengembangkan bakat vokal siswa melalui latihan paduan suara dengan berbagai genre lagu.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 6 - Seni Tari -->
+                <div class="col-md-6 col-lg-4" data-category="seni" data-aos="fade-up" data-aos-delay="600">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/seni-tari.jpg" alt="Seni Tari" />
+                            <span class="ekskul-badge seni">Seni & Budaya</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Senin-Rabu</span>
+                                    <span><i class="bi bi-person"></i> 20 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Seni Tari</h5>
+                            <p>Mempelajari berbagai tarian tradisional dan modern, melestarikan budaya Indonesia.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 7 - Robotics -->
+                <div class="col-md-6 col-lg-4" data-category="sains" data-aos="fade-up" data-aos-delay="700">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/robotics.jpg" alt="Robotics" />
+                            <span class="ekskul-badge sains">Sains & Teknologi</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Kamis</span>
+                                    <span><i class="bi bi-person"></i> 15 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Robotics</h5>
+                            <p>Pengembangan kreativitas dan logika melalui pembuatan dan pemrograman robot sederhana.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 8 - Klub Sains -->
+                <div class="col-md-6 col-lg-4" data-category="sains" data-aos="fade-up" data-aos-delay="800">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/klub-sains.jpg" alt="Klub Sains" />
+                            <span class="ekskul-badge sains">Sains & Teknologi</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Selasa</span>
+                                    <span><i class="bi bi-person"></i> 20 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Klub Sains</h5>
+                            <p>Eksplorasi sains melalui percobaan dan penelitian sederhana di bidang fisika, kimia, dan biologi.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ekskul 9 - Pramuka -->
+                <div class="col-md-6 col-lg-4" data-category="olahraga" data-aos="fade-up" data-aos-delay="900">
+                    <div class="ekskul-card">
+                        <div class="ekskul-image">
+                            <img src="../../../assets/ekstra/pramuka.jpg" alt="Pramuka" />
+                            <span class="ekskul-badge olahraga">Olahraga</span>
+                            <div class="ekskul-overlay">
+                                <div class="ekskul-meta">
+                                    <span><i class="bi bi-clock"></i> Sabtu</span>
+                                    <span><i class="bi bi-person"></i> 35 Siswa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ekskul-body">
+                            <h5>Pramuka</h5>
+                            <p>Membentuk karakter kepemimpinan, kedisiplinan, dan cinta alam melalui kegiatan kepramukaan.</p>
+                            <a href="#" class="btn-detail">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8 text-center">
+                    <i class="bi bi-quote" style="font-size: 3rem; color: var(--primary); opacity: 0.3;"></i>
+                    <blockquote class="blockquote fs-4 fst-italic mt-3">
+                        "Ekstrakurikuler adalah wadah untuk mengembangkan potensi diri di luar kelas. Temukan bakatmu, raih prestasimu!"
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2">
+                        Dyah Rakhmayanti, S.T., M.Pd. <cite title="Source Title">Kepala Sekolah SMP Islam Watestanjung</cite>
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="fw-bold">SMP Islam Watestanjung</h5>
+                    <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya saing global.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="fw-bold">Informasi Sekolah</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../../../index.html#fasilitas"><i class="bi bi-chevron-right"></i> Fasilitas</a></li>
+                        <li><a href="../../../index.html#akademik"><i class="bi bi-chevron-right"></i> Program Unggulan</a></li>
+                        <li><a href="../../../index.html#testimoni"><i class="bi bi-chevron-right"></i> Testimoni Alumni</a></li>
+                        <li><a href="../../../index.html#galeri"><i class="bi bi-chevron-right"></i> Dokumentasi</a></li>
+                        <li><a href="ekstra.html"><i class="bi bi-chevron-right"></i> Ekstrakurikuler</a></li>
+                        <li><a href="../../../Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Watestanjung, Sidoarjo</p>
+                    <p><i class="bi bi-telephone me-2"></i> +62 812-3154-8399</p>
+                    <p><i class="bi bi-envelope me-2"></i> admin@smpislamwatestanjung.sch.id</p>
+                    <p><i class="bi bi-clock me-2"></i> Senin - Jumat: 07.00 - 16.00</p>
+                    <div class="footer-info mt-3">
+                        <div class="live-clock">
+                            <i class="bi bi-clock me-1"></i> <span id="clock">00:00:00</span>
+                        </div>
+                        <div class="update-date mt-2">
+                            <i class="bi bi-calendar3 me-1"></i> <span id="updateDate">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4" />
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 SMP Islam Watestanjung. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/6281231548399" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <button id="backToTop" class="btn btn-primary back-to-top" aria-label="Back to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../../Frontend/js/script.js"></script>
+    <script src="../../../Frontend/js/counter.js"></script>
+    
+    <script>
+        // ===== AOS INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-out-cubic'
+            });
+        });
+
+        // ===== FILTER EKSKURIKULER =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.btn-category');
+            const ekskulItems = document.querySelectorAll('#ekskulGrid .col-md-6');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const category = this.dataset.category;
+
+                    ekskulItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                            item.style.animation = 'fadeIn 0.5s ease';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // ===== CSS ANIMATION =====
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+</html>

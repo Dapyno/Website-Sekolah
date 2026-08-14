@@ -28,12 +28,13 @@ foreach($prestasiList as $p) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Prestasi SMP Al Islam Krian - Berbagai penghargaan dan pencapaian yang telah diraih oleh siswa dan guru" />
-    <title>Prestasi - SMP Al Islam Krian</title>
+    <meta name="description" content="Prestasi SMP Islam Watestanjung - Berbagai penghargaan dan pencapaian yang telah diraih oleh siswa dan guru" />
+    <title>Prestasi - SMP Islam Watestanjung</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="64x64" href="../../../assets/logo/logo-smp-al-islam.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/180/3031/3031515.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/logo/logo-smp-islam.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/logo/logo-smp-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/logo/logo-smp-islam.png" />
     
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -53,7 +54,7 @@ foreach($prestasiList as $p) {
     <div id="loading-screen">
         <div class="loader-wrapper">
             <div class="loader-ring"></div>
-            <div class="loader-text">SMP Al Islam Krian</div>
+            <div class="loader-text">SMP Islam Watestanjung</div>
         </div>
     </div>
 
@@ -63,8 +64,8 @@ foreach($prestasiList as $p) {
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="../../../index.html">
-                <img src="../../../assets/logo/logo-smp-al-islam.png" alt="Logo SMP Al Islam Krian" height="50" class="me-2" />
-                <span class="brand-text">SMP Al Islam <span>Krian</span></span>
+                <img src="../../../assets/logo/logo-smp-islam.png" alt="Logo SMP Islam Watestanjung" height="50" class="me-2" />
+                <span class="brand-text">SMP Islam <span>Watestanjung</span></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +86,7 @@ foreach($prestasiList as $p) {
                     <li class="nav-item"><a class="nav-link" href="../guru/guru.php">Guru</a></li>
                     <li class="nav-item"><a class="nav-link active" href="prestasi.php">Prestasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="../berita/berita.php">Berita</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../ekstra/ekstra.html">Ekstrakulikuler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ekstra/ekstra.html">Ekstrakurikuler</a></li>
                     <li class="nav-item"><a class="nav-link" href="../kontak/kontak.html">Kontak</a></li>
                 </ul>
                 <button class="btn btn-dark-mode ms-2" id="darkModeToggle" aria-label="Toggle Dark Mode">
@@ -108,7 +109,7 @@ foreach($prestasiList as $p) {
                     </nav>
                     <h1 class="display-3 fw-bold mb-3">Prestasi <span style="color: var(--gold);">Kami</span></h1>
                     <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">
-                        Berbagai penghargaan dan pencapaian yang telah diraih oleh siswa dan guru SMP Al Islam Krian
+                        Berbagai penghargaan dan pencapaian yang telah diraih oleh siswa dan guru SMP Islam Watestanjung
                     </p>
                     <div class="mt-3">
                         <span class="badge bg-light text-dark me-2 px-4 py-2 rounded-pill">
@@ -225,7 +226,7 @@ foreach($prestasiList as $p) {
                         "Prestasi bukanlah tujuan akhir, tetapi adalah bukti dari perjalanan panjang yang penuh dengan kerja keras, dedikasi, dan doa."
                     </blockquote>
                     <figcaption class="blockquote-footer mt-2">
-                        Dyah Rakhmayanti, S.T., M.Pd. <cite title="Source Title">Kepala Sekolah SMP Al Islam Krian</cite>
+                        H. Fahru Rozi, M.Pd. <cite title="Source Title">Kepala Sekolah SMP Islam Watestanjung</cite>
                     </figcaption>
                 </div>
             </div>
@@ -238,7 +239,7 @@ foreach($prestasiList as $p) {
             <div class="row g-4">
                 <!-- Kolom 1: Tentang Sekolah -->
                 <div class="col-md-6 col-lg-4">
-                    <h5 class="fw-bold">SMP Al Islam Krian</h5>
+                    <h5 class="fw-bold">SMP Islam Watestanjung</h5>
                     <p>Sekolah Islam unggulan yang berkomitmen mencetak generasi cerdas, berakhlak mulia, dan berdaya
                         saing global.</p>
                     <div class="social-icons">
@@ -253,12 +254,12 @@ foreach($prestasiList as $p) {
                 <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Informasi Sekolah</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html#fasilitas"><i class="bi bi-chevron-right"></i> Fasilitas</a></li>
-                        <li><a href="index.html#akademik"><i class="bi bi-chevron-right"></i> Program Unggulan</a></li>
-                        <li><a href="index.html#testimoni"><i class="bi bi-chevron-right"></i> Testimoni Alumni</a></li>
-                        <li><a href="index.html#galeri"><i class="bi bi-chevron-right"></i> Dokumentasi</a></li>
-                        <li><a href="Frontend/navbar/faq/faq.html"><i class="bi bi-chevron-right"></i> FAQ</a></li>
-                        <li><a href="Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a>
+                        <li><a href="../../../index.html#fasilitas"><i class="bi bi-chevron-right"></i> Fasilitas</a></li>
+                        <li><a href="../../../index.html#akademik"><i class="bi bi-chevron-right"></i> Program Unggulan</a></li>
+                        <li><a href="../../../index.html#testimoni"><i class="bi bi-chevron-right"></i> Testimoni Alumni</a></li>
+                        <li><a href="../../../index.html#galeri"><i class="bi bi-chevron-right"></i> Dokumentasi</a></li>
+                        <li><a href="../faq/faq.html"><i class="bi bi-chevron-right"></i> FAQ</a></li>
+                        <li><a href="../../../Admin/login.php"><i class="bi bi-chevron-right"></i> Administrator</a>
                         </li>
                     </ul>
                 </div>
@@ -266,9 +267,9 @@ foreach($prestasiList as $p) {
                 <!-- Kolom 3: Kontak + Live Clock + Tanggal Update -->
                 <div class="col-md-6 col-lg-4">
                     <h5 class="fw-bold">Kontak</h5>
-                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Krian, Sidoarjo</p>
+                    <p><i class="bi bi-geo-alt me-2"></i> Jl. Kyai Mojo No. 18, Jeruk Gamping, Watestanjung, Sidoarjo</p>
                     <p><i class="bi bi-telephone me-2"></i> +62 812-3154-8399</p>
-                    <p><i class="bi bi-envelope me-2"></i> admin@smpalislam-krian.sch.id</p>
+                    <p><i class="bi bi-envelope me-2"></i> admin@smpislamwatestanjung.sch.id</p>
                     <p><i class="bi bi-clock me-2"></i> Senin - Jumat: 07.00 - 16.00</p>
 
                     <!-- Live Clock & Tanggal Update -->
@@ -284,13 +285,13 @@ foreach($prestasiList as $p) {
             </div>
             <hr class="mt-4" />
             <div class="text-center">
-                <p class="mb-0">&copy; 2026 SMP Al Islam Krian. All Rights Reserved.</p>
+                <p class="mb-0">&copy; 2026 SMP Islam Watestanjung. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- FLOATING WHATSAPP -->
-    <a href="https://wa.me/6281234567890" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+    <a href="https://wa.me/6281231548399" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
