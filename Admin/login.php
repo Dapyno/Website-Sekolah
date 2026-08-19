@@ -36,8 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - SMP Al Islam Krian</title>
-    <link rel="icon" type="image/png" sizes="64x64" href="../assets/logo/logo-smp-al-islam.png" />
+    <title>Login Admin - SMP Islam Watestanjung</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/logo-smp-islam.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/logo/logo-smp-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/logo/logo-smp-islam.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -47,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="login-card">
         <div class="logo">
-            <img src="../assets/logo/logo-smp-al-islam.png" alt="Logo">
-            <h4>SMP Al Islam <span>Krian</span></h4>
+            <img src="../assets/logo/logo-smp-islam.png" alt="Logo SMP Islam Watestanjung">
+            <h4>SMP Islam <span>Watestanjung</span></h4>
             <p>Panel Administrator</p>
         </div>
 

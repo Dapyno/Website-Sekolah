@@ -30,8 +30,10 @@ $messageType = $_GET['type'] ?? '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelola Guru - Admin SMP Al Islam Krian</title>
-    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/logo/logo-smp-al-islam.png" />
+    <title>Kelola Guru - Admin SMP Islam Watestanjung</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/logo/logo-smp-islam.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/logo/logo-smp-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/logo/logo-smp-islam.png" />
     
     <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,113 +56,7 @@ $messageType = $_GET['type'] ?? '';
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: #F4F5F7; }
-        
-        /* Sidebar */
-        .sidebar {
-            width: 260px;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(229,231,235,0.5);
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-y: auto;
-            z-index: 50;
-            padding: 24px 16px;
-        }
-        
-        .sidebar-brand { display: flex; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid #E5E7EB; margin-bottom: 20px; }
-        .sidebar-brand img { height: 40px; width: 40px; border-radius: 10px; object-fit: cover; }
-        .sidebar-brand .name { font-weight: 700; font-size: 0.95rem; color: #1F2937; }
-        .sidebar-brand .tag { font-size: 0.6rem; color: #0E9F6E; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .sidebar-menu { list-style: none; padding: 0; margin: 0; }
-        .sidebar-menu li { margin-bottom: 2px; }
-        .sidebar-menu li a {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 10px 14px;
-            border-radius: 10px;
-            color: #6B7280;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .sidebar-menu li a:hover { background: rgba(14,159,110,0.06); color: #0E9F6E; }
-        .sidebar-menu li.active a { background: #0E9F6E; color: #FFFFFF; }
-        .sidebar-menu li a .badge {
-            margin-left: auto;
-            background: #E5E7EB;
-            color: #6B7280;
-            font-size: 0.6rem;
-            padding: 2px 10px;
-            border-radius: 50px;
-        }
-        .sidebar-menu li.active a .badge { background: rgba(255,255,255,0.2); color: #FFFFFF; }
-        .sidebar-menu li a.text-danger { color: #EF4444; }
-        .sidebar-menu li a.text-danger:hover { background: rgba(239,68,68,0.08); }
-        
-        .sidebar-divider { height: 1px; background: #E5E7EB; margin: 16px 12px; }
-        
-        .sidebar-footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 16px 20px;
-            border-top: 1px solid #E5E7EB;
-            background: rgba(255,255,255,0.8);
-        }
-        .sidebar-footer .user { display: flex; align-items: center; gap: 12px; }
-        .sidebar-footer .user .avatar {
-            width: 36px; height: 36px; border-radius: 50%; background: #0E9F6E;
-            display: flex; align-items: center; justify-content: center; color: #fff;
-            font-weight: 700; font-size: 0.8rem;
-        }
-        .sidebar-footer .user .info .name { font-weight: 600; font-size: 0.85rem; color: #1F2937; }
-        .sidebar-footer .user .info .role { font-size: 0.7rem; color: #6B7280; }
-        
-        /* Main Content */
-        .main-content { margin-left: 260px; padding: 24px 32px; min-height: 100vh; }
-        
-        /* Alert */
-        .alert-success { background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; }
-        .alert-danger { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #F4F5F7; }
-        ::-webkit-scrollbar-thumb { background: #0E9F6E; border-radius: 10px; }
-        
-        @media (max-width: 768px) {
-            .sidebar { width: 70px; padding: 16px 8px; }
-            .sidebar-brand .text, .sidebar-menu li a span, .sidebar-menu li a .badge, .sidebar-footer .user .info { display: none; }
-            .sidebar-brand { justify-content: center; padding-bottom: 16px; }
-            .sidebar-menu li a { justify-content: center; padding: 12px; gap: 0; }
-            .sidebar-menu li a i { font-size: 1.2rem; }
-            .main-content { margin-left: 70px; padding: 16px; }
-            .sidebar-footer { padding: 12px; }
-            .sidebar-footer .user { justify-content: center; }
-        }
-        
-        @media (max-width: 480px) {
-            .sidebar { width: 60px; padding: 12px 6px; }
-            .main-content { margin-left: 60px; padding: 12px; }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/guru/guru.css">
 </head>
 <body>
 
@@ -168,10 +64,10 @@ $messageType = $_GET['type'] ?? '';
 <aside class="sidebar">
     <!-- Brand -->
     <div class="sidebar-brand">
-        <img src="../../assets/logo/logo-smp-al-islam.png" alt="Logo" />
+        <img src="../../assets/logo/logo-smp-islam.png" alt="Logo SMP Islam Watestanjung" />
         <div class="text">
-            <div class="name">SMP Al Islam</div>
-            <div class="tag">Administrator</div>
+            <div class="name">SMP Islam</div>
+            <div class="tag">Watestanjung</div>
         </div>
     </div>
 
@@ -354,7 +250,7 @@ $messageType = $_GET['type'] ?? '';
     <!-- Footer -->
     <div class="text-center text-sm text-gray-400 border-t border-gray-200 mt-8 pt-4">
         <i class="bi bi-shield-check text-smp"></i>
-        SMP Al Islam Krian &bull; Dashboard Administrator &bull; <?= date('Y') ?>
+        SMP Islam Watestanjung &bull; Dashboard Administrator &bull; <?= date('Y') ?>
     </div>
 </main>
 

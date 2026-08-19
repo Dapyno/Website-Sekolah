@@ -85,8 +85,10 @@ $changeAgenda = $agendaCount > 0 ? round(($agendaCount - $lastMonthAgenda) / max
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Admin</title>
-    <link rel="icon" type="image/png" sizes="64x64" href="../assets/logo/logo-smp-al-islam.png" />
+    <title>Dashboard - Admin SMP Islam Watestanjung</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/logo-smp-islam.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/logo/logo-smp-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/logo/logo-smp-islam.png" />
     
     <!-- ===== TAILWIND CSS ===== -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -139,17 +141,15 @@ $changeAgenda = $agendaCount > 0 ? round(($agendaCount - $lastMonthAgenda) / max
 </head>
 <body>
 
-<!-- ============================================================
-SIDEBAR
-============================================================ -->
+<!-- SIDEBAR -->
 <aside class="sidebar" style="width:260px; background:rgba(255,255,255,0.85); backdrop-filter:blur(20px); border-right:1px solid rgba(229,231,235,0.5); height:100vh; position:fixed; top:0; left:0; overflow-y:auto; z-index:50; padding:24px 16px;">
 
     <!-- Brand -->
     <div class="flex items-center gap-3 pb-6 border-b border-gray-200/50 mb-5">
-        <img src="../assets/logo/logo-smp-al-islam.png" alt="Logo" class="h-10 w-10 rounded-xl object-cover" />
+        <img src="../assets/logo/logo-smp-islam.png" alt="Logo SMP Islam Watestanjung" class="h-10 w-10 rounded-xl object-cover" />
         <div>
-            <div class="font-bold text-gray-800 text-sm">SMP Al Islam</div>
-            <div class="text-xs text-gray-400 uppercase tracking-wider">Administrator</div>
+            <div class="font-bold text-gray-800 text-sm">SMP Islam</div>
+            <div class="text-xs text-gray-400 uppercase tracking-wider">Watestanjung</div>
         </div>
     </div>
 
@@ -207,9 +207,7 @@ SIDEBAR
     </div>
 </aside>
 
-<!-- ============================================================
-MAIN CONTENT
-============================================================ -->
+<!-- MAIN CONTENT -->
 <main class="main-content" style="margin-left:260px; padding:24px 32px; min-height:100vh;">
 
     <!-- HEADER -->
@@ -246,9 +244,9 @@ MAIN CONTENT
         </div>
     </header>
 
-    <!-- ============================================================
+    <!--
     STATISTICS CARDS
-    ============================================================ -->
+ -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         
         <!-- Card 1: Berita -->
@@ -332,9 +330,9 @@ MAIN CONTENT
         </div>
     </div>
 
-    <!-- ============================================================
+    <!--
     CONTENT GRID
-    ============================================================ -->
+ -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
         
         <!-- Berita Terbaru Table -->
@@ -437,7 +435,7 @@ MAIN CONTENT
     <!-- Footer -->
     <div class="text-center text-sm text-gray-400 border-t border-gray-200/50 mt-8 pt-4">
         <i class="bi bi-shield-check text-smp"></i>
-        SMP Al Islam Krian &bull; Dashboard Administrator &bull; <?= date('Y') ?>
+        SMP Islam Watestanjung &bull; Dashboard Administrator &bull; <?= date('Y') ?>
     </div>
 </main>
 

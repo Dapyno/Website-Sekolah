@@ -1,8 +1,6 @@
 <?php
-// ============================================================
-// FUNCTIONS.PHP - SMP Al Islam Krian
+// FUNCTIONS.PHP - SMP Islam Watestanjung
 // Kumpulan fungsi bantuan untuk seluruh sistem
-// ============================================================
 
 /**
  * Format tanggal ke format Indonesia
@@ -53,9 +51,7 @@ function potongTeks($text, $limit = 100, $suffix = '...') {
 }
 
 /**
- * ============================================================
  * FUNGSI UNTUK BERITA
- * ============================================================
  */
 
 /**
@@ -104,9 +100,7 @@ function getKategoriColor($kategori) {
 }
 
 /**
- * ============================================================
- * FUNGSI UNTUK GURU (REVISI - LEBIH AKURAT)
- * ============================================================
+ * FUNGSI UNTUK GURU
  */
 
 /**
@@ -123,7 +117,7 @@ function getStatusBadge($status) {
 }
 
 /**
- * Mendapatkan badge jabatan guru - REVISI AKURAT
+ * Mendapatkan badge jabatan guru
  * @param string $jabatan Nama jabatan
  * @return string HTML badge
  */
@@ -131,18 +125,17 @@ function getJabatanBadge($jabatan) {
     $jabatanTrim = trim($jabatan);
     $jabatanLower = strtolower($jabatanTrim);
     
-    // ===== URUTAN PENGECEKAN YANG BENAR =====
-    // 1. Cek "Kepala Sekolah" (harus sama persis atau tepat)
+    // 1. Cek "Kepala Sekolah"
     if($jabatanLower == 'kepala sekolah' || $jabatanLower == 'kepsek') {
         return '<span class="badge bg-primary"><i class="bi bi-star me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
     } 
     
-    // 2. Cek "Wakil Kepala Sekolah" (harus mengandung "wakil" dan "kepala sekolah")
+    // 2. Cek "Wakil Kepala Sekolah"
     elseif(strpos($jabatanLower, 'wakil') !== false && strpos($jabatanLower, 'kepala sekolah') !== false) {
         return '<span class="badge bg-warning text-dark"><i class="bi bi-award me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
     } 
     
-    // 3. Cek "Wakasek" (singkatan)
+    // 3. Cek "Wakasek"
     elseif($jabatanLower == 'wakasek') {
         return '<span class="badge bg-warning text-dark"><i class="bi bi-award me-1"></i> ' . htmlspecialchars($jabatanTrim) . '</span>';
     }
@@ -173,33 +166,22 @@ function getGuruCategory($jabatan) {
     $jabatanTrim = trim($jabatan);
     $jabatanLower = strtolower($jabatanTrim);
     
-    // 1. Cek Kepala Sekolah
     if($jabatanLower == 'kepala sekolah' || $jabatanLower == 'kepsek') {
         return 'kepsek';
     } 
-    
-    // 2. Cek Wakil Kepala Sekolah
     elseif(strpos($jabatanLower, 'wakil') !== false && strpos($jabatanLower, 'kepala sekolah') !== false) {
         return 'wakil';
     } 
-    
-    // 3. Cek Wakasek
     elseif($jabatanLower == 'wakasek') {
         return 'wakil';
     }
-    
-    // 4. Cek Staff
     elseif(strpos($jabatanLower, 'staff') !== false || 
            strpos($jabatanLower, 'administrasi') !== false) {
         return 'staff';
     } 
-    
-    // 5. Cek Tenaga Kependidikan
     elseif(strpos($jabatanLower, 'tenaga kependidikan') !== false) {
         return 'staff';
     } 
-    
-    // 6. SELAIN ITU ADALAH GURU
     else {
         return 'guru';
     }
@@ -219,9 +201,7 @@ function getGuruFoto($foto, $default = 'default.jpg') {
 }
 
 /**
- * ============================================================
  * FUNGSI UNTUK PRESTASI
- * ============================================================
  */
 
 /**
@@ -285,9 +265,7 @@ function getTingkatIcon($tingkat) {
 }
 
 /**
- * ============================================================
  * FUNGSI UPLOAD FILE
- * ============================================================
  */
 
 /**
@@ -356,9 +334,7 @@ function hapusGambar($filename, $targetDir) {
 }
 
 /**
- * ============================================================
  * FUNGSI UTILITY LAINNYA
- * ============================================================
  */
 
 /**
@@ -391,9 +367,7 @@ function isLoggedIn() {
 }
 
 /**
- * ============================================================
  * FUNGSI UNTUK RESPONSIF DAN TAMPILAN
- * ============================================================
  */
 
 /**
@@ -422,4 +396,93 @@ function formatRupiah($angka) {
     return 'Rp ' . number_format($angka, 0, ',', '.');
 }
 
+/**
+ * FUNGSI TAMBAHAN UNTUK EKSTRAKURIKULER
+ */
+
+/**
+ * Mendapatkan badge kategori ekstrakurikuler
+ * @param string $kategori keagamaan/olahraga/seni/sains
+ * @return string HTML badge
+ */
+function getEkskulKategoriBadge($kategori) {
+    $badges = [
+        'keagamaan' => '<span class="badge bg-primary"><i class="bi bi-moon-stars me-1"></i> Keagamaan</span>',
+        'olahraga' => '<span class="badge bg-success"><i class="bi bi-dribbble me-1"></i> Olahraga</span>',
+        'seni' => '<span class="badge bg-danger"><i class="bi bi-palette me-1"></i> Seni & Budaya</span>',
+        'sains' => '<span class="badge bg-warning text-dark"><i class="bi bi-cpu me-1"></i> Sains & Teknologi</span>'
+    ];
+    return $badges[$kategori] ?? '<span class="badge bg-secondary">' . $kategori . '</span>';
+}
+
+/**
+ * Mendapatkan class CSS untuk kategori ekstrakurikuler
+ * @param string $kategori keagamaan/olahraga/seni/sains
+ * @return string Class CSS
+ */
+function getEkskulKategoriClass($kategori) {
+    $classes = [
+        'keagamaan' => 'keagamaan',
+        'olahraga' => 'olahraga',
+        'seni' => 'seni',
+        'sains' => 'sains'
+    ];
+    return $classes[$kategori] ?? '';
+}
+
+/**
+ * Mendapatkan icon untuk kategori ekstrakurikuler
+ * @param string $kategori keagamaan/olahraga/seni/sains
+ * @return string Icon Bootstrap
+ */
+function getEkskulKategoriIcon($kategori) {
+    $icons = [
+        'keagamaan' => 'bi-moon-stars',
+        'olahraga' => 'bi-dribbble',
+        'seni' => 'bi-palette',
+        'sains' => 'bi-cpu'
+    ];
+    return $icons[$kategori] ?? 'bi-activity';
+}
+
+/**
+ * FUNGSI TAMBAHAN UNTUK KONTAK
+ */
+
+/**
+ * Mendapatkan badge status kontak
+ * @param string $status unread/read/replied
+ * @return string HTML badge
+ */
+function getKontakStatusBadge($status) {
+    $badges = [
+        'unread' => '<span class="badge bg-danger"><i class="bi bi-envelope me-1"></i> Belum Dibaca</span>',
+        'read' => '<span class="badge bg-warning text-dark"><i class="bi bi-envelope-open me-1"></i> Sudah Dibaca</span>',
+        'replied' => '<span class="badge bg-success"><i class="bi bi-reply me-1"></i> Sudah Dibalas</span>'
+    ];
+    return $badges[$status] ?? '<span class="badge bg-secondary">' . $status . '</span>';
+}
+
+/**
+ * FUNGSI TAMBAHAN UNTUK SETTING
+ */
+
+/**
+ * Mendapatkan setting berdasarkan key
+ * @param string $key Key setting
+ * @return string Value setting
+ */
+function getSetting($key, $default = '') {
+    global $pdo;
+    
+    if(!isset($pdo)) {
+        return $default;
+    }
+    
+    $stmt = $pdo->prepare("SELECT value_setting FROM setting WHERE key_setting = ?");
+    $stmt->execute([$key]);
+    $result = $stmt->fetch();
+    
+    return $result ? $result['value_setting'] : $default;
+}
 ?>

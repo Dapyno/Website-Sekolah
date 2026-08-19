@@ -73,8 +73,10 @@ $tahunSekarang = date('Y');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Prestasi - Admin SMP Al Islam Krian</title>
-    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/logo/logo-smp-al-islam.png" />
+    <title>Tambah Prestasi - Admin SMP Islam Watestanjung</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/logo/logo-smp-islam.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/logo/logo-smp-islam.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/logo/logo-smp-islam.png" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -94,178 +96,7 @@ $tahunSekarang = date('Y');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="../css/admin-style.css" rel="stylesheet" />
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: #F4F5F7; }
-        
-        /* SIDEBAR */
-        .sidebar {
-            width: 260px;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(229,231,235,0.5);
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-y: auto;
-            z-index: 50;
-            padding: 24px 16px;
-        }
-        .sidebar .brand { display: flex; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid #E5E7EB; margin-bottom: 20px; }
-        .sidebar .brand img { height: 40px; width: 40px; border-radius: 10px; }
-        .sidebar .brand .name { font-weight: 700; font-size: 0.95rem; color: #1F2937; }
-        .sidebar .brand .tag { font-size: 0.6rem; color: #0E9F6E; text-transform: uppercase; letter-spacing: 1px; }
-        .sidebar ul { list-style: none; padding: 0; margin: 0; }
-        .sidebar ul li { margin-bottom: 2px; }
-        .sidebar ul li a {
-            display: flex; align-items: center; gap: 14px; padding: 10px 14px;
-            border-radius: 10px; color: #6B7280; text-decoration: none;
-            font-size: 0.85rem; font-weight: 500; transition: all 0.2s;
-        }
-        .sidebar ul li a:hover { background: rgba(14,159,110,0.06); color: #0E9F6E; }
-        .sidebar ul li.active a { background: #0E9F6E; color: #FFFFFF; }
-        .sidebar ul li a .badge {
-            margin-left: auto; background: #E5E7EB; color: #6B7280;
-            font-size: 0.6rem; padding: 2px 10px; border-radius: 50px;
-        }
-        .sidebar ul li.active a .badge { background: rgba(255,255,255,0.2); color: #FFFFFF; }
-        .sidebar ul li a.text-danger { color: #EF4444; }
-        .sidebar ul li a.text-danger:hover { background: rgba(239,68,68,0.08); }
-        .sidebar .divider { height: 1px; background: #E5E7EB; margin: 16px 12px; }
-        .sidebar .footer {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 16px 20px; border-top: 1px solid #E5E7EB;
-            background: rgba(255,255,255,0.8);
-        }
-        .sidebar .footer .user { display: flex; align-items: center; gap: 12px; }
-        .sidebar .footer .user .avatar {
-            width: 36px; height: 36px; border-radius: 50%; background: #0E9F6E;
-            display: flex; align-items: center; justify-content: center; color: #fff;
-            font-weight: 700; font-size: 0.8rem;
-        }
-        .sidebar .footer .user .info .name { font-weight: 600; font-size: 0.85rem; color: #1F2937; }
-        .sidebar .footer .user .info .role { font-size: 0.7rem; color: #6B7280; }
-        
-        .main-content { margin-left: 260px; padding: 24px 32px; min-height: 100vh; }
-        
-        .alert-danger { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
-        
-        /* FORM STYLE PREMIUM */
-        .form-group { margin-bottom: 20px; }
-        
-        .form-label {
-            display: block; font-weight: 600; font-size: 0.85rem; color: #1F2937; margin-bottom: 6px;
-        }
-        .form-label .required { color: #EF4444; margin-left: 2px; }
-        .form-label i { color: #0E9F6E; margin-right: 6px; }
-        
-        .form-control {
-            width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px;
-            font-size: 0.9rem; transition: all 0.3s; background: #FAFAFA; color: #1F2937;
-            font-family: 'Poppins', sans-serif;
-        }
-        .form-control:focus { outline: none; border-color: #0E9F6E; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(14,159,110,0.08); }
-        .form-control::placeholder { color: #9CA3AF; }
-        
-        /* INPUT TAHUN DENGAN SPINNER */
-        .form-control-year {
-            width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px;
-            font-size: 0.9rem; transition: all 0.3s; background: #FAFAFA; color: #1F2937;
-            font-family: 'Poppins', sans-serif;
-            -moz-appearance: textfield;
-        }
-        .form-control-year::-webkit-outer-spin-button,
-        .form-control-year::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        .form-control-year:focus { outline: none; border-color: #0E9F6E; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(14,159,110,0.08); }
-        
-        /* SELECT DROPDOWN PREMIUM */
-        .form-select-wrapper {
-            position: relative;
-        }
-        .form-select-wrapper::after {
-            content: '\F282';
-            font-family: 'bootstrap-icons';
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6B7280;
-            font-size: 1rem;
-            pointer-events: none;
-        }
-        .form-select {
-            width: 100%; padding: 12px 44px 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px;
-            font-size: 0.9rem; transition: all 0.3s; background: #FAFAFA; color: #1F2937;
-            font-family: 'Poppins', sans-serif; appearance: none; cursor: pointer;
-        }
-        .form-select:focus { outline: none; border-color: #0E9F6E; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(14,159,110,0.08); }
-        .form-select option { padding: 8px; }
-        
-        .form-text { font-size: 0.75rem; color: #6B7280; margin-top: 4px; }
-        
-        .card-premium {
-            background: #FFFFFF; border-radius: 20px; border: 1px solid rgba(229,231,235,0.5);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04); overflow: hidden;
-        }
-        .card-premium .header {
-            padding: 20px 28px; border-bottom: 1px solid #F1F5F9;
-            background: #FAFAFA;
-        }
-        .card-premium .body { padding: 28px; }
-        
-        .upload-area {
-            border: 2px dashed #E5E7EB; border-radius: 16px; padding: 32px 20px;
-            text-align: center; background: #FAFAFA; transition: all 0.3s; min-height: 180px;
-            display: flex; align-items: center; justify-content: center; flex-direction: column;
-        }
-        .upload-area:hover { border-color: #0E9F6E; background: #F4F5F7; }
-        .upload-area .icon { font-size: 3rem; color: #D1D5DB; margin-bottom: 12px; }
-        .upload-area .text { color: #6B7280; font-size: 0.9rem; }
-        
-        .btn-smp {
-            background: #0E9F6E; color: #FFFFFF; padding: 12px 28px; border-radius: 12px;
-            font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer;
-            transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
-            font-family: 'Poppins', sans-serif;
-        }
-        .btn-smp:hover { background: #0B8159; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,159,110,0.25); }
-        
-        .btn-secondary-custom {
-            background: #F1F5F9; color: #1F2937; padding: 12px 28px; border-radius: 12px;
-            font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer;
-            transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
-            font-family: 'Poppins', sans-serif; text-decoration: none;
-        }
-        .btn-secondary-custom:hover { background: #E5E7EB; transform: translateY(-2px); }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
-        
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #F4F5F7; }
-        ::-webkit-scrollbar-thumb { background: #0E9F6E; border-radius: 10px; }
-        
-        @media (max-width: 768px) {
-            .sidebar { width: 70px; padding: 16px 8px; }
-            .sidebar .brand .text, .sidebar ul li a span, .sidebar ul li a .badge, .sidebar .footer .user .info { display: none; }
-            .sidebar .brand { justify-content: center; padding-bottom: 16px; }
-            .sidebar ul li a { justify-content: center; padding: 12px; gap: 0; }
-            .sidebar ul li a i { font-size: 1.2rem; }
-            .main-content { margin-left: 70px; padding: 16px; }
-            .sidebar .footer { padding: 12px; }
-            .sidebar .footer .user { justify-content: center; }
-        }
-        @media (max-width: 480px) {
-            .sidebar { width: 60px; padding: 12px 6px; }
-            .main-content { margin-left: 60px; padding: 12px; }
-            .card-premium .body { padding: 16px; }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/prestasi/create.css">
 </head>
 <body>
 
@@ -273,10 +104,10 @@ $tahunSekarang = date('Y');
 SIDEBAR -->
 <aside class="sidebar">
     <div class="brand">
-        <img src="../../assets/logo/logo-smp-al-islam.png" alt="Logo" />
+        <img src="../../assets/logo/logo-smp-islam.png" alt="Logo SMP Islam Watestanjung" />
         <div class="text">
-            <div class="name">SMP Al Islam</div>
-            <div class="tag">Administrator</div>
+            <div class="name">SMP Islam</div>
+            <div class="tag">Watestanjung</div>
         </div>
     </div>
 
@@ -452,7 +283,7 @@ MAIN CONTENT -->
     <!-- Footer -->
     <div class="text-center text-sm text-gray-400 border-t border-gray-200/50 mt-8 pt-4">
         <i class="bi bi-shield-check text-smp"></i>
-        SMP Al Islam Krian &bull; Dashboard Administrator &bull; <?= date('Y') ?>
+        SMP Islam Watestanjung &bull; Dashboard Administrator &bull; <?= date('Y') ?>
     </div>
 </main>
 

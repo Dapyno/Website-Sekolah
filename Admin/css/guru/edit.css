@@ -1,0 +1,411 @@
+/* ============================================================
+   ADMIN PANEL CSS - SMP Islam Watestanjung
+   Untuk edit.php, create.php, dan halaman admin lainnya
+   ============================================================ */
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+}
+
+/* ===== ADMIN WRAPPER ===== */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.admin-sidebar {
+    width: 260px;
+    background: #1a1a2e;
+    padding: 20px 0;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.admin-sidebar::-webkit-scrollbar {
+    width: 3px;
+}
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background: #0e9f6e;
+    border-radius: 10px;
+}
+
+/* Brand */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+}
+
+.sidebar-brand img {
+    height: 40px;
+    border-radius: 8px;
+}
+
+.sidebar-brand span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 2px;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.sidebar-menu li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-menu li.active a {
+    color: #fff;
+    background: rgba(14, 159, 110, 0.15);
+    border-right: 3px solid #0e9f6e;
+}
+
+.sidebar-menu li a i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-menu li a .badge {
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.1);
+    color: #a0aec0;
+    font-size: 0.6rem;
+    padding: 2px 10px;
+    border-radius: 50px;
+}
+
+.sidebar-menu li.active a .badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.sidebar-menu li a.text-danger {
+    color: #ef4444;
+}
+
+.sidebar-menu li a.text-danger:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* ===== MAIN CONTENT ===== */
+.admin-main {
+    margin-left: 260px;
+    flex: 1;
+    padding: 24px 32px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* ===== HEADER ===== */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.admin-header h4 {
+    margin: 0;
+    font-weight: 700;
+    color: #1a1a2e;
+    font-size: 1.3rem;
+}
+
+.admin-header h4 i {
+    color: #0e9f6e;
+}
+
+/* ===== CONTENT ===== */
+.admin-content {
+    max-width: 900px;
+}
+
+/* ===== CARDS ===== */
+.card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 28px;
+}
+
+/* ===== FORM STYLES ===== */
+.form-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-label .text-danger {
+    color: #ef4444;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    width: 100%;
+    background: #fff;
+    color: #1a1a2e;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0e9f6e;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(14, 159, 110, 0.1);
+}
+
+.form-control::placeholder {
+    color: #a0aec0;
+}
+
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem 1.25rem;
+    padding-right: 2.5rem;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #0e9f6e;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #0b8159;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(14, 159, 110, 0.3);
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #4b5563;
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+}
+
+.btn-success {
+    background: #22c55e;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background: #16a34a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+}
+
+/* ===== ALERTS ===== */
+.alert {
+    padding: 12px 18px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.alert-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-warning {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #f4f5f7;
+}
+::-webkit-scrollbar-thumb {
+    background: #0e9f6e;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0b8159;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 70px;
+        padding: 16px 0;
+    }
+    
+    .sidebar-brand span,
+    .sidebar-menu li a span {
+        display: none;
+    }
+    
+    .sidebar-brand {
+        padding: 0 12px 16px;
+        justify-content: center;
+    }
+    
+    .sidebar-brand img {
+        height: 32px;
+    }
+    
+    .sidebar-menu li a {
+        justify-content: center;
+        padding: 14px;
+        gap: 0;
+    }
+    
+    .sidebar-menu li a i {
+        font-size: 1.2rem;
+        width: auto;
+    }
+    
+    .admin-main {
+        margin-left: 70px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-sidebar {
+        width: 60px;
+        padding: 12px 0;
+    }
+    
+    .admin-main {
+        margin-left: 60px;
+        padding: 12px;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .admin-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .card-body {
+        padding: 16px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+}

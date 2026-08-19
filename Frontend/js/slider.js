@@ -52,40 +52,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================
     // 2. TESTIMONI SLIDER
     // ============================
-    const testimoniSwiper = new Swiper('.testimoni-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: true,
+const testimoniSwiper = new Swiper('.testimoni-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: true,
+    },
+    pagination: {
+        el: '.testimoni-swiper .swiper-pagination',
+        clickable: true,
+    },
+    // TAMBAHKAN NAVIGASI DI SINI
+    navigation: {
+        nextEl: '.testimoni-swiper .swiper-button-next',
+        prevEl: '.testimoni-swiper .swiper-button-prev',
+    },
+    breakpoints: {
+        576: {
+            slidesPerView: 1,
+            spaceBetween: 20,
         },
-        pagination: {
-            el: '.testimoni-swiper .swiper-pagination',
-            clickable: true,
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 24,
         },
-        breakpoints: {
-            576: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 24,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
         },
-        on: {
-            init: function() {
-                if (typeof AOS !== 'undefined') {
-                    AOS.refresh();
-                }
+    },
+    on: {
+        init: function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
             }
         }
-    });
+    }
+});
 
     // ============================
     // 3. HERO SLIDER (fallback JS)

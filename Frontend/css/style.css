@@ -1034,66 +1034,40 @@ body {
     box-shadow: var(--shadow-hover);
 }
 
-/* TESTIMONI */
-.testimoni-swiper {
-    padding: 20px 0 50px;
-}
-
-.testimoni-card {
+/* ============================
+   TESTIMONI SLIDER NAVIGATION
+   ============================ */
+.testimoni-swiper .swiper-button-prev,
+.testimoni-swiper .swiper-button-next {
     background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.testimoni-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-}
-
-.testimoni-card img {
-    border: 4px solid var(--soft-bg);
-    transition: var(--transition);
-}
-
-.testimoni-card:hover img {
-    border-color: var(--primary);
-}
-
-.testimoni-card .stars {
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-}
-
-/* FAQ */
-.accordion-item {
-    border: none;
-    border-radius: var(--radius) !important;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-}
-
-.accordion-button {
-    font-weight: 600;
-    padding: 18px 24px;
-    background: var(--white);
-    transition: var(--transition);
-}
-
-.accordion-button:focus {
-    box-shadow: none;
-    border-color: var(--primary);
-}
-
-.accordion-button:not(.collapsed) {
-    background: rgba(21, 128, 61, 0.05);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     color: var(--primary);
+    transition: var(--transition);
 }
 
-.accordion-body {
-    padding: 18px 24px;
-    background: var(--white);
+.testimoni-swiper .swiper-button-prev:hover,
+.testimoni-swiper .swiper-button-next:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(21, 128, 61, 0.3);
+}
+
+.testimoni-swiper .swiper-button-prev::after,
+.testimoni-swiper .swiper-button-next::after {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Responsif - sembunyikan tombol di layar kecil */
+@media (max-width: 768px) {
+    .testimoni-swiper .swiper-button-prev,
+    .testimoni-swiper .swiper-button-next {
+        display: none;
+    }
 }
 
 /* ============================================================
